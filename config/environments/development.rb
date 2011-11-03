@@ -22,6 +22,13 @@ SecondChance::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  # Compile sass in development environment
+  Sass::Plugin.add_template_location(
+    Rails.root.join('public/sass').to_s,
+    Rails.root.join('public/stylesheets').to_s
+  )
+
 end
 
 Refinery.rescue_not_found = false

@@ -1,0 +1,32 @@
+/* Variables.less
+ * Variables to customize the look and feel of Bootstrap
+ * ----------------------------------------------------- */
+/* mixins.css.scss
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+html, body {
+  background-color: #ececec;
+  background-image: url(../images/background.jpg);
+  background-repeat: repeat-x;
+  background-position: 0px 57px; }
+
+.topbar a {
+  color: #ececec; }
+.topbar .brand img {
+  position: relative;
+  top: 6px; }
+.topbar .nav li {
+  font-size: 16px;
+  font-weight: bold; }
+  .topbar .nav li a {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75); }
+
+.container.main {
+  background-color: white;
+  padding: 20px 20px 0px;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35); }
+
+.alert-message .close {
+  margin-left: 20px; }
