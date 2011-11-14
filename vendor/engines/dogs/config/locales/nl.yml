@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    dogs:
+      title: Dogs
+  admin:
+    dogs:
+      actions:
+        create_new: Maak een nieuwe Dog
+        reorder: Wijzig de volgorde van de Dogs
+        reorder_done: Klaar met het wijzingen van de volgorde van de Dogs
+      records:
+        title: Dogs
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Dogs. Druk op 'Maak een nieuwe Dog' om de eerste aan te maken.
+      dog:
+        view_live_html: Bekijk deze dog op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze dog
+        delete: Verwijder deze dog voor eeuwig
+  dogs:
+    show:
+      other: Andere Dogs

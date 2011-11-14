@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    dogs:
+      title: Dogs
+  admin:
+    dogs:
+      actions:
+        create_new: Lag en ny Dog
+        reorder: Endre rekkefølgen på Dogs
+        reorder_done: Ferdig å endre rekkefølgen Dogs
+      records:
+        title: Dogs
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Dogs enda. Klikk på "Lag en ny Dog" for å legge til din første dog.
+      dog:
+        view_live_html: Vis hvordan denne dog ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne dog
+        delete: Fjern denne dog permanent
+  dogs:
+    show:
+      other: Andre Dogs

@@ -4,7 +4,7 @@ class CreateDogApplicationQuestions < ActiveRecord::Migration
     create_table :dog_application_questions do |t|
       t.string :question_text
       t.integer :position
-
+      t.boolean :active, :default => true
       t.timestamps
     end
 

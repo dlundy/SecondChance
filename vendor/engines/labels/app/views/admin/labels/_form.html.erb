@@ -1,0 +1,34 @@
+<%= form_for [:admin, @label] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @label,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :hex_code -%>
+    <%= f.text_field :hex_code  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :type -%>
+    <%= f.text_field :type  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :active -%>
+    <%= f.check_box :active, :checked => @label[:active]  -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.labels.label'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @label.name)
+              } %>
+<% end -%>

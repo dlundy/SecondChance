@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+  <ul id="labels">
+    <% @labels.each do |label| %>
+      <li>
+        <%= link_to label.name, label_path(label) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

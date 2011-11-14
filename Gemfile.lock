@@ -2,6 +2,9 @@ PATH
   remote: vendor/engines
   specs:
     refinerycms-dog_application_questions (1.0)
+    refinerycms-dogs (1.0)
+    refinerycms-labels (1.0)
+    refinerycms-members (1.0)
 
 GEM
   remote: http://rubygems.org/
@@ -159,4 +162,7 @@ DEPENDENCIES
   rails (= 3.0.9)
   refinerycms
   refinerycms-dog_application_questions (= 1.0)!
+  refinerycms-dogs (= 1.0)!
+  refinerycms-labels (= 1.0)!
+  refinerycms-members (= 1.0)!
   sass

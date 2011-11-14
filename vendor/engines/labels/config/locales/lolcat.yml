@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    labels:
+      title: Labels
+  admin:
+    labels:
+      actions:
+        create_new: CREATE NEW Label
+        reorder: REORDR Labels
+        reorder_done: DUN REORDERIN Labels
+      records:
+        title: Labels
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Labels YET. CLICK "CREATE NEW Label" 2 ADD UR FURST label.
+      label:
+        view_live_html: VIEW DIS label LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS label
+        delete: REMOOV DIS label FOREVR
+  labels:
+    show:
+      other: OTHR Labels

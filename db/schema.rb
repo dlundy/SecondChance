@@ -10,16 +10,41 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114172231) do
+ActiveRecord::Schema.define(:version => 20111114182920) do
 
   create_table "dog_application_questions", :force => true do |t|
     t.string   "question_text"
     t.integer  "position"
+    t.boolean  "active",        :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "dog_application_questions", ["id"], :name => "index_dog_application_questions_on_id"
+
+  create_table "dogs", :force => true do |t|
+    t.integer  "rescue_groups_id"
+    t.string   "title"
+    t.string   "name"
+    t.string   "breed"
+    t.string   "sex"
+    t.decimal  "weight"
+    t.string   "weight_unit"
+    t.decimal  "age"
+    t.string   "colors"
+    t.text     "description"
+    t.text     "notes"
+    t.integer  "primary_image_id"
+    t.integer  "position"
+    t.boolean  "active",           :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dogs", ["breed"], :name => "index_dogs_on_breed"
+  add_index "dogs", ["id"], :name => "index_dogs_on_id"
+  add_index "dogs", ["name"], :name => "index_dogs_on_name"
+  add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -32,6 +57,41 @@ ActiveRecord::Schema.define(:version => 20111114172231) do
     t.string   "image_uid"
     t.string   "image_ext"
   end
+
+  create_table "labels", :force => true do |t|
+    t.string   "name"
+    t.string   "hex_code"
+    t.string   "type"
+    t.boolean  "active"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "labels", ["id"], :name => "index_labels_on_id"
+
+  create_table "members", :force => true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "phone"
+    t.string   "description"
+    t.integer  "position"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "members", ["active"], :name => "index_members_on_active"
+  add_index "members", ["email"], :name => "index_members_on_email"
+  add_index "members", ["first_name"], :name => "index_members_on_first_name"
+  add_index "members", ["id"], :name => "index_members_on_id"
+  add_index "members", ["last_name"], :name => "index_members_on_last_name"
 
   create_table "page_part_translations", :force => true do |t|
     t.integer  "page_part_id"

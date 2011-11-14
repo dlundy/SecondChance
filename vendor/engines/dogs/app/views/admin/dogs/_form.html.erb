@@ -1,0 +1,93 @@
+<%= form_for [:admin, @dog] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @dog,
+          :include_object_name => true
+        } %>
+  
+  <div class='field'>
+    <%= f.label :rescue_groups_id -%>
+    <%= f.text_field :rescue_groups_id, :class => 'larger widest'  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :breed -%>
+    <%= f.text_field :breed  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :sex -%>
+    <%= f.text_field :sex  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :weight -%>
+    <%= f.text_field :weight  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :weight_unit -%>
+    <%= f.text_field :weight_unit  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :age -%>
+    <%= f.text_field :age  -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :colors -%>
+    <%= f.text_field :colors  -%>
+  </div>
+  
+  <div class='field'>
+    <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+      <ul id='page_parts'>
+        <% [:description, :notes].each_with_index do |part, part_index| %>
+          <li class='ui-state-default<%= ' ui-state-active' if part_index == 0 %>'>
+            <%= link_to part.to_s.titleize, "##{part}" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div id='page_part_editors'>
+        <% [:description, :notes].each do |part| %>
+          <div class='page_part' id='<%= part %>'>
+            <%= f.text_area part, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  
+  <div class='field'>
+    <%= f.label :primary_image_id -%>
+    <%= f.text_field :primary_image_id  -%>
+  </div>
+  
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.dogs.dog'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @dog.title)
+              } %>
+<% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>

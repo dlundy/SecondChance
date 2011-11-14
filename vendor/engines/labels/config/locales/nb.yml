@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    labels:
+      title: Labels
+  admin:
+    labels:
+      actions:
+        create_new: Lag en ny Label
+        reorder: Endre rekkefølgen på Labels
+        reorder_done: Ferdig å endre rekkefølgen Labels
+      records:
+        title: Labels
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Labels enda. Klikk på "Lag en ny Label" for å legge til din første label.
+      label:
+        view_live_html: Vis hvordan denne label ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne label
+        delete: Fjern denne label permanent
+  labels:
+    show:
+      other: Andre Labels
