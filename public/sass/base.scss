@@ -1,0 +1,156 @@
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+
+$background: #ececec;
+
+@font-face {
+    font-family: 'TitilliumText22LRegular';
+    src: url('../fonts/TitilliumText22L003-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'TitilliumText22LMedium';
+    src: url('../fonts/TitilliumText22L004-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html, body {
+  background-color: $background;
+  background-image: url(../images/background.jpg);
+  background-repeat: repeat-x;
+  background-position: 0px 57px;
+}
+
+.topbar {
+  a {
+    color: $background;
+  }
+  .brand {
+    img {
+      position: relative;
+      top: 6px;
+    }
+  }
+  .nav {
+    li {
+      font-size: 16px;
+      font-weight: bold;
+      a {
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+}
+
+.container.main {
+  background-color: #fafafa;
+  padding: 20px 20px 0px;
+  @include box-shadow(0 2px 10px rgba(0,0,0,.35));
+}
+
+.hero {
+  background-image: url(../images/hero-bg.png);
+  background-repeat: repeat-x;
+  height: 300px;
+  margin-top: -20px;
+  padding-top: 20px;
+  .logo {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .copy {
+    padding-top: 20px;
+    p {
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 20px;
+    }
+    .emphasis {
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+  }
+  .btn {
+      width: 90px;
+      margin-top: 10px;
+      margin-right: $gridGutterWidth;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+  }
+}
+
+.addnl-content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px 0px;
+  background-color: $white;
+  color: #5a5a5a;
+}
+
+.events {
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #545454;
+    margin-bottom: 3px;
+  }
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+#twitter {
+  .tweet_list {
+    margin: 0;
+    list-style: none;
+    li {
+      margin-top: 20px;
+    }
+  }
+  .tweet_time {
+    font-size: 11px;
+    color: #7f7f7f;
+    a {
+      color: inherit;
+    }
+  }
+}
+
+h1 {
+  font-family: 'TitilliumText22LRegular';
+  font-weight: normal;
+}
+
+.social-icons {
+  > a {
+    background-image: url(../images/social-sprite.png);
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .twitter-icon {
+    &:hover {
+      background-position: 0 -32px;
+    }
+  }
+  .fb-icon {
+    background-position: -40px 0;
+    &:hover {
+      background-position: -40px -32px;
+    }
+  }
+  .linkedin-icon {
+    background-position: -80px 0;
+    &:hover {
+      background-position: -80px -32px;
+    }
+  }
+}

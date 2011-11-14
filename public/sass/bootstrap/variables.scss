@@ -3,7 +3,7 @@
  * ----------------------------------------------------- */
 
 // Links
-$linkColor:         #0069d6;
+$linkColor:         #e44646;
 $linkColorHover:    darken($linkColor, 15);
 
 // Grays
@@ -25,16 +25,17 @@ $pink:              #c3325f;
 $purple:            #7a43b6;
 
 // Baseline grid
-$basefont:          13px;
-$baseline:          18px;
+$basefont:          14px;
+$baseline:          20px;
 
 // Griditude
 // Modify the grid styles in mixins.less
-$gridColumns:       16;
-$gridColumnWidth:   40px;
+$gridColumns:       12;
+$gridColumnWidth:   60px;
 $gridGutterWidth:   20px;
 $extraSpace:        ($gridGutterWidth * 2); // For our grid calculations
 $siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+$fullWidth:         $siteWidth + $extraSpace; // The full width of the site including gutters
 
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)
