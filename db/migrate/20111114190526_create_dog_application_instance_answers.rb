@@ -6,8 +6,8 @@ class CreateDogApplicationInstanceAnswers < ActiveRecord::Migration
       t.string :answer
       t.timestamps
     end
-    add_index :dog_application_instance_answers, :dog_application_instance_id
-    add_index :dog_application_instance_answers, :dog_application_question_id
+    add_index :dog_application_instance_answers, :dog_application_instance_id, :name => 'dog_app_instance_id_idx'
+    add_index :dog_application_instance_answers, :dog_application_question_id, :name => 'dog_app_question_id_idx'
   end
 
   def self.down
