@@ -7,7 +7,6 @@ class CreateDogApplicationQuestions < ActiveRecord::Migration
       t.boolean :active, :default => true
       t.timestamps
     end
-
     add_index :dog_application_questions, :id
 
     load(Rails.root.join('db', 'seeds', 'dog_application_questions.rb'))
