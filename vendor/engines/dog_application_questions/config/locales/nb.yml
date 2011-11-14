@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    dog_application_questions:
+      title: Dog Application Questions
+  admin:
+    dog_application_questions:
+      actions:
+        create_new: Lag en ny Dog Application Question
+        reorder: Endre rekkefølgen på Dog Application Questions
+        reorder_done: Ferdig å endre rekkefølgen Dog Application Questions
+      records:
+        title: Dog Application Questions
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Dog Application Questions enda. Klikk på "Lag en ny Dog Application Question" for å legge til din første dog application question.
+      dog_application_question:
+        view_live_html: Vis hvordan denne dog application question ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne dog application question
+        delete: Fjern denne dog application question permanent
+  dog_application_questions:
+    show:
+      other: Andre Dog Application Questions

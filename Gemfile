@@ -6,10 +6,11 @@ gem 'rails', '3.0.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'refinerycms'
 gem 'carrierwave'
 gem 'haml'
 gem 'sass'
+
+gem 'refinerycms'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -33,3 +34,5 @@ gem 'sass'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem 'refinerycms-dog_application_questions', '1.0', :path => 'vendor/engines'

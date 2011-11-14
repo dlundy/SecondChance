@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102041732) do
+ActiveRecord::Schema.define(:version => 20111114172231) do
+
+  create_table "dog_application_questions", :force => true do |t|
+    t.string   "question_text"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dog_application_questions", ["id"], :name => "index_dog_application_questions_on_id"
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"

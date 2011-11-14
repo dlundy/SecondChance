@@ -35,10 +35,7 @@ module SecondChance
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
-    
-    
-    config.pg_user = ENV['RAILS_PG_USER']
-    
+        
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
   end

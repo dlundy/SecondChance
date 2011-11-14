@@ -1,3 +1,8 @@
+PATH
+  remote: vendor/engines
+  specs:
+    refinerycms-dog_application_questions (1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -153,4 +158,5 @@ DEPENDENCIES
   pg
   rails (= 3.0.9)
   refinerycms
+  refinerycms-dog_application_questions (= 1.0)!
   sass

@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    dog_application_questions:
+      title: Dog Application Questions
+  admin:
+    dog_application_questions:
+      actions:
+        create_new: Add New Dog Application Question
+        reorder: Reorder Dog Application Questions
+        reorder_done: Done Reordering Dog Application Questions
+      records:
+        title: Dog Application Questions
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Dog Application Questions yet. Click "Add New Dog Application Question" to add your first dog application question.
+      dog_application_question:
+        view_live_html: View this dog application question live <br/><em>(opens in a new window)</em>
+        edit: Edit this dog application question
+        delete: Remove this dog application question forever
+  dog_application_questions:
+    show:
+      other: Other Dog Application Questions
