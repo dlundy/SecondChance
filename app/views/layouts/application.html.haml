@@ -1,27 +1,32 @@
+-content_for :stylesheets do
+  -stylesheet_link_tag 'bootstrap', 'base'
+
+-content_for :javascript_libraries do
+  -javascript_include_tag :all
+
 !!! 5
 %html
-%head
-  %title Dogs
-  = stylesheet_link_tag 'bootstrap', 'base'
-  = javascript_include_tag :all
-  = csrf_meta_tag
-%body
-  .topbar
-    .topbar-inner
-      .container
-        %a.brand{:href => "#"}
-          =image_tag("logo.png")
-        %ul.nav
-          %li.active
-            %a{:href => "#"} Dogs
-          %li
-            %a{:href => "#about"} Events
-          %li
-            %a{:href => "#resources"} Owner Surrenders
-          %li
-            %a{:href => "#contact"} How to Help 
-  .container.main
-    = yield
+  -site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true})
+  = render :partial => "/shared/head"
 
-    %footer
-      =render :partial => 'shared/footer'
+  %body
+    = site_bar
+    .topbar
+      .topbar-inner
+        .container
+          %a.brand{:href => "#"}
+            =image_tag("logo.png")
+          %ul.nav
+            %li.active
+              %a{:href => "#"} Dogs
+            %li
+              %a{:href => "#about"} Events
+            %li
+              %a{:href => "#resources"} Owner Surrenders
+            %li
+              %a{:href => "#contact"} How to Help 
+    .container.main
+      = yield
+      %footer
+        =render :partial => 'shared/footer'
+    = render :partial => "/shared/javascripts"
