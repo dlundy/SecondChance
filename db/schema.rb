@@ -10,7 +10,48 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114182920) do
+ActiveRecord::Schema.define(:version => 20111119061351) do
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "dog_application_instance_answers", :force => true do |t|
+    t.integer  "dog_application_instance_id", :null => false
+    t.integer  "dog_application_question_id", :null => false
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dog_application_instance_answers", ["dog_application_instance_id"], :name => "dog_app_instance_id_idx"
+  add_index "dog_application_instance_answers", ["dog_application_question_id"], :name => "dog_app_question_id_idx"
+
+  create_table "dog_application_instances", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "phone"
+    t.string   "phone_2"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dog_application_questions", :force => true do |t|
     t.string   "question_text"
@@ -163,6 +204,14 @@ ActiveRecord::Schema.define(:version => 20111114182920) do
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
+
+  create_table "rescue_groups_pulls", :force => true do |t|
+    t.string   "status"
+    t.integer  "dog_count"
+    t.integer  "updates"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "resources", :force => true do |t|
     t.string   "file_mime_type"
