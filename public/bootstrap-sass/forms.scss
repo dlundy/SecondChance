@@ -144,7 +144,6 @@ input[type=file]:focus, input[type=checkbox]:focus, select:focus {
 
 // Error styles
 form div.clearfix.error {
-  background: lighten($red, 57%);
   padding: 10px 0;
   margin: -10px 0 10px;
   @include border-radius(4px);
@@ -198,7 +197,7 @@ textarea.xxlarge {
 @mixin formColumns($columnSpan: 1) {
   display: inline-block;
   float: none;
-  width: (($gridColumnWidth - 10) * $columnSpan) + (($gridColumnWidth - 10) * ($columnSpan - 1));
+  width: (($gridColumnWidth) * $columnSpan) + ($gridGutterWidth * ($columnSpan - 1)) - 10;
   margin-left: 0;
 }
 input, textarea, select {
@@ -402,13 +401,6 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
         padding-top: 0;
       }
     }
-  }
-  div.clearfix.error {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    margin-top: 0;
-    margin-left: -10px;
   }
   .actions {
     margin-left: -20px;

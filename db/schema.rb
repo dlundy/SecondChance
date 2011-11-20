@@ -10,7 +10,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114182920) do
+ActiveRecord::Schema.define(:version => 20111114190526) do
+
+  create_table "dog_application_instance_answers", :force => true do |t|
+    t.integer  "dog_application_instance_id", :null => false
+    t.integer  "dog_application_question_id", :null => false
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dog_application_instance_answers", ["dog_application_instance_id"], :name => "dog_app_instance_id_idx"
+  add_index "dog_application_instance_answers", ["dog_application_question_id"], :name => "dog_app_question_id_idx"
+
+  create_table "dog_application_instances", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "phone"
+    t.string   "phone_2"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dog_application_questions", :force => true do |t|
     t.string   "question_text"

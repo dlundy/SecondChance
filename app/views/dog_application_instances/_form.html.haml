@@ -1,0 +1,85 @@
+= form_for @dog_application_instance, :html => {:class => 'form-stacked'} do |f|
+  -if @dog_application_instance.errors.any?
+    #error_explanation
+      -@dog_application_instance.errors.full_messages.each do |msg|
+        .alert-message.error=msg
+  %fieldset
+    %legend
+      Contact Information
+    .row
+      .span3
+        .clearfix.error
+          =f.label :first_name
+          .input
+            =f.text_field :first_name, :class => 'span3'
+            %span.help-block This is an error message
+      .span3
+        .clearfix
+          =f.label :last_name
+          .input
+            =f.text_field :last_name, :class => 'span3'
+    .clearfix.error
+      =f.label :email
+      .input
+        =f.text_field :email, :class => 'span6'
+        %span.help-block This is an error message, too
+    .clearfix
+      =f.label :address_1
+      .input
+        =f.text_field :address_1, :class => 'span6'
+    .clearfix
+      =f.label :address_2
+      .input
+        =f.text_field :address_2, :class => 'span6'
+    .row
+      .span3
+        .clearfix
+          =f.label :city
+          .input
+            =f.text_field :city, :class => 'span3'
+      .span1
+        .clearfix
+          =f.label :state
+          .input
+            =f.text_field :state, :class => 'span1'
+      .span2
+        .clearfix
+          =f.label :zipcode
+          .input
+            =f.text_field :zipcode, :class => 'span2'
+    .clearfix
+      =f.label :phone
+      .input
+        =f.text_field :phone, :class => 'span2'
+    .clearfix
+      =f.label :phone_2
+      .input
+        =f.text_field :phone_2, :class => 'span2'
+
+  %fieldset
+    %legend General Information
+    / Mocked up CMS driven questions
+    / Place of employment
+    .clearfix
+      %label{:for=>"question_1"} Place of Employment
+      .input
+        %input{:type=>'text', :id=>'question_1', :name=>'question_1', :value=>"", :class=>'span6'}
+    .clearfix
+      %label{:for=>"question_2"} (Household Information) What type of dwelling do you live in? 
+      .input
+        %input{:type=>'text', :id=>'question_2', :name=>'question_2', :value=>"", :class=>'span6'}
+        .help-block House, Apartment, Condo, etc
+    .clearfix
+      %label{:id => 'optionsRadio'} Own or rent?
+      .input
+        %ul.inputs-list
+          %li
+            %label
+              %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option1"}
+              %span Own
+          %li
+            %label
+              %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option2"}
+              %span Rent
+  .actions
+    =f.submit 'Submit Application', :class => 'btn primary'
