@@ -11,15 +11,15 @@
  * Date: Fri Sep 16 11:24:41 PDT 2011
  */
 
-@import "bootstrap/reset";
+@import "../bootstrap-sass/reset";
 
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+@import "../bootstrap-sass/variables";
+@import "../bootstrap-sass/mixins";
 
-@import "bootstrap/scaffolding";
+@import "../bootstrap-sass/scaffolding";
 
-@import "bootstrap/type";
-@import "bootstrap/forms";
-@import "bootstrap/tables";
-@import "bootstrap/patterns";
+@import "../bootstrap-sass/type";
+@import "../bootstrap-sass/forms";
+@import "../bootstrap-sass/tables";
+@import "../bootstrap-sass/patterns";
 
