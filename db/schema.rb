@@ -10,7 +10,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114190526) do
+ActiveRecord::Schema.define(:version => 20111119061351) do
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "dog_application_instance_answers", :force => true do |t|
     t.integer  "dog_application_instance_id", :null => false
@@ -189,6 +204,14 @@ ActiveRecord::Schema.define(:version => 20111114190526) do
   end
 
   add_index "refinery_settings", ["name"], :name => "index_refinery_settings_on_name"
+
+  create_table "rescue_groups_pulls", :force => true do |t|
+    t.string   "status"
+    t.integer  "dog_count"
+    t.integer  "updates"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "resources", :force => true do |t|
     t.string   "file_mime_type"

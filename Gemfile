@@ -6,6 +6,8 @@ gem 'pg'
 gem 'carrierwave'
 gem 'haml'
 gem 'sass'
+gem 'httparty'
+gem 'delayed_job'
 
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'
