@@ -12,6 +12,17 @@ gem 'delayed_job'
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'
 
+group :development do
+  gem 'rspec-rails','2.6.1'
+  gem 'faker'
+end
+
+group :test do
+  gem 'rspec-rails', '2.6.1'
+  gem 'webrat', '0.7.1'
+  gem 'factory_girl_rails'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
