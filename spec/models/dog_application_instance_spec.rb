@@ -25,12 +25,11 @@ describe DogApplicationInstance do
     end
 
     it "should have an answers attribute" do
-      pending
-      #@dog_application_instance.should #respond_to(:dog_application_instance_answers)
+      @dog_application_instance.should respond_to(:dog_application_instance_answers)
     end
 
     it "should destroy associated answers" do
-      pending
+       pending
     end
   end
 end
