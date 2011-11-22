@@ -3,12 +3,10 @@ class RescueGroupsDotOrgClient
   
   base_uri 'http://api.rescuegroups.org/rest/'
   format :xml
-  default_params :key => 'oeBe46yG' # TODO: move to config file
-  
-  SC_ORG_ID = 2802
-  
+  default_params :key => 'oeBe46yG', :orgID => 2802 # TODO: move to config file
+    
   def self.get_sc_dogs(limit=200, opts={})
-    res = get('/', :query => {:type => 'animals', :orgID => SC_ORG_ID, :limit => limit})
+    res = get('/', :query => {:type => 'animals', :limit => limit})
     if res.code == 200 
       dogs = res.parsed_response['pets']['pet']
       RescueGroupsPull.create({:dog_count => dogs.size})

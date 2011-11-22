@@ -23,17 +23,18 @@ class CreateDogs < ActiveRecord::Migration
     add_index :dogs, :name
     add_index :dogs, :breed
 
-    load(Rails.root.join('db', 'seeds', 'dogs.rb'))
+    # load(Rails.root.join('db', 'seeds', 'dogs.rb'))
   end
 
   def self.down
-    if defined?(UserPlugin)
-      UserPlugin.destroy_all({:name => "dogs"})
-    end
-
-    if defined?(Page)
-      Page.delete_all({:link_url => "/dogs"})
-    end
+    # regfinery stuff... but we are switching to using a plain model
+    # if defined?(UserPlugin)
+    #       UserPlugin.destroy_all({:name => "dogs"})
+    #     end
+    # 
+    #     if defined?(Page)
+    #       Page.delete_all({:link_url => "/dogs"})
+    #     end
 
     drop_table :dogs
   end

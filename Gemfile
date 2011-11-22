@@ -31,11 +31,13 @@ gem 'jquery-rails', '>= 1.0.12'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+group :development, :test do
+  # gem 'webrat'
+   gem 'mongrel', '>= 1.2.0.pre2'
+end
 
+# CUSTOM ENGINES:
 gem 'refinerycms-dog_application_questions', '1.0', :path => 'vendor/engines'
-gem 'refinerycms-dogs', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-members', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-labels', '1.0', :path => 'vendor/engines'
+gem 'refinerycms-events', '1.0', :path => 'vendor/engines'

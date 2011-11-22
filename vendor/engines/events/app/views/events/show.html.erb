@@ -1,0 +1,81 @@
+<% content_for :body_content_title do %>
+  <%= @event.geocords %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Start At</h1>
+    <p>
+      <%=raw @event.start_at %>
+    </p>
+  </section>
+  <section>
+    <h1>End At</h1>
+    <p>
+      <%=raw @event.end_at %>
+    </p>
+  </section>
+  <section>
+    <h1>Geocords</h1>
+    <p>
+      <%=raw @event.geocords %>
+    </p>
+  </section>
+  <section>
+    <h1>Address 1</h1>
+    <p>
+      <%=raw @event.address_1 %>
+    </p>
+  </section>
+  <section>
+    <h1>Address 2</h1>
+    <p>
+      <%=raw @event.address_2 %>
+    </p>
+  </section>
+  <section>
+    <h1>City</h1>
+    <p>
+      <%=raw @event.city %>
+    </p>
+  </section>
+  <section>
+    <h1>State</h1>
+    <p>
+      <%=raw @event.state %>
+    </p>
+  </section>
+  <section>
+    <h1>Zipcode</h1>
+    <p>
+      <%=raw @event.zipcode %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @event.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Website</h1>
+    <p>
+      <%=raw @event.website %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="events">
+      <% @events.each do |event| %>
+        <li>
+          <%= link_to event.geocords, event_path(event) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

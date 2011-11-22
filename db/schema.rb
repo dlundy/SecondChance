@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111119061351) do
+ActiveRecord::Schema.define(:version => 20111122014022) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(:version => 20111119061351) do
 
   add_index "dog_application_questions", ["id"], :name => "index_dog_application_questions_on_id"
 
+  create_table "dog_photos", :force => true do |t|
+    t.integer  "dog_id"
+    t.string   "url"
+    t.string   "size"
+    t.boolean  "active"
+    t.boolean  "primary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dog_photos", ["dog_id"], :name => "index_dog_photos_on_dog_id"
+
   create_table "dogs", :force => true do |t|
     t.integer  "rescue_groups_id"
     t.string   "title"
@@ -80,12 +92,32 @@ ActiveRecord::Schema.define(:version => 20111119061351) do
     t.boolean  "active",           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "member_id"
   end
 
   add_index "dogs", ["breed"], :name => "index_dogs_on_breed"
   add_index "dogs", ["id"], :name => "index_dogs_on_id"
+  add_index "dogs", ["member_id"], :name => "index_dogs_on_member_id"
   add_index "dogs", ["name"], :name => "index_dogs_on_name"
   add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
+
+  create_table "events", :force => true do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.string   "geocords"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
+    t.string   "email"
+    t.string   "website"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["id"], :name => "index_events_on_id"
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"

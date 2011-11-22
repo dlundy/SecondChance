@@ -2,7 +2,7 @@ PATH
   remote: vendor/engines
   specs:
     refinerycms-dog_application_questions (1.0)
-    refinerycms-dogs (1.0)
+    refinerycms-events (1.0)
     refinerycms-labels (1.0)
     refinerycms-members (1.0)
 
@@ -45,7 +45,7 @@ GEM
     builder (2.1.2)
     carrierwave (0.5.8)
       activesupport (~> 3.0)
-    daemons (1.1.4)
+    daemons (1.0.10)
     delayed_job (2.1.4)
       activesupport (~> 3.0)
       daemons
@@ -59,6 +59,7 @@ GEM
       abstract (>= 1.0.0)
     friendly_id_globalize3 (3.2.1.5)
       babosa (~> 0.3.0)
+    gem_plugin (0.2.3)
     globalize3 (0.1.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -77,6 +78,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    mongrel (1.2.0.pre2)
+      daemons (~> 1.0.10)
+      gem_plugin (~> 0.2.3)
     multi_json (1.0.3)
     multi_xml (0.4.1)
     orm_adapter (0.0.5)
@@ -173,11 +177,12 @@ DEPENDENCIES
   haml
   httparty
   jquery-rails (>= 1.0.12)
+  mongrel (>= 1.2.0.pre2)
   pg
   rails (= 3.0.9)
   refinerycms
   refinerycms-dog_application_questions (= 1.0)!
-  refinerycms-dogs (= 1.0)!
+  refinerycms-events (= 1.0)!
   refinerycms-labels (= 1.0)!
   refinerycms-members (= 1.0)!
   sass
