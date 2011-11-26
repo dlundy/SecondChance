@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111126013616) do
+ActiveRecord::Schema.define(:version => 20111126021741) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20111126013616) do
     t.decimal  "weight"
     t.string   "weight_unit"
     t.string   "age"
-    t.string   "colors"
+    t.string   "color"
     t.text     "description"
     t.text     "notes"
     t.integer  "primary_image_id"
