@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122014022) do
+ActiveRecord::Schema.define(:version => 20111126013616) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20111122014022) do
     t.boolean  "primary"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "rescue_groups_key"
   end
 
   add_index "dog_photos", ["dog_id"], :name => "index_dog_photos_on_dog_id"
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(:version => 20111122014022) do
     t.string   "sex"
     t.decimal  "weight"
     t.string   "weight_unit"
-    t.decimal  "age"
+    t.string   "age"
     t.string   "colors"
     t.text     "description"
     t.text     "notes"

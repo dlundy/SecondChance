@@ -6,45 +6,42 @@ class UpdateScDbJob < Struct.new(:limit)
   def perform
     dogs = RescueGroupsDotOrgClient.get_sc_dogs(@@limit)
     dogs.each do |dog|
-      dog = remove_lame_atts!(dog)
-      if sc_dog = Dog.find_by_rescue_groups_id(dog['animalID'])
-        # TODO: this performs like crap!
-        sc_dog.update_attributes(dog) if needs_update?(dog)
-        sc_dog.update_photos(get_photo_data(dog)) if new_photos?
+      dog_data = massage_data(dog)
+      if sc_dog = Dog.find_by_rescue_groups_id(dog_data['animalID'])
+        sc_dog.update_attributes(dog_data)
+        update_photos!(sc_dog, get_photo_data(dog_data))
       else
-        process_dup!(dog) if test_for_dup?(dog)
-        dog.merge!({:rescue_groups_id => dog['animalID']})
-        Dog.create(dog)
+        dog_data.merge!({:rescue_groups_id => dog_data['animalID']})
+        sc_dog = Dog.new(dog_data)
+        set_photos!(sc_dog, get_photo_data(dog_data))
+        sc_dog.save
       end
-    end
+    end unless dogs.empty?
   end
   
-  private
-  
-  def test_for_dup?(dog)
-    # TODO
-  end
-  
-  def process_dup!(dog)
-    # TODO
-  end
-  
-  def needs_update?(dog)
-    # TODO
-  end
-  
-  def new_photos?
-    # TODO
-  end
-  
-  def get_photo_data
-    # TODO
-  end
-  
-  def remove_lame_atts!(dog)
-    dog.delete('age') # rescuegroups.org uses a string like "old" or "young" instead of decimal or integer
+  protected
+    
+  def massage_data(dog)
     dog['name'] = dog['name'].downcase # let's store our dog names in lowercase
     dog
+  end
+  
+  def get_photo_data(dog_data)
+    dog_data.select{|k,v| k.to_s =~ /pic/}
+  end
+  
+  def set_photos!(dog, photo_data)
+    return unless dog.dog_photos.empty?
+    photo_data.each do |key, value|
+      size = (key.to_s =~ /tmn/ ? 'thumb' : 'regular')
+      dog.dog_photos << DogPhoto.new({:rescue_groups_key => key.to_s, :url => value, :size => size})
+    end
+  end  
+  
+  def update_photos!(dog, photo_data)
+    photo_data.each do |key, value|
+      dog.dog_photos.where(:rescue_groups_key => key.to_s).first.update_attribute(:url, value)
+    end
   end
   
 end
