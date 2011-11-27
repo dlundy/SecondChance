@@ -12,5 +12,14 @@ class Dog < ActiveRecord::Base
     text = text.downcase
     where(["name ILIKE ? OR breed ILIKE ?", "%#{text}%", "%#{text}%"])
   end
-  
+
+  # dlundy - little hack to temporarily titleize the names
+  def name
+    read_attribute(:name).titleize
+  end
+
+  def short_description
+    read_attribute(:description).truncate(160)
+  end
+
 end

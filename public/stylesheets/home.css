@@ -1,4 +1,91 @@
-/*
-  Override default refinery homepage styles here.
-  These only apply to the homepage of your site.
-*/
+/* Variables.less
+ * Variables to customize the look and feel of Bootstrap
+ * ----------------------------------------------------- */
+.hero {
+  background-image: url(../images/hero-bg.png);
+  background-repeat: repeat-x;
+  height: 300px;
+  margin-top: -20px;
+  padding-top: 20px; }
+  .hero .logo {
+    text-align: center;
+    padding-top: 10px; }
+  .hero .copy {
+    padding-top: 20px; }
+    .hero .copy p {
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 20px; }
+    .hero .copy .emphasis {
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: -1px; }
+  .hero .btn {
+    width: 90px;
+    margin-top: 10px;
+    margin-right: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold; }
+
+.events h3 {
+  font-size: 24px;
+  font-weight: normal;
+  color: #545454;
+  margin-bottom: 3px; }
+.events li {
+  margin-bottom: 20px; }
+
+#twitter .tweet_list {
+  margin: 0;
+  list-style: none; }
+  #twitter .tweet_list li {
+    margin-top: 20px; }
+#twitter .tweet_time {
+  font-size: 11px;
+  color: #7f7f7f; }
+  #twitter .tweet_time a {
+    color: inherit; }
+
+.social-icons > a {
+  display: inline-block;
+  margin-right: 5px; }
+.social-icons .twitter-icon {
+  background-image: url(../images/sprite-sheet.png);
+  height: 32px;
+  width: 32px;
+  background-position: 0 0; }
+  .social-icons .twitter-icon:hover {
+    background-position: 0 -32px; }
+  .social-icons .twitter-icon:active {
+    background-position: 0 -64px; }
+  .social-icons .twitter-icon.nohover:hover {
+    background-position: 0 0; }
+  .social-icons .twitter-icon.nohover:active {
+    background-position: 0 0; }
+.social-icons .fb-icon {
+  background-image: url(../images/sprite-sheet.png);
+  height: 32px;
+  width: 32px;
+  background-position: -40px 0; }
+  .social-icons .fb-icon:hover {
+    background-position: -40px -32px; }
+  .social-icons .fb-icon:active {
+    background-position: -40px -64px; }
+  .social-icons .fb-icon.nohover:hover {
+    background-position: -40px 0; }
+  .social-icons .fb-icon.nohover:active {
+    background-position: -40px 0; }
+.social-icons .linkedin-icon {
+  background-image: url(../images/sprite-sheet.png);
+  height: 32px;
+  width: 32px;
+  background-position: -80px 0; }
+  .social-icons .linkedin-icon:hover {
+    background-position: -80px -32px; }
+  .social-icons .linkedin-icon:active {
+    background-position: -80px -64px; }
+  .social-icons .linkedin-icon.nohover:hover {
+    background-position: -80px 0; }
+  .social-icons .linkedin-icon.nohover:active {
+    background-position: -80px 0; }

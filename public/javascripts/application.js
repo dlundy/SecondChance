@@ -7,4 +7,9 @@ $(document).ready(function($){
     loading_text: "loading...",
     template: "{text} <br/> {time}"
   });
+  $('.dogs-list img').popover({
+    placement: 'below',
+    live: true,
+    html: true
+  });
 });

@@ -1,0 +1,80 @@
+@import '../bootstrap-sass/variables';
+@import 'mixins';
+
+.hero {
+  background-image: url(../images/hero-bg.png);
+  background-repeat: repeat-x;
+  height: 300px;
+  margin-top: -20px;
+  padding-top: 20px;
+  .logo {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .copy {
+    padding-top: 20px;
+    p {
+      font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 20px;
+    }
+    .emphasis {
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+  }
+  .btn {
+      width: 90px;
+      margin-top: 10px;
+      margin-right: $gridGutterWidth;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+  }
+}
+
+.events {
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #545454;
+    margin-bottom: 3px;
+  }
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+#twitter {
+  .tweet_list {
+    margin: 0;
+    list-style: none;
+    li {
+      margin-top: 20px;
+    }
+  }
+  .tweet_time {
+    font-size: 11px;
+    color: #7f7f7f;
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.social-icons {
+  > a {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .twitter-icon {
+    @include sprite(0, 0, 32px, 32px);
+  }
+  .fb-icon {
+    @include sprite(-40px, 0, 32px, 32px);
+  }
+  .linkedin-icon {
+    @include sprite(-80px, 0, 32px, 32px);
+  }
+}

@@ -1,0 +1,21 @@
+@mixin sprite($x, $y, $width, $height) {
+  background-image: url(../images/sprite-sheet.png);
+  height: $height;
+  width: $width;
+  background-position: $x $y;
+  &:hover {
+    background-position: $x ($y + ($height * -1));
+  }
+  &:active {
+    background-position: $x ($y + ($height * -2));
+  }
+  &.nohover {
+    &:hover {
+      background-position: $x $y;
+    }
+    &:active {
+      background-position: $x $y;
+    }
+  }
+}
+

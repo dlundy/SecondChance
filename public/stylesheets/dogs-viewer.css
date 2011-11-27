@@ -1,0 +1,65 @@
+/* mixins.css.scss
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+/* Instead of using bootstrap grid, display list of inline-block elements so we can vertically align to handle long dog names.
+ * Need to set up the ul similar to the bootstrap row element. with a negative margin.
+*/
+.dog-viewer-controls {
+  margin-bottom: 20px; }
+  .dog-viewer-controls > * {
+    display: inline-block;
+    vertical-align: middle; }
+  .dog-viewer-controls .previous {
+    background-image: url(../images/sprite-sheet.png);
+    height: 32px;
+    width: 32px;
+    background-position: -120px 0px;
+    margin-left: 25px; }
+    .dog-viewer-controls .previous:hover {
+      background-position: -120px -32px; }
+    .dog-viewer-controls .previous:active {
+      background-position: -120px -64px; }
+    .dog-viewer-controls .previous.nohover:hover {
+      background-position: -120px 0px; }
+    .dog-viewer-controls .previous.nohover:active {
+      background-position: -120px 0px; }
+  .dog-viewer-controls .next {
+    background-image: url(../images/sprite-sheet.png);
+    height: 32px;
+    width: 32px;
+    background-position: -160px 0px;
+    margin-left: 15px; }
+    .dog-viewer-controls .next:hover {
+      background-position: -160px -32px; }
+    .dog-viewer-controls .next:active {
+      background-position: -160px -64px; }
+    .dog-viewer-controls .next.nohover:hover {
+      background-position: -160px 0px; }
+    .dog-viewer-controls .next.nohover:active {
+      background-position: -160px 0px; }
+
+ul.dogs-list {
+  text-align: center;
+  margin-left: -20px;
+  font-size: 0; }
+  ul.dogs-list li {
+    vertical-align: top;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 140px;
+    display: inline-block; }
+  ul.dogs-list h3 {
+    margin-top: 10px;
+    line-height: 22px; }
+  ul.dogs-list img {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border: 2px solid #eee;
+    padding: 8px;
+    display: block; }
+    ul.dogs-list img:hover {
+      border-color: rgba(82, 168, 236, 0.8);
+      -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+      -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6); }

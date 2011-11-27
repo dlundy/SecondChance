@@ -10,21 +10,17 @@
     %a.btn Volunteer
     %a.btn About Us
 .adopt-dogs
-  %h1 Adopt
-  %ul.row.dogs-list
-    %li.span4
-      %h2 Dog 1
-      %p Wolf nesciunt occaecat exercitation, craft beer fixie aute ex VHS Austin echo park keytar. Keytar wayfarers consequat, sunt mixtape tattooed put a bird on it velit qui before they sold out dreamcatcher
-      %a.btn Read More
-    %li.span4
-      %h2 Dog 2
-      %p Wolf nesciunt occaecat exercitation, craft beer fixie aute ex VHS Austin echo park keytar. Keytar wayfarers consequat, sunt mixtape tattooed put a bird on it velit qui before they sold out dreamcatcher
-      %a.btn Read More
-    %li.span4
-      %h2 Dog 3
-      %p Wolf nesciunt occaecat exercitation, craft beer fixie aute ex VHS Austin echo park keytar. Keytar wayfarers consequat, sunt mixtape tattooed put a bird on it velit qui before they sold out dreamcatcher
-      %a.btn Read More
-  %a.btn See More Dogs
+  .row
+    %h1.span2 Adopt
+  .dog-viewer-controls
+    =text_field_tag 'filter', nil, :placeholder => 'Search by breed or by name', :class => 'dog-search'
+    %a.previous
+    %a.next
+  %ul.dogs-list
+    -@dogs.each do |dog|
+      %li
+        %img{ :src=>"http://placehold.it/120x120", "data-original-title"=>dog.name.titleize, "data-content"=>dog.short_description }
+        %h3=dog.name.titleize
 
 .full-width-row.addnl-content
   .span8.events
@@ -32,7 +28,7 @@
     %ul.unstyled
       %li.row
         .span2
-          %a=image_tag('dog-logo.png', :width => 140, :height => 140)
+          %a=image_tag('http://placehold.it/140x140')
         .span6
           %h3 PetCo Monthly Adoptions
           %p
@@ -49,7 +45,7 @@
           %a.btn Read More
       %li.row
         .span2
-          %a=image_tag('dog-logo.png', :width => 140, :height => 140)
+          %a=image_tag('http://placehold.it/140x140')
         .span6
           %h3 South Bark Dog Wash
           %p Please join us on the fourth Saturday of the month from 11:00 am to 2:00 pm for a great community adoption event! Synth 8-bit cosby sweater, tumblr keytar vice organic echo park single-origin coffee carles viral brunch gluten-free ethical terry richardson. Cosby sweater wes anderson you probably haven't heard of them seitan trust fund
@@ -57,7 +53,7 @@
           %a.btn Read More
       %li.row
         .span2
-          %a=image_tag('dog-logo.png', :width => 140, :height => 140)
+          %a=image_tag('http://placehold.it/140x140')
         .span6
           %h3 East Lake Village Vet Clinic
           %p Dog Adoption Event

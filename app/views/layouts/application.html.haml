@@ -1,8 +1,12 @@
 -content_for :stylesheets do
-  -stylesheet_link_tag 'bootstrap', 'base'
+  -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer'
 
 -content_for :javascript_libraries do
-  -javascript_include_tag :all
+  =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min"
+  =javascript_include_tag "bootstrap/bootstrap-twipsy"
+  =javascript_include_tag "bootstrap/bootstrap-popover"
+  =javascript_include_tag "application"
+  =javascript_include_tag "dog-viewer"
 
 !!! 5
 %html
