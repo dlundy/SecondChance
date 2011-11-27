@@ -21,6 +21,7 @@ class DogsController < ApplicationController
     @dog = Dog.find params[:id]
 
     respond_to do |format|
+      format.html
       format.json do
         render :json => @dog.as_json({
           :only => [:name, :colors, :breed, :age, :sex],

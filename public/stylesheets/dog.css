@@ -1,0 +1,15 @@
+/* Variables.less
+ * Variables to customize the look and feel of Bootstrap
+ * ----------------------------------------------------- */
+#primary_photo {
+  float: left;
+  margin-right: 15px; }
+
+ul#thumbs_list {
+  list-style-type: none; }
+  ul#thumbs_list li {
+    float: left;
+    margin-right: 5px; }
+
+.clear_div {
+  clear: both; }

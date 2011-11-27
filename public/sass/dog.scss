@@ -1,0 +1,19 @@
+@import '../bootstrap-sass/variables';
+@import 'mixins';
+
+#primary_photo {
+  float: left;
+  margin-right: 15px;
+}
+
+ul#thumbs_list{
+  list-style-type: none;
+  li {
+    float: left;
+    margin-right: 5px
+  }
+}
+
+.clear_div{
+  clear: both
+}

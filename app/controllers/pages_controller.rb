@@ -5,8 +5,11 @@ class PagesController < ApplicationController
   def home
     error_404 unless (@page = Page.where(:link_url => '/').first).present?
     Delayed::Job.enqueue(UpdateScDbJob.new(200)) if time_to_refresh?
-    # TODO: Dog.paginate to accept a hash of options so we can filter by different dog attributes
-    @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+    if params[:search_text].present? 
+      @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
+    else  
+      @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+    end
   end
 
   # This action can be accessed normally, or as nested pages.

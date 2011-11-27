@@ -1,0 +1,53 @@
+-content_for :stylesheets do
+  -stylesheet_link_tag 'dog'
+
+- content_for :body_content_title do
+  = @dog.name
+
+#name
+  %section
+    %h2= raw @dog.name
+
+
+#primary_photo
+  %img{:src => @dog.primary_photo.url}
+
+#info
+  %section
+    %dl
+      %dt 
+        Breed 
+        %dd= raw @dog.breed
+      %dt 
+        Sex
+        %dd= raw @dog.sex
+      %dt 
+        Weight
+        %dd= raw @dog.weight    
+      %dt 
+        Age
+        %dd= raw @dog.age
+      %dt 
+        Colors
+        %dd= raw @dog.color      
+
+.clear_div
+
+#thumb_photos
+  %ul#thumbs_list
+    - @dog.dog_photos.thumbs.each do |photo|
+      %li
+        %img{:src => photo.url}
+        
+.clear_div
+          
+.description
+  %section
+    %p
+      = raw @dog.description
+  -# if current_member
+    %section
+      %h2 Notes
+      %p
+        =raw @dog.notes
+

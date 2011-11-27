@@ -21,5 +21,9 @@ class Dog < ActiveRecord::Base
   def short_description
     read_attribute(:description).truncate(160)
   end
+  
+  def primary_photo
+    dog_photos.regulars.where(:primary => true).first || dog_photos.regulars.order('created_at').first
+  end
 
 end
