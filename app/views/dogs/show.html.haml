@@ -1,5 +1,8 @@
 -content_for :stylesheets do
   -stylesheet_link_tag 'dog'
+  
+- content_for :javascripts do 
+  -javascript_include_tag 'dog'
 
 - content_for :body_content_title do
   = @dog.name
@@ -8,9 +11,16 @@
   %section
     %h2= raw @dog.name
 
-
-#primary_photo
-  %img{:src => @dog.primary_photo.url}
+#photos
+  #main_photo
+    %img{:src => @dog.primary_photo.url}
+  .clear_div
+  
+  #thumb_photos
+    %ul#thumbs_list
+      - @dog.dog_photos.thumbs.each do |photo|
+        %li{'data-full-photo-url'.to_sym => photo.get_full_photo.url}
+          %img{:src => photo.url, :class => (photo.primary? ? 'selected' : nil)}
 
 #info
   %section
@@ -29,25 +39,15 @@
         %dd= raw @dog.age
       %dt 
         Colors
-        %dd= raw @dog.color      
+        %dd= raw @dog.color
+  %section
+    Social Media and Share Links - Coming Soon...
 
-.clear_div
-
-#thumb_photos
-  %ul#thumbs_list
-    - @dog.dog_photos.thumbs.each do |photo|
-      %li
-        %img{:src => photo.url}
-        
-.clear_div
-          
+                  
 .description
   %section
     %p
       = raw @dog.description
-  -# if current_member
-    %section
-      %h2 Notes
-      %p
-        =raw @dog.notes
+      
+.clear_div
 

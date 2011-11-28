@@ -1,17 +1,35 @@
 @import '../bootstrap-sass/variables';
 @import 'mixins';
 
-#primary_photo {
+#photos {
+  float: left;
+  margin-right: 5px; 
+}
+
+#main_photo {
   float: left;
   margin-right: 15px;
+  img {
+    max-width: 400px;
+    max-height: 400px;
+  }
 }
 
 ul#thumbs_list{
+  margin: 0px;
   list-style-type: none;
   li {
     float: left;
-    margin-right: 5px
+    margin-right: 5px;
   }
+  li img {
+    width: 70px;
+    height: 75px;
+  }
+  li.selected img{
+    border: grey solid 4px;
+  }
+  
 }
 
 .clear_div{

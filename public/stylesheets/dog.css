@@ -1,15 +1,28 @@
 /* Variables.less
  * Variables to customize the look and feel of Bootstrap
  * ----------------------------------------------------- */
-#primary_photo {
+#photos {
+  float: left;
+  margin-right: 5px; }
+
+#main_photo {
   float: left;
   margin-right: 15px; }
+  #main_photo img {
+    max-width: 400px;
+    max-height: 400px; }
 
 ul#thumbs_list {
+  margin: 0px;
   list-style-type: none; }
   ul#thumbs_list li {
     float: left;
     margin-right: 5px; }
+  ul#thumbs_list li img {
+    width: 70px;
+    height: 75px; }
+  ul#thumbs_list li.selected img {
+    border: grey solid 4px; }
 
 .clear_div {
   clear: both; }
