@@ -19,6 +19,7 @@ end
 
 group :test do
   gem 'rspec-rails', '2.6.1'
+  gem 'remarkable_activerecord','4.0.0.alpha4'
   gem 'webrat', '0.7.1'
   gem 'factory_girl_rails'
 end

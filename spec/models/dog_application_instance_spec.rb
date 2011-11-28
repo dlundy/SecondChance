@@ -14,8 +14,16 @@ describe DogApplicationInstance do
      DogApplicationInstance.create!(@attr)
   end
 
-  describe "validations" do
-    pending
+  describe "validations of required fields" do
+    should_validate_presence_of :first_name
+    should_validate_presence_of :last_name
+  end
+
+  describe "validations of field values" do
+    should_validate_length_of :first_name, :within => 1..40
+    should_validate_length_of :last_name, :within => 1..40
+    should_allow_values_for :email, "jane@example.com","jane+blah@example.com"
+    should_not_allow_values_for :email, "jane", "@foo", "whatever.com"
   end
 
   describe "application answer associations" do
@@ -28,8 +36,5 @@ describe DogApplicationInstance do
       @dog_application_instance.should respond_to(:dog_application_instance_answers)
     end
 
-    it "should destroy associated answers" do
-       pending
-    end
   end
 end

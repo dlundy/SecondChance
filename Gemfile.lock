@@ -164,6 +164,15 @@ GEM
       refinerycms-core (= 1.0.4)
     refinerycms-settings (1.0.4)
       refinerycms-base (= 1.0.4)
+    remarkable (4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    remarkable_activemodel (4.0.0.alpha4)
+      remarkable (~> 4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
+    remarkable_activerecord (4.0.0.alpha4)
+      remarkable (~> 4.0.0.alpha4)
+      remarkable_activemodel (~> 4.0.0.alpha4)
+      rspec (>= 2.0.0.alpha11)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
       rspec-expectations (~> 2.6.0)
@@ -213,6 +222,7 @@ DEPENDENCIES
   refinerycms-events (= 1.0)!
   refinerycms-labels (= 1.0)!
   refinerycms-members (= 1.0)!
+  remarkable_activerecord (= 4.0.0.alpha4)
   rspec-rails (= 2.6.1)
   sass
   webrat (= 0.7.1)
