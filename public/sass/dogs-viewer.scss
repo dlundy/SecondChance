@@ -25,6 +25,8 @@ $dogThumbSize: 120px;
 ul.dogs-list {
   text-align: center;
   margin-left: -20px;
+  margin-bottom: 0px;
+  min-height: 408px;
   font-size: 0; // get rid of pesky whitespace from inline-block
   li {
     vertical-align: top;
@@ -36,6 +38,7 @@ ul.dogs-list {
   h3 {
     margin-top: 10px;
     line-height: 22px;
+    min-height: 44px; // make room for 2 lines
   }
   img {
     width: $dogThumbSize;
@@ -49,6 +52,9 @@ ul.dogs-list {
       $shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.6);
       @include box-shadow($shadow);
     }
+  }
+  a {
+    text-decoration: none;
   }
 }
 

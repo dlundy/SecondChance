@@ -1,28 +1,40 @@
 /* Variables.less
  * Variables to customize the look and feel of Bootstrap
  * ----------------------------------------------------- */
-#photos {
-  float: left;
-  margin-right: 5px; }
+/* mixins.css.scss
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+.dog-title h1 {
+  margin: 0; }
+.dog-title h2, .dog-title h3 {
+  font-weight: normal; }
+
+.dog-info {
+  margin-top: 10px; }
 
 #main_photo {
-  float: left;
-  margin-right: 15px; }
+  text-align: center;
+  background-color: #eee;
+  height: 400px;
+  line-height: 400px;
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
   #main_photo img {
-    max-width: 400px;
-    max-height: 400px; }
+    vertical-align: middle;
+    max-width: 380px; }
 
 ul#thumbs_list {
-  margin: 0px;
-  list-style-type: none; }
+  margin-top: 10px;
+  overflow: auto;
+  text-align: center; }
   ul#thumbs_list li {
-    float: left;
-    margin-right: 5px; }
-  ul#thumbs_list li img {
-    width: 70px;
-    height: 75px; }
-  ul#thumbs_list li.selected img {
-    border: grey solid 4px; }
-
-.clear_div {
-  clear: both; }
+    display: inline-block; }
+    ul#thumbs_list li img {
+      cursor: pointer;
+      border: #ccc solid 4px;
+      width: 70px;
+      height: 70px; }
+    ul#thumbs_list li.selected img {
+      border-color: rgba(82, 168, 236, 0.8); }

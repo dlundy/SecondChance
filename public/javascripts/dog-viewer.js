@@ -2,6 +2,13 @@
  * http://documentcloud.github.com/underscore/
  */
 
+/* TODO:
+    -search
+    -fade or animate between pages
+    -deal with long dog names and heights
+    -anchor links/html 5 history
+*/
+
 (function($) {
   var defaults = {
     startingPage: 1,
@@ -37,7 +44,7 @@
       });
     }
 
-    var template = _.template('<li><img src="" data-original-title="<%= dog.name %>" data-content="<%= dog.short_description %>" ><h3><%= dog.name %></h3></li>\n')
+    var template = _.template('<a href="/dogs/<%= dog.id %>"><li><img src="<%= dog.primary_thumb_url %>" data-original-title="<%= dog.name %>" data-content="<%= dog.short_description %>" ><h3><%= dog.name %></h3></li></a>\n')
 
     refresh = function() {
       var result = _.reduce(
@@ -45,9 +52,8 @@
         function(memo, dog) { return memo + template(dog) },
         ""
       );
-      elem.html(result);
+      _.defer(function(){elem.html(result)});
       $(".popover").remove();
-      elem.html(result);
     }
 
     this.debug = function() {
@@ -58,8 +64,7 @@
 })(jQuery);
 
 $(document).ready(function(){
-    var butts = $('.dogs-list').first();
-    butts.DogsViewer({
+    $('.dogs-list').DogsViewer({
       previous: '.dog-viewer-controls .previous',
       next: '.dog-viewer-controls .next'
     });

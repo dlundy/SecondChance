@@ -1,53 +1,53 @@
 -content_for :stylesheets do
   -stylesheet_link_tag 'dog'
-  
-- content_for :javascripts do 
+
+-content_for :javascripts do
   -javascript_include_tag 'dog'
 
-- content_for :body_content_title do
-  = @dog.name
+-content_for :title do
+  =@dog.name
 
-#name
-  %section
-    %h2= raw @dog.name
+-content_for :body_content_title do
+  =@dog.name
 
-#photos
-  #main_photo
-    %img{:src => @dog.primary_photo.url}
-  .clear_div
-  
-  #thumb_photos
-    %ul#thumbs_list
-      - @dog.dog_photos.thumbs.each do |photo|
-        %li{'data-full-photo-url'.to_sym => photo.get_full_photo.url}
-          %img{:src => photo.url, :class => (photo.primary? ? 'selected' : nil)}
+.dog-title
+  %h1= raw @dog.name
+  %h2
+    =@dog.breed
 
-#info
-  %section
-    %dl
-      %dt 
-        Breed 
-        %dd= raw @dog.breed
-      %dt 
-        Sex
-        %dd= raw @dog.sex
-      %dt 
-        Weight
-        %dd= raw @dog.weight    
-      %dt 
-        Age
-        %dd= raw @dog.age
-      %dt 
-        Colors
-        %dd= raw @dog.color
-  %section
-    Social Media and Share Links - Coming Soon...
+.row.dog-info
+  .span5
+    #main_photo
+      %img{:src => @dog.primary_photo.url}
 
-                  
-.description
-  %section
-    %p
-      = raw @dog.description
-      
-.clear_div
-
+    #thumb_photos
+      %ul#thumbs_list.unstyled
+        - @dog.dog_photos.thumbs.each do |photo|
+          -unless photo.url.nil?
+            %li{'data-full-photo-url'.to_sym => photo.get_full_photo.url}
+              %img{:src => photo.url, :class => (photo.primary? ? 'selected' : nil)}
+    #info
+      %section
+        %dl
+          -unless @dog.sex.nil?
+            %dt
+              Sex:
+              %dd= raw @dog.sex
+          -unless @dog.weight.nil?
+            %dt
+              Weight:
+              %dd= raw @dog.weight
+          -unless @dog.age.nil?
+            %dt
+              Age:
+              %dd= raw @dog.age
+          -unless @dog.color.nil?
+            %dt
+              Colors:
+              %dd= raw @dog.color
+    %section
+      Social Media and Share Links - Coming Soon...
+  .span7
+    .description
+      %section
+        =raw @dog.description

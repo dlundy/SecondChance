@@ -26,4 +26,8 @@ class Dog < ActiveRecord::Base
     dog_photos.regulars.where(:primary => true).first || dog_photos.regulars.order('created_at').first
   end
 
+  def primary_thumb_url
+    dog_photos.thumbs.where("dog_photos.url is not null").first.url
+  end
+
 end

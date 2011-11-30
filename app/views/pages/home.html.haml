@@ -19,9 +19,9 @@
   %ul.dogs-list
     -@dogs.each do |dog|
       %li
-        %img{ :src=>"http://placehold.it/120x120", "data-original-title"=>dog.name.titleize, "data-content"=>dog.short_description }
-        %h3=dog.name.titleize
-
+        %a{:href=>"/dogs/#{dog.id}"}
+          %img{ :src=>dog.primary_thumb_url, "data-original-title"=>dog.name.titleize, "data-content"=>dog.short_description }
+          %h3=dog.name.titleize
 .full-width-row.addnl-content
   .span8.events
     %h1 Adoption Events

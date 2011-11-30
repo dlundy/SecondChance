@@ -9,8 +9,8 @@ class DogsController < ApplicationController
     respond_to do |format|
       format.json do
         render :json => @dogs.as_json({
-          :only => [:name, :colors, :breed, :age, :sex],
-          :methods => :short_description
+          :only => [:id, :name, :colors, :breed, :age, :sex],
+          :methods => [:short_description, :primary_thumb_url]
         })
       end
     end
@@ -24,8 +24,8 @@ class DogsController < ApplicationController
       format.html
       format.json do
         render :json => @dog.as_json({
-          :only => [:name, :colors, :breed, :age, :sex],
-          :methods => :short_description
+          :only => [:id, :name, :colors, :breed, :age, :sex],
+          :methods => [:short_description, :primary_thumb_url]
         })
       end
     end

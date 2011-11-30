@@ -1,37 +1,46 @@
 @import '../bootstrap-sass/variables';
-@import 'mixins';
+@import '../bootstrap-sass/mixins';
 
-#photos {
-  float: left;
-  margin-right: 5px; 
+.dog-title {
+  h1 {
+    margin: 0;
+  }
+  h2, h3 {
+    font-weight: normal;
+  }
+}
+
+.dog-info {
+  margin-top: 10px;
 }
 
 #main_photo {
-  float: left;
-  margin-right: 15px;
+  text-align: center;
+  background-color: #eee;
+  height: 400px;
+  line-height: 400px;
+  overflow: hidden;
+  @include border-radius(5px);
   img {
-    max-width: 400px;
-    max-height: 400px;
+    vertical-align: middle;
+    max-width: ($gridColumnWidth * 5) + ($gridGutterWidth * 4);
   }
 }
 
 ul#thumbs_list{
-  margin: 0px;
-  list-style-type: none;
+  margin-top: 10px;
+  overflow: auto;
+  text-align: center;
   li {
-    float: left;
-    margin-right: 5px;
+    display: inline-block;
+    img {
+      cursor: pointer;
+      border: #ccc solid 4px;
+      width: 70px;
+      height: 70px;
+    }
+    &.selected img {
+      border-color: rgba(82,168,236,.8);
+    }
   }
-  li img {
-    width: 70px;
-    height: 75px;
-  }
-  li.selected img{
-    border: grey solid 4px;
-  }
-  
-}
-
-.clear_div{
-  clear: both
 }
