@@ -12,6 +12,9 @@
 .dog-info {
   margin-top: 10px; }
 
+.share h4 {
+  display: inline; }
+
 #main_photo {
   text-align: center;
   background-color: #eee;
@@ -38,3 +41,6 @@ ul#thumbs_list {
       height: 70px; }
     ul#thumbs_list li.selected img {
       border-color: rgba(82, 168, 236, 0.8); }
+
+section.share_links input.long {
+  width: 250px; }

@@ -13,6 +13,7 @@ var Dog = function(){
       thumbsListItems = jQuery('#thumbs_list li');
       thumbsListItems.click(Dog.updateMainPhoto);
       mainPhotoDiv = jQuery('#main_photo');
+      jQuery('#share_url').select();
     },
     
     updateMainPhoto:function(){
@@ -26,4 +27,5 @@ var Dog = function(){
     }
     
   }
+  
 }();
