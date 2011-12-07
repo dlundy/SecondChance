@@ -1,11 +1,15 @@
 class DogsController < ApplicationController
 
   def index
-    @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+    if params[:search_text].present? 
+      @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
+    else  
+      @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+    end
     if @dogs.out_of_bounds?
       raise ActionController::RoutingError.new('Not Found')
     end
-
+  
     respond_to do |format|
       format.json do
         render :json => @dogs.as_json({
@@ -14,7 +18,7 @@ class DogsController < ApplicationController
         })
       end
     end
-
+  
   end
 
   def show

@@ -23,6 +23,7 @@
     var currentPage = opts.startingPage;
     var previousButton = $(opts.previous);
     var nextButton = $(opts.next);
+    var searchText = nextButton.attr('data-search-text');
     previousButton.click(function() { elem.DogsViewer.previous() } );
     nextButton.click(function() { elem.DogsViewer.next() } );
 
@@ -37,7 +38,11 @@
     }
 
     loadData = function(page, callback) {
-      $.getJSON(opts.url + '?page='+page, function(data) {
+      var myUrl = opts.url + '?page='+page;
+      if(searchText && searchText.length > 1){
+        myUrl = myUrl + '&search_text='+searchText;
+      }
+      $.getJSON(myUrl, function(data) {
         dogs = data;
         currentPage = page;
         callback();

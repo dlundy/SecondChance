@@ -17,7 +17,10 @@ var Dog = function(){
     
     updateMainPhoto:function(){
       var listItem = jQuery(this);
-      mainPhotoDiv.children('img').attr('src', listItem.attr('data-full-photo-url'));
+      var img = mainPhotoDiv.children('img');
+      img.hide();
+      img.attr('src', listItem.attr('data-full-photo-url'));
+      img.fadeIn();
       thumbsListItems.removeClass('selected');
       listItem.addClass('selected');
     }

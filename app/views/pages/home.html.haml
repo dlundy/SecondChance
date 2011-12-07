@@ -13,9 +13,11 @@
   .row
     %h1.span2 Adopt
   .dog-viewer-controls
-    =text_field_tag 'filter', nil, :placeholder => 'Search by breed or by name', :class => 'dog-search'
+    = form_tag root_path, :method => :get do 
+      = text_field_tag 'search_text', params[:search_text], :placeholder => 'Search by breed or by name', :class => 'dog-search'
+      = submit_tag 'Search'
     %a.previous
-    %a.next
+    %a.next{ 'data-search-text' => params[:search_text]}
   %ul.dogs-list
     -@dogs.each do |dog|
       %li
