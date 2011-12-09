@@ -57,3 +57,26 @@ html, body {
 h1 {
   font-family: 'TitilliumText22LRegular';
   font-weight: normal; }
+
+span.fieldWithErrors {
+  padding: 10px 0;
+  margin: -10px 0 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+  span.fieldWithErrors > label, span.fieldWithErrors span.help-inline, span.fieldWithErrors span.help-block {
+    color: #9d261d; }
+  span.fieldWithErrors input, span.fieldWithErrors textarea {
+    border-color: #c87872;
+    -webkit-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
+    -moz-box-shadow: 0 0 3px rgba(171, 41, 32, 0.25);
+    box-shadow: 0 0 3px rgba(171, 41, 32, 0.25); }
+    span.fieldWithErrors input:focus, span.fieldWithErrors textarea:focus {
+      border-color: #b9554d;
+      -webkit-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
+      -moz-box-shadow: 0 0 6px rgba(171, 41, 32, 0.5);
+      box-shadow: 0 0 6px rgba(171, 41, 32, 0.5); }
+  span.fieldWithErrors .input-prepend span.add-on, span.fieldWithErrors .input-append span.add-on {
+    background: #f4c8c5;
+    border-color: #c87872;
+    color: #b9554d; }

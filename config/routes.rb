@@ -16,6 +16,9 @@ SecondChance::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  
+  match '/adoption_application' => 'dog_application_instances#new'
+  
   resources :dog_application_instances
 
   # Sample resource route with options:

@@ -10,5 +10,7 @@ class DogApplicationInstance < ActiveRecord::Base
                         :length => { :maximum => 40 }
   validates :email, :format =>  { :with => email_regex,
                                   :message => "Please enter a valid email address" }
+                                  
+  scope :active, where(:active => true)
 
 end
