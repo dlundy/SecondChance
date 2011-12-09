@@ -27,7 +27,8 @@ class Dog < ActiveRecord::Base
   end
 
   def primary_thumb_url
-    dog_photos.thumbs.where("dog_photos.url is not null").first.url
+    thumb = dog_photos.thumbs.where("dog_photos.url is not null").first
+    thumb ? thumb.url : nil
   end
 
 end
