@@ -3,46 +3,65 @@
  * ----------------------------------------------------------------- */
 /* Instead of using bootstrap grid, display list of inline-block elements so we can vertically align to handle long dog names.
  * Need to set up the ul similar to the bootstrap row element. with a negative margin.
+ * TODO: fix layout on IE7 due to inline-block
 */
-.dog-viewer-controls {
+#dog-viewer-controls {
   margin-bottom: 20px; }
-  .dog-viewer-controls > * {
+  #dog-viewer-controls > * {
     display: inline-block;
     vertical-align: middle; }
-  .dog-viewer-controls .previous {
+  #dog-viewer-controls form {
+    margin: 0; }
+  #dog-viewer-controls .previous {
     background-image: url(../images/sprite-sheet.png);
     height: 32px;
     width: 32px;
     background-position: -120px 0px;
     margin-left: 25px; }
-    .dog-viewer-controls .previous:hover {
+    #dog-viewer-controls .previous:hover {
       background-position: -120px -32px; }
-    .dog-viewer-controls .previous:active {
+    #dog-viewer-controls .previous:active {
       background-position: -120px -64px; }
-    .dog-viewer-controls .previous.nohover:hover {
+    #dog-viewer-controls .previous.nohover:hover {
       background-position: -120px 0px; }
-    .dog-viewer-controls .previous.nohover:active {
+    #dog-viewer-controls .previous.nohover:active {
       background-position: -120px 0px; }
-  .dog-viewer-controls .next {
+  #dog-viewer-controls .next {
     background-image: url(../images/sprite-sheet.png);
     height: 32px;
     width: 32px;
     background-position: -160px 0px;
-    margin-left: 15px; }
-    .dog-viewer-controls .next:hover {
+    margin-left: 15px;
+    margin-right: 10px; }
+    #dog-viewer-controls .next:hover {
       background-position: -160px -32px; }
-    .dog-viewer-controls .next:active {
+    #dog-viewer-controls .next:active {
       background-position: -160px -64px; }
-    .dog-viewer-controls .next.nohover:hover {
+    #dog-viewer-controls .next.nohover:hover {
       background-position: -160px 0px; }
-    .dog-viewer-controls .next.nohover:active {
+    #dog-viewer-controls .next.nohover:active {
       background-position: -160px 0px; }
+  #dog-viewer-controls .pagination-dot {
+    display: inline-block;
+    background-image: url(../images/sprite-sheet.png);
+    height: 12px;
+    width: 12px;
+    background-position: -200px 0px;
+    margin-left: 5px; }
+    #dog-viewer-controls .pagination-dot:hover {
+      background-position: -200px -12px; }
+    #dog-viewer-controls .pagination-dot:active {
+      background-position: -200px -24px; }
+    #dog-viewer-controls .pagination-dot.nohover:hover {
+      background-position: -200px 0px; }
+    #dog-viewer-controls .pagination-dot.nohover:active {
+      background-position: -200px 0px; }
+    #dog-viewer-controls .pagination-dot.active {
+      background-position: -200px -12px; }
 
 ul.dogs-list {
-  text-align: center;
   margin-left: -20px;
   margin-bottom: 0px;
-  min-height: 408px;
   font-size: 0; }
   ul.dogs-list li {
     vertical-align: top;
@@ -51,6 +70,7 @@ ul.dogs-list {
     width: 140px;
     display: inline-block; }
   ul.dogs-list h3 {
+    text-align: center;
     margin-top: 10px;
     line-height: 22px;
     min-height: 44px; }
@@ -68,3 +88,8 @@ ul.dogs-list {
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6); }
   ul.dogs-list a {
     text-decoration: none; }
+
+#dog-results {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #505050; }

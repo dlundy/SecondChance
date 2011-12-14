@@ -3,14 +3,18 @@
 
 /* Instead of using bootstrap grid, display list of inline-block elements so we can vertically align to handle long dog names.
  * Need to set up the ul similar to the bootstrap row element. with a negative margin.
+ * TODO: fix layout on IE7 due to inline-block
 */
 $dogThumbSize: 120px;
 
-.dog-viewer-controls {
+#dog-viewer-controls {
   margin-bottom: 20px;
   > * {
     display: inline-block;
     vertical-align: middle;
+  }
+  form {
+    margin: 0;
   }
   .previous {
     @include sprite(-120px, 0px, 32px, 32px); 
@@ -19,14 +23,21 @@ $dogThumbSize: 120px;
   .next {
     @include sprite(-160px, 0px, 32px, 32px); 
     margin-left: 15px;
+    margin-right: 10px;
+  }
+  .pagination-dot{
+    display: inline-block;
+    @include sprite(-200px, 0px, 12px, 12px);
+    margin-left: 5px;
+    &.active {
+      background-position: -200px -12px;
+    }
   }
 }
 
 ul.dogs-list {
-  text-align: center;
   margin-left: -20px;
   margin-bottom: 0px;
-  min-height: 408px;
   font-size: 0; // get rid of pesky whitespace from inline-block
   li {
     vertical-align: top;
@@ -36,6 +47,7 @@ ul.dogs-list {
     display: inline-block;
   }
   h3 {
+    text-align: center;
     margin-top: 10px;
     line-height: 22px;
     min-height: 44px; // make room for 2 lines
@@ -58,3 +70,8 @@ ul.dogs-list {
   }
 }
 
+#dog-results {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #505050;
+}

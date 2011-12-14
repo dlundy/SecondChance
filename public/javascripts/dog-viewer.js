@@ -3,69 +3,169 @@
  */
 
 /* TODO:
-    -search
     -fade or animate between pages
-    -deal with long dog names and heights
-    -anchor links/html 5 history
+    -spacing when only one row is present?
+    -clear/reset button?
 */
 
 (function($) {
   var defaults = {
-    startingPage: 1,
-    url : '/dogs.json',
-    previous: '.previous',
-    next: '.next'
+    remote_path : '/dogs.json',
+    pagination: '#dog-pagination',
+    results_label: "#dog-results",
+    content: '#dog-content',
+    default_search: 'all',
+    form: '#dog-viewer-controls form'
   }
 
   $.fn.DogsViewer = function(options) {
-    var elem = this;
+    _self = this;
     var opts = $.extend({}, defaults, options);
-    var currentPage = opts.startingPage;
-    var previousButton = $(opts.previous);
-    var nextButton = $(opts.next);
-    previousButton.click(function() { elem.DogsViewer.previous() } );
-    nextButton.click(function() { elem.DogsViewer.next() } );
+    var currentPage = 1;
+    var searchTerm = opts.default_search;
+    $(opts.form).submit(function() {
+      var val = $('.dog-search:first').val();
+      if (val == "") val = "all";
+      _self.DogsViewer.search(val);
+      return false;
+    });
 
-    var dogs = [];
+    // pagination model
+    var pagination = function() {
+      var _self = {};
+      _self.container = $(opts.pagination);
+      _self.pages = 1;
 
-    this.DogsViewer.next = function() {
-      loadData(currentPage+1, refresh);
+      var template = _.template(
+        "<% _.each(_.range(size), function(index) { %>" +
+          "<div class='pagination-dot <% if (index == currentPage-1) { print ('active') } %>'></div>" +
+        "<% }) %>"
+      );
+
+      _self.redraw = function() {
+        if (_self.pages > 1) {
+          var result = template({'size': _self.pages, 'currentPage': currentPage});
+          _self.container.html(result);
+        }
+        else {
+          _self.container.html("");
+        }
+      }
+
+      // Use to give the illusion of immediate feedback
+      _self.setActive = function(index) {
+        _self.container.children().removeClass('active');
+        _self.container.children().eq(index).addClass('active');
+      }
+
+      return _self;
+    }();
+
+    // dogs model
+    var dogs = function() {
+
+      var _self = {};
+      _self.dogs = [];
+      _self.container = $(opts.content);
+
+      var template = _.template('<a href="/dogs/<%= dog.id %>"><li><img src="<%= dog.primary_thumb_url %>" data-original-title="<%= dog.name %>" data-content="<%= dog.short_description %>" ><h3><%= dog.name %></h3></li></a>\n');
+
+      _self.redraw = function() {
+        var result = _.reduce(
+          _self.dogs,
+          function(memo, dog) { return memo + template(dog) },
+          ""
+        );
+        _self.container.html("<ul class='dogs-list'>"+result+"</ul>");
+      }
+
+      return _self;
+
+    }();
+
+    //Controllers
+    _self.DogsViewer.nextPage = function() {
+      if (currentPage < pagination.pages) {
+        setAction(searchTerm, ++currentPage);
+      }
     }
 
-    this.DogsViewer.previous = function() {
-      loadData(currentPage-1, refresh);
+    _self.DogsViewer.previousPage = function() {
+      if (currentPage > 1) {
+        setAction(searchTerm, --currentPage);
+      }
     }
 
-    loadData = function(page, callback) {
-      $.getJSON(opts.url + '?page='+page, function(data) {
-        dogs = data;
-        currentPage = page;
-        callback();
+    _self.DogsViewer.search = function(newSearch) {
+      setAction(newSearch, 1);
+    }
+
+    setAction = function(newSearch, currentPage) {
+      $.address.value(newSearch + "/" + currentPage);
+    }
+
+    $.address.change(function(event) {
+      // use default search if base url
+      if (event.path == '/') {
+        searchTerm = opts.default_search;
+        currentPage = 1;
+        loadPage(searchTerm, currentPage);
+      }
+      else {
+        searchTerm = event.pathNames[0];
+        currentPage = parseInt(event.pathNames[1]);
+        loadPage(searchTerm, currentPage);
+      }
+    });
+
+    loadPage = function(search, page) {
+
+      pagination.setActive(page-1);
+
+      var params = {'page': page}
+
+      // Don't actually search by the search term if it's the default "all"
+      if (opts.default_search != search) {
+        params.search_text = search
+      }
+
+      // Make call to server
+      $.getJSON(opts.remote_path,params)
+      .success(function(data) {
+        dogs.dogs = data.dogs;
+        dogs.redraw();
+        pagination.pages = data.pages;
+        pagination.redraw();
+        $(".popover").remove();
+
+        var label;
+        if (opts.default_search == search) {
+          label = "We currently have " + data.results + " dogs available for adoption.";
+        }
+        else {
+          label = "We have " + data.results + " dogs that match '" + search + "'.";
+        }
+
+        $(opts.results_label).html(label);
+      })
+      .error(function() {
+        dogs.dogs = []
+        dogs.redraw();
+        $(opts.results_label).html("No results found for: " + searchTerm);
+        pagination.pages = 1;
+        pagination.redraw();
+        $(".popover").remove();
       });
     }
 
-    var template = _.template('<a href="/dogs/<%= dog.id %>"><li><img src="<%= dog.primary_thumb_url %>" data-original-title="<%= dog.name %>" data-content="<%= dog.short_description %>" ><h3><%= dog.name %></h3></li></a>\n')
-
-    refresh = function() {
-      var result = _.reduce(
-        dogs,
-        function(memo, dog) { return memo + template(dog) },
-        ""
-      );
-      _.defer(function(){elem.html(result)});
-      $(".popover").remove();
+    _self.debug = function() {
+      console.log('Search Filter: ' + searchTerm);
+      console.log('Dogs: ' + dogs.dogs);
+      console.log('Current Page: ' + currentPage);
+      console.log('Max Pages: ' + pagination.pages);
     }
 
-    this.debug = function() {
-      console.log(dogs);
-    }
-
+    return this;
   }
 })(jQuery);
 
-$(document).ready(function(){
-    $('.dogs-list').DogsViewer({
-      previous: '.dog-viewer-controls .previous',
-      next: '.dog-viewer-controls .next'
-    });
-});

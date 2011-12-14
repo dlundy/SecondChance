@@ -12,16 +12,16 @@
 .adopt-dogs
   .row
     %h1.span2 Adopt
-  .dog-viewer-controls
-    =text_field_tag 'filter', nil, :placeholder => 'Search by breed or by name', :class => 'dog-search'
-    %a.previous
-    %a.next
-  %ul.dogs-list
-    -@dogs.each do |dog|
-      %li
-        %a{:href=>"/dogs/#{dog.id}"}
-          %img{ :src=>dog.primary_thumb_url, "data-original-title"=>dog.name.titleize, "data-content"=>dog.short_description }
-          %h3=dog.name.titleize
+  #dog-viewer
+    #dog-results
+    #dog-viewer-controls
+      = form_tag root_path, :method => :get do
+        = text_field_tag 'search_text', params[:search_text], :placeholder => 'Search by breed or by name', :class => 'dog-search'
+        = submit_tag 'Go'
+      %a.previous
+      %a.next
+      #dog-pagination
+    #dog-content
 .full-width-row.addnl-content
   .span8.events
     %h1 Adoption Events
