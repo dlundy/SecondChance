@@ -16,7 +16,7 @@ class UpdateScDbJob < Struct.new(:limit)
         set_photos!(sc_dog, get_photo_data(dog_data))
         sc_dog.save
       end
-    end unless dogs.empty?
+    end
   end
   
   protected

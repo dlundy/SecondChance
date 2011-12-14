@@ -8,21 +8,21 @@
       Contact Information
     .row
       .span3
-        .clearfix.error
+        .clearfix
           =f.label :first_name
           .input
             =f.text_field :first_name, :class => 'span3'
-            %span.help-block This is an error message
+            / %span.help-block This is an error message
       .span3
         .clearfix
           =f.label :last_name
           .input
             =f.text_field :last_name, :class => 'span3'
-    .clearfix.error
+    .clearfix
       =f.label :email
       .input
         =f.text_field :email, :class => 'span6'
-        %span.help-block This is an error message, too
+        / %span.help-block This is an error message, too
     .clearfix
       =f.label :address_1
       .input
@@ -58,28 +58,28 @@
 
   %fieldset
     %legend General Information
-    / Mocked up CMS driven questions
-    / Place of employment
-    .clearfix
-      %label{:for=>"question_1"} Place of Employment
-      .input
-        %input{:type=>'text', :id=>'question_1', :name=>'question_1', :value=>"", :class=>'span6'}
-    .clearfix
-      %label{:for=>"question_2"} (Household Information) What type of dwelling do you live in? 
-      .input
-        %input{:type=>'text', :id=>'question_2', :name=>'question_2', :value=>"", :class=>'span6'}
-        .help-block House, Apartment, Condo, etc
-    .clearfix
-      %label{:id => 'optionsRadio'} Own or rent?
-      .input
-        %ul.inputs-list
-          %li
-            %label
-              %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option1"}
-              %span Own
-          %li
-            %label
-              %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option2"}
-              %span Rent
+    - DogApplicationQuestion.active.each do |question|
+      .clearfix
+        = label_tag question.question_text 
+        .input
+          = text_field_tag "question_#{question.id}".to_sym,  params["question_#{question.id}".to_sym], {:class=>'span6'}
+    / Mocked up CMS driven questions  
+    / .clearfix
+    /   %label{:for=>"question_2"} (Household Information) What type of dwelling do you live in? 
+    /   .input
+    /     %input{:type=>'text', :id=>'question_2', :name=>'question_2', :value=>"", :class=>'span6'}
+    /     .help-block House, Apartment, Condo, etc
+    / .clearfix
+    /   %label{:id => 'optionsRadio'} Own or rent?
+    /   .input
+    /     %ul.inputs-list
+    /       %li
+    /         %label
+    /           %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option1"}
+    /           %span Own
+    /       %li
+    /         %label
+    /           %input{:type=>"radio", :checked=>"", :name=>"optionsRadios", :value=>"option2"}
+    /           %span Rent
   .actions
     =f.submit 'Submit Application', :class => 'btn primary'

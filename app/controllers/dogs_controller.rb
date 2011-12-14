@@ -9,7 +9,7 @@ class DogsController < ApplicationController
     if @dogs.out_of_bounds?
       raise ActionController::RoutingError.new('Not Found')
     end
-
+  
     respond_to do |format|
       format.json do
         render :json => {
@@ -22,7 +22,7 @@ class DogsController < ApplicationController
         }
       end
     end
-
+  
   end
 
   def show

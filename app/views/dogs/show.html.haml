@@ -45,9 +45,16 @@
             %dt
               Colors:
               %dd= raw @dog.color
-    %section
-      Social Media and Share Links - Coming Soon...
   .span7
+    .share
+      %h4 Share This Page
+      = link_to 'FB like placeholder'
+      |
+      = link_to 'Twitter Share Button'
+      %section.share_links
+        = text_field_tag :share_url, dog_url(@dog), :size => 50, :class => 'long'
+        %small.message Press "Ctrl + C" to copy the URL
+      %hr
     .description
       %section
         =raw @dog.description

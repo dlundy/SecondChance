@@ -96,8 +96,21 @@
       }
     }
 
+<<<<<<< HEAD
     _self.DogsViewer.search = function(newSearch) {
       setAction(newSearch, 1);
+=======
+    loadData = function(page, callback) {
+      var myUrl = opts.url + '?page='+page;
+      if(searchText && searchText.length > 1){
+        myUrl = myUrl + '&search_text='+searchText;
+      }
+      $.getJSON(myUrl, function(data) {
+        dogs = data;
+        currentPage = page;
+        callback();
+      });
+>>>>>>> ec39835c12b214bfd20c4219a666d9f799f9097e
     }
 
     setAction = function(newSearch, currentPage) {
