@@ -7,8 +7,10 @@
       is one of San Diego's largest and most successful non-profits, dedicated to saving homeless dogs.
     %p We rescue, rehabilitate and rehome dogs from local shelters and surrendered by owners.
     %a.btn.danger Donate
-    %a.btn Volunteer
+    /%a.btn Volunteer
     %a.btn About Us
+/ Don't use refinery home page content
+/= render :partial => "/shared/content_page"
 .adopt-dogs
   .row
     %h1.span2 Adopt
@@ -67,4 +69,3 @@
       %a.linkedin-icon{:href => 'http://linkedin.com'}
     #twitter
 
-= render :partial => "/shared/content_page"

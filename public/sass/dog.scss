@@ -36,12 +36,11 @@
 ul#thumbs_list{
   margin-top: 10px;
   overflow: auto;
-  text-align: center;
   li {
     display: inline-block;
     img {
       cursor: pointer;
-      border: #ccc solid 4px;
+      border: #fff solid 4px;
       width: 70px;
       height: 70px;
     }

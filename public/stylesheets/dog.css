@@ -30,13 +30,12 @@
 
 ul#thumbs_list {
   margin-top: 10px;
-  overflow: auto;
-  text-align: center; }
+  overflow: auto; }
   ul#thumbs_list li {
     display: inline-block; }
     ul#thumbs_list li img {
       cursor: pointer;
-      border: #ccc solid 4px;
+      border: #fff solid 4px;
       width: 70px;
       height: 70px; }
     ul#thumbs_list li.selected img {
