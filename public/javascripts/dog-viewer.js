@@ -30,7 +30,6 @@
       return false;
     });
 
-    // pagination model
     var pagination = function() {
       var _self = {};
       _self.container = $(opts.pagination);
@@ -61,7 +60,6 @@
       return _self;
     }();
 
-    // dogs model
     var dogs = function() {
 
       var _self = {};
@@ -83,16 +81,23 @@
 
     }();
 
-    //Controllers
+    // Address handling routines.
+    // These load new data by altering the url and forcing the address change handler to fire
+    setAction = function(newSearch, currentPage) {
+      $.address.value(newSearch + "/" + currentPage);
+    }
+
     _self.DogsViewer.nextPage = function() {
       if (currentPage < pagination.pages) {
-        setAction(searchTerm, ++currentPage);
+        currentPage = currentPage + 1;
+        setAction(searchTerm, currentPage);
       }
     }
 
     _self.DogsViewer.previousPage = function() {
       if (currentPage > 1) {
-        setAction(searchTerm, --currentPage);
+        currentPage = currentPage - 1;
+        setAction(searchTerm, currentPage);
       }
     }
 
@@ -100,10 +105,8 @@
       setAction(newSearch, 1);
     }
 
-    setAction = function(newSearch, currentPage) {
-      $.address.value(newSearch + "/" + currentPage);
-    }
-
+    // Handle any changes in # addresses.
+    // This function drives all data loading by responding to address changes.
     $.address.change(function(event) {
       // use default search if base url
       if (event.path == '/') {
@@ -118,10 +121,12 @@
       }
     });
 
-    loadPage = function(search, page) {
+    // Variable used to track what the newest XHR call was.
+    // Only the results from the newest load call will be handled, the rest will be ignored.
+    var latestXHRCall;
 
+    var loadPage = function(search, page) {
       pagination.setActive(page-1);
-
       var params = {'page': page}
 
       // Don't actually search by the search term if it's the default "all"
@@ -130,8 +135,19 @@
       }
 
       // Make call to server
-      $.getJSON(opts.remote_path,params)
-      .success(function(data) {
+      latestXHRCall = $.getJSON(opts.remote_path,params)
+      .success(function(data, textStatus, jqXHR) {
+        if (latestXHRCall === jqXHR) {
+          success(data);
+        }
+      })
+      .error(function(data, textStatus, jqXHR) {
+        if (latestXHRCall === jqXHR) {
+          noResults(data);
+        }
+      });
+
+      var success = function(data) { 
         dogs.dogs = data.dogs;
         dogs.redraw();
         pagination.pages = data.pages;
@@ -147,22 +163,16 @@
         }
 
         $(opts.results_label).html(label);
-      })
-      .error(function() {
+      };
+
+      var noResults = function(data) {
         dogs.dogs = []
         dogs.redraw();
         $(opts.results_label).html("No results found for: " + searchTerm);
         pagination.pages = 1;
         pagination.redraw();
         $(".popover").remove();
-      });
-    }
-
-    _self.debug = function() {
-      console.log('Search Filter: ' + searchTerm);
-      console.log('Dogs: ' + dogs.dogs);
-      console.log('Current Page: ' + currentPage);
-      console.log('Max Pages: ' + pagination.pages);
+      }
     }
 
     return this;
