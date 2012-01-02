@@ -68,7 +68,8 @@ ul.dogs-list {
     margin-left: 20px;
     margin-bottom: 10px;
     width: 140px;
-    display: inline-block; }
+    display: inline-block;
+    list-style-type: none; }
   ul.dogs-list h3 {
     text-align: center;
     margin-top: 10px;

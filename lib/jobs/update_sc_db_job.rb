@@ -3,6 +3,10 @@ class UpdateScDbJob < Struct.new(:limit)
   
   @@limit ||= 200
   
+  # NOTE: We may or may not want to strip the footer.  We can replace it with our own CMS-controlled footer.
+  # FOOTER_REGEX = /All of our dogs are in private volunteer foster homes.*$/
+  
+  
   def perform
     dogs = RescueGroupsDotOrgClient.get_sc_dogs(@@limit)
     dogs.each do |dog|
@@ -16,7 +20,7 @@ class UpdateScDbJob < Struct.new(:limit)
         set_photos!(sc_dog, get_photo_data(dog_data))
         sc_dog.save
       end
-    end
+    end if dogs.present?
   end
 
   protected
@@ -24,6 +28,8 @@ class UpdateScDbJob < Struct.new(:limit)
   def massage_data(dog)
     dog['name'] = dog['name'].downcase # let's store our dog names in lowercase
     dog['breed'] = CGI.unescapeHTML(dog['breed'])
+    # maybe...
+    # dog['description'] = dog['description'].sub(FOOTER_REGEX, '')
     dog['description'] = CGI.unescapeHTML(dog['description'])
     dog
   end

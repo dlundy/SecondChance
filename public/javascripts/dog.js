@@ -14,6 +14,7 @@ var Dog = function(){
       thumbsListItems.click(Dog.updateMainPhoto);
       mainPhotoDiv = jQuery('#main_photo');
       jQuery('#share_url').select();
+      // Dog.removeHeaderAndFooter();
     },
     
     updateMainPhoto:function(){
@@ -24,6 +25,11 @@ var Dog = function(){
       img.fadeIn();
       thumbsListItems.removeClass('selected');
       listItem.addClass('selected');
+    },
+    
+    removeHeaderAndFooter:function(){
+      jQuery('#rg_header').remove();
+      jQuery('#rg_footer').remove();
     }
     
   }

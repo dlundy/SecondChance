@@ -9,7 +9,7 @@ class RescueGroupsDotOrgClient
     # we need the unix timestamp
     last_pull = RescueGroupsPull.last ? RescueGroupsPull.last.get_unix_timestamp : '' 
     last_pull = '' if opts[:no_datetime_limit]
-    res = get('/', :query => {:type => 'animals', :limit => limit, :updatedAfter => last_pull})
+    res = get('/', :query => {:type => 'animals', :limit => limit, :updatedAfter => last_pull})    
     if res.code == 200 
       dogs = res.parsed_response['pets']['pet']
       RescueGroupsPull.create({:dog_count => dogs.size}) if dogs.present?
