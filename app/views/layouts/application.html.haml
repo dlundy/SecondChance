@@ -20,15 +20,14 @@
         .container
           = link_to image_tag('logo.png'), root_path, {:class => 'brand'}
           %ul.nav
-            / Don't need dogs link if presenting all on front page?
-            /%li
-            /  %a{:href => root_path} Dogs
             / %li
             /   %a{:href => "#resources"} Owner Surrenders
             %li
+              %a{:href => '/'} Dogs
+            %li
               %a{:href => "/events"} Events
             %li
-              %a{:href => '/adoption_application'} Adoption Application
+              %a{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adoption Application
             %li
               %a{:href => "/help"} How to Help
     .container.main

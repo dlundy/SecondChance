@@ -49,7 +49,6 @@ group :development, :test do
 end
 
 # CUSTOM ENGINES:
-gem 'refinerycms-dog_application_questions', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-members', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-labels', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-events', '1.0', :path => 'vendor/engines'

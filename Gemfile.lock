@@ -1,7 +1,6 @@
 PATH
   remote: vendor/engines
   specs:
-    refinerycms-dog_application_questions (1.0)
     refinerycms-events (1.0)
     refinerycms-labels (1.0)
     refinerycms-members (1.0)
@@ -218,7 +217,6 @@ DEPENDENCIES
   pg
   rails (= 3.0.9)
   refinerycms
-  refinerycms-dog_application_questions (= 1.0)!
   refinerycms-events (= 1.0)!
   refinerycms-labels (= 1.0)!
   refinerycms-members (= 1.0)!
