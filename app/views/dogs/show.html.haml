@@ -1,3 +1,5 @@
+<div id="fb-root"></div>
+
 -content_for :stylesheets do
   -stylesheet_link_tag 'dog'
 
@@ -47,12 +49,9 @@
   .span7
     .share
       %h4 Share This Page
-      = link_to 'FB like placeholder'
-      |
-      = link_to 'Twitter Share Button'
-      %section.share_links
-        = text_field_tag :share_url, dog_url(@dog), :size => 50, :class => 'long'
-        %small.message Press "Ctrl + C" to copy the URL
+      -dog_url = url_for(:action => 'show', :controller => 'dogs', :id => @dog.id, :only_path => false)
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      <div class="fb-like" data-href="#{u dog_url}" data-send="true" data-width="450" data-show-faces="true"></div>
       %hr
     .description
       %section

@@ -13,7 +13,13 @@
   margin-top: 10px; }
 
 .share h4 {
-  display: inline; }
+  font-family: 'TitilliumText22LRegular';
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 32px;
+  margin-bottom: 5px; }
+.share .twitter-share-button {
+  margin: 5px 0px; }
 
 #main_photo {
   text-align: center;
@@ -40,6 +46,3 @@ ul#thumbs_list {
       height: 70px; }
     ul#thumbs_list li.selected img {
       border-color: rgba(82, 168, 236, 0.8); }
-
-section.share_links input.long {
-  width: 250px; }

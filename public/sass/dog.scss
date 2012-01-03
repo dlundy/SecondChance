@@ -16,7 +16,14 @@
 
 .share {
   h4 {
-    display: inline;
+    font-family: 'TitilliumText22LRegular';
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 5px;
+  }
+  .twitter-share-button {
+    margin: 5px 0px;
   }
 }
 
@@ -48,11 +55,5 @@ ul#thumbs_list{
     &.selected img {
       border-color: rgba(82,168,236,.8);
     }
-  }
-}
-
-section.share_links {
-  input.long {
-    width: 250px;
   }
 }

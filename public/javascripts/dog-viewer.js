@@ -19,10 +19,11 @@
   }
 
   $.fn.DogsViewer = function(options) {
-    _self = this;
+    var _self = this;
     var opts = $.extend({}, defaults, options);
     var currentPage = 1;
     var searchTerm = opts.default_search;
+
     $(opts.form).submit(function() {
       var val = $('.dog-search:first').val();
       if (val == "") val = "all";
@@ -65,7 +66,6 @@
       var _self = {};
       _self.dogs = [];
       _self.container = $(opts.content);
-      
       // How do we remove the bullet points here from the basic_stats string <ul> ?
       // Also, it's seems impossible to escape double quotes in the basic_stats string (even using \")
       // var basicStats = '<ul><li><%= dog.breed %></li><li><%= dog.sex %></li><li><%= dog.age %></li><li><%= dog.weight %></li><li><%= dog.color %></li></ul>';
@@ -88,7 +88,7 @@
 
     // Address handling routines.
     // These load new data by altering the url and forcing the address change handler to fire
-    setAction = function(newSearch, currentPage) {
+    var setAction = function(newSearch, currentPage) {
       $.address.value(newSearch + "/" + currentPage);
     }
 
