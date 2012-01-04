@@ -12,12 +12,12 @@
 -content_for :body_content_title do
   =@dog.name
 
-.dog-title
-  %h1= raw @dog.name
-  %h2= raw @dog.breed
 
 .row.dog-info
   .span5
+    .dog-title
+      %h1= raw @dog.name
+      %h2= raw @dog.breed
     #main_photo
       %img{:src => @dog.primary_photo.url}
 
@@ -27,32 +27,30 @@
           -unless photo.url.nil?
             %li{'data-full-photo-url'.to_sym => photo.get_full_photo.url}
               %img{:src => photo.url, :class => (photo.primary? ? 'selected' : nil)}
-    #info
-      %section
-        %dl
-          -unless @dog.sex.nil?
-            %dt
-              Sex:
-              %dd= raw @dog.sex
-          -unless @dog.weight.nil?
-            %dt
-              Weight:
-              %dd= raw @dog.weight
-          -unless @dog.age.nil?
-            %dt
-              Age:
-              %dd= raw @dog.age
-          -unless @dog.color.nil?
-            %dt
-              Colors:
-              %dd= raw @dog.color
+    #more-info
+      %h3 More Info
+      -unless @dog.sex.nil?
+        .row 
+          .span1 Sex:
+          .span2= raw @dog.sex
+      -unless @dog.weight.nil?
+        .row
+          .span1 Weight:
+          .span2= raw @dog.weight
+      -unless @dog.age.nil?
+        .row
+          .span1 Age:
+          .span2= raw @dog.age
+      -unless @dog.color.nil?
+        .row
+          .span1 Colors:
+          .span2= raw @dog.color
   .span7
     .share
-      %h4 Share This Page
       -dog_url = url_for(:action => 'show', :controller => 'dogs', :id => @dog.id, :only_path => false)
       <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
       <div class="fb-like" data-href="#{u dog_url}" data-send="true" data-width="450" data-show-faces="true"></div>
-      %hr
+    %hr
     .description
       %section
         =raw @dog.description
