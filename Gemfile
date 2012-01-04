@@ -8,6 +8,7 @@ gem 'haml'
 gem 'sass'
 gem 'httparty'
 gem 'delayed_job'
+gem 'nokogiri'
 
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'

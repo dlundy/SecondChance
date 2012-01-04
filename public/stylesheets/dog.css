@@ -50,3 +50,8 @@
     font-size: 24px; }
   .dog-info #more-info .row {
     padding: 5px 0px; }
+.dog-info .description {
+  line-height: 22px; }
+  .dog-info .description p {
+    line-height: 22px;
+    margin-bottom: 15px; }
