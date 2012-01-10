@@ -49,6 +49,7 @@
 
 .social-icons > a {
   display: inline-block;
+  vertical-align: middle;
   margin-right: 5px; }
 .social-icons .twitter-icon {
   background-image: url(../images/sprite-sheet.png);

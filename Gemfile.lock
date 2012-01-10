@@ -214,6 +214,7 @@ DEPENDENCIES
   httparty
   jquery-rails (>= 1.0.12)
   mongrel (>= 1.2.0.pre2)
+  nokogiri
   pg
   rails (= 3.0.9)
   refinerycms

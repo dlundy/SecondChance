@@ -18,10 +18,21 @@ class Dog < ActiveRecord::Base
     read_attribute(:name).titleize
   end
 
+  # quick proof of concept for stripping style attrs from description using nokogiri
+  def description
+    raw = read_attribute(:description)
+    parsed = Nokogiri::HTML(raw)
+    parsed.xpath('//@style').each(&:remove)
+    parsed.xpath('//br').each(&:remove)
+    parsed.xpath('//img').each(&:remove)
+    parsed.xpath('//object').each(&:remove)
+    parsed
+  end
+
   def short_description
     read_attribute(:description).truncate(160)
   end
-  
+
   def primary_photo
     dog_photos.regulars.where(:primary => true).first || dog_photos.regulars.order('created_at').first
   end

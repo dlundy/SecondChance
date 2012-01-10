@@ -7,52 +7,68 @@
   }
   h2, h3 {
     font-weight: normal;
+    margin-top: 5px;
+    line-height: 32px;
   }
+  margin-bottom: 10px;
 }
 
 .dog-info {
-  margin-top: 10px;
-}
 
-.share {
-  h4 {
-    display: inline;
+  .share {
+    margin-top: 15px;
+    height: 55px;
   }
-}
 
-
-#main_photo {
-  text-align: center;
-  background-color: #eee;
-  height: 400px;
-  line-height: 400px;
-  overflow: hidden;
-  @include border-radius(5px);
-  img {
-    vertical-align: middle;
-    max-width: ($gridColumnWidth * 5) + ($gridGutterWidth * 4);
-  }
-}
-
-ul#thumbs_list{
-  margin-top: 10px;
-  overflow: auto;
-  li {
-    display: inline-block;
+  #main_photo {
+    text-align: center;
+    background-color: #eee;
+    height: 400px;
+    line-height: 400px;
+    overflow: hidden;
+    @include border-radius(5px);
     img {
-      cursor: pointer;
-      border: #fff solid 4px;
-      width: 70px;
-      height: 70px;
-    }
-    &.selected img {
-      border-color: rgba(82,168,236,.8);
+      vertical-align: middle;
+      max-width: ($gridColumnWidth * 5) + ($gridGutterWidth * 4);
     }
   }
-}
 
-section.share_links {
-  input.long {
-    width: 250px;
+  ul#thumbs_list{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    overflow: auto;
+    li {
+      display: inline-block;
+      img {
+        cursor: pointer;
+        border: #fff solid 4px;
+        width: 70px;
+        height: 70px;
+      }
+      &.selected img {
+        border-color: rgba(82,168,236,.8);
+      }
+    }
+  }
+
+  #more-info {
+    margin-top: 5px;
+    font-size: 18px;
+    h3 {
+      font-family: 'TitilliumText22LRegular';
+      font-weight: normal;
+      font-size: 24px;
+    }
+    .row {
+      padding: 5px 0px;
+    }
+  }
+
+  .description {
+    line-height: 22px;
+    p {
+      line-height: 22px;
+      margin-bottom: 15px;
+    }
   }
 }

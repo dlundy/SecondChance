@@ -4,18 +4,19 @@
 /* mixins.css.scss
  * Snippets of reusable CSS to develop faster and keep code readable
  * ----------------------------------------------------------------- */
-.dog-title h1 {
-  margin: 0; }
-.dog-title h2, .dog-title h3 {
-  font-weight: normal; }
+.dog-title {
+  margin-bottom: 10px; }
+  .dog-title h1 {
+    margin: 0; }
+  .dog-title h2, .dog-title h3 {
+    font-weight: normal;
+    margin-top: 5px;
+    line-height: 32px; }
 
-.dog-info {
-  margin-top: 10px; }
-
-.share h4 {
-  display: inline; }
-
-#main_photo {
+.dog-info .share {
+  margin-top: 15px;
+  height: 55px; }
+.dog-info #main_photo {
   text-align: center;
   background-color: #eee;
   height: 400px;
@@ -24,22 +25,33 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
-  #main_photo img {
+  .dog-info #main_photo img {
     vertical-align: middle;
     max-width: 380px; }
-
-ul#thumbs_list {
+.dog-info ul#thumbs_list {
   margin-top: 10px;
+  margin-bottom: 0px;
   overflow: auto; }
-  ul#thumbs_list li {
+  .dog-info ul#thumbs_list li {
     display: inline-block; }
-    ul#thumbs_list li img {
+    .dog-info ul#thumbs_list li img {
       cursor: pointer;
       border: #fff solid 4px;
       width: 70px;
       height: 70px; }
-    ul#thumbs_list li.selected img {
+    .dog-info ul#thumbs_list li.selected img {
       border-color: rgba(82, 168, 236, 0.8); }
-
-section.share_links input.long {
-  width: 250px; }
+.dog-info #more-info {
+  margin-top: 5px;
+  font-size: 18px; }
+  .dog-info #more-info h3 {
+    font-family: 'TitilliumText22LRegular';
+    font-weight: normal;
+    font-size: 24px; }
+  .dog-info #more-info .row {
+    padding: 5px 0px; }
+.dog-info .description {
+  line-height: 22px; }
+  .dog-info .description p {
+    line-height: 22px;
+    margin-bottom: 15px; }
