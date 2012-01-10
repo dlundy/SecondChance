@@ -25,13 +25,13 @@ var Dog = function(){
       img.fadeIn();
       thumbsListItems.removeClass('selected');
       listItem.addClass('selected');
-    },
-    
-    removeHeaderAndFooter:function(){
-      jQuery('#rg_header').remove();
-      jQuery('#rg_footer').remove();
     }
     
+    // removeHeaderAndFooter:function(){
+    //   jQuery('#rg_header').remove();
+    //   jQuery('#rg_footer').remove();
+    // }
+    // 
   }
   
 }();

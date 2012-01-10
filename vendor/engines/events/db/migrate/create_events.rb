@@ -4,7 +4,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.datetime :start_at
       t.datetime :end_at
-      t.string :geocords
+      t.decimal :lat
+      t.decimal :lng
       t.string :address_1
       t.string :address_2
       t.string :city

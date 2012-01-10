@@ -7,10 +7,12 @@
                   } %>
     </li>
   <% end %>
+  <!--
   <li>
-    <%= link_to t('.create_new'), new_admin_member_path,
+    <%# link_to t('.create_new'), new_admin_member_path,
                  :class => "add_icon" %>
   </li>
+  -->
 <% if !searching? and Admin::MembersController.sortable? and Member.count > 1 %>
   <li>
     <%= link_to t('.reorder', :what => "Members"),

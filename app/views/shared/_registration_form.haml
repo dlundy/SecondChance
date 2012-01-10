@@ -1,0 +1,6 @@
+#registration_form
+  = form_for Member.new, :url => member_registration_path do |f|
+    = f.text_field :email, :placeholder => 'Email'
+    = f.password_field :password, :placeholder => 'Password'
+    = f.password_field :password_confirmation, :placeholder => 'Password Confirmation'
+    = f.submit 'Sign Up'

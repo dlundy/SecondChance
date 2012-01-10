@@ -1,5 +1,5 @@
 -content_for :stylesheets do
-  -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer'
+  -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer', 'event'
 
 -content_for :javascript_libraries do
   =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min", "jquery.address"
@@ -7,6 +7,9 @@
   =javascript_include_tag "bootstrap/bootstrap-popover"
   =javascript_include_tag "application"
   =javascript_include_tag "dog-viewer"
+  =javascript_include_tag "home"
+  =javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false"
+  =javascript_include_tag "google_map"
 
 !!! 5
 %html
@@ -18,6 +21,12 @@
     .topbar
       .topbar-inner
         .container
+          - if current_member
+            = link_to 'Sign Out', destroy_member_session_path
+          - else
+            = link_to 'Volunteer Log In', "javascript:void(0)", :id => 'login_link'
+          = render 'shared/login_form'
+          = render 'shared/registration_form'
           = link_to image_tag('logo.png'), root_path, {:class => 'brand'}
           %ul.nav
             / %li
@@ -29,7 +38,7 @@
             %li
               %a{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adoption Application
             %li
-              %a{:href => "/help"} How to Help
+              %a{:href => "/help"} How to Help  
     .container.main
       = yield
       %footer
