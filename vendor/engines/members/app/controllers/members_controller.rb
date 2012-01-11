@@ -1,30 +1,30 @@
 class MembersController < ApplicationController
-
-  before_filter :find_all_members
-  before_filter :find_page
-
+  
+  respond_to :html
+  
   def index
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @member in the line below:
-    present(@page)
+    @members = Member.order(:last_name)
   end
 
   def show
     @member = Member.find(params[:id])
-
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @member in the line below:
-    present(@page)
+    respond_with @member
   end
 
-protected
-
-  def find_all_members
-    @members = Member.order('position ASC')
+  def edit
+    @member = Member.find(params[:id])
+    respond_with @member
   end
-
-  def find_page
-    @page = Page.where(:link_url => "/members").first
+  
+  def update
+    @member = Member.find(params[:id])
+    @member.update_attributes(params[:member])
+    respond_with @member
   end
+  
 
+  
+  
 end

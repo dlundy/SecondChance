@@ -27,42 +27,6 @@ ActiveRecord::Schema.define(:version => 20111126021741) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "dog_application_instance_answers", :force => true do |t|
-    t.integer  "dog_application_instance_id", :null => false
-    t.integer  "dog_application_question_id", :null => false
-    t.string   "answer"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "dog_application_instance_answers", ["dog_application_instance_id"], :name => "dog_app_instance_id_idx"
-  add_index "dog_application_instance_answers", ["dog_application_question_id"], :name => "dog_app_question_id_idx"
-
-  create_table "dog_application_instances", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "address_1"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zipcode"
-    t.string   "phone"
-    t.string   "phone_2"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "dog_application_questions", :force => true do |t|
-    t.string   "question_text"
-    t.integer  "position"
-    t.boolean  "active",        :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "dog_application_questions", ["id"], :name => "index_dog_application_questions_on_id"
-
   create_table "dog_photos", :force => true do |t|
     t.integer  "dog_id"
     t.string   "url"
@@ -103,9 +67,11 @@ ActiveRecord::Schema.define(:version => 20111126021741) do
   add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
 
   create_table "events", :force => true do |t|
+    t.string   "title"
     t.datetime "start_at"
     t.datetime "end_at"
-    t.string   "geocords"
+    t.decimal  "lat"
+    t.decimal  "lng"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
@@ -145,7 +111,14 @@ ActiveRecord::Schema.define(:version => 20111126021741) do
   add_index "labels", ["id"], :name => "index_labels_on_id"
 
   create_table "members", :force => true do |t|
-    t.string   "email"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "password_salt"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "address_1"
@@ -156,16 +129,12 @@ ActiveRecord::Schema.define(:version => 20111126021741) do
     t.string   "phone"
     t.string   "description"
     t.integer  "position"
-    t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "members", ["active"], :name => "index_members_on_active"
   add_index "members", ["email"], :name => "index_members_on_email"
-  add_index "members", ["first_name"], :name => "index_members_on_first_name"
   add_index "members", ["id"], :name => "index_members_on_id"
-  add_index "members", ["last_name"], :name => "index_members_on_last_name"
 
   create_table "page_part_translations", :force => true do |t|
     t.integer  "page_part_id"

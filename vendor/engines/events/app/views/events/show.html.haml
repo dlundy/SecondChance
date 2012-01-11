@@ -1,0 +1,11 @@
+- content_for :body_content_title do
+  = @event.title 
+
+- content_for :body_content_left do
+  %section
+    #event_map{'data-title'.to_sym => @event.title, 'data-lat'.to_sym => @event.lat, 'data-lng'.to_sym => @event.lng}
+      
+
+
+%div 
+  = render :partial => "/shared/content_page"

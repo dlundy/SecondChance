@@ -79,3 +79,7 @@
     @include sprite(-80px, 0, 32px, 32px);
   }
 }
+
+#login_form, #registration_form {
+  display: none;
+}

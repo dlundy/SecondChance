@@ -15,7 +15,7 @@ en:
       records:
         title: Members
         sorry_no_results: Sorry! There are no results found.
-        no_items_yet: There are no Members yet. Click "Add New Member" to add your first member.
+        no_items_yet: There are no Members yet.
       member:
         view_live_html: View this member live <br/><em>(opens in a new window)</em>
         edit: Edit this member

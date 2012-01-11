@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   private
   
   def time_to_refresh?
-    !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at > 1.day.ago
+    !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at < 1.day.ago
   end
 
 end
