@@ -11,11 +11,14 @@ $(document).ready(function($){
   });
 
   // popovers for dogs
+  // Since we can't show a short blurb about the dogs, this should probably just be hidden
+  /*
   $('.dogs-list img').popover({
     placement: 'below',
     live: true,
     html: true
   });
+  */
 
   // Dogs viewer
   window.dogViewer = $('#dog-viewer');

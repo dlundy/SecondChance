@@ -21,16 +21,8 @@
     .topbar
       .topbar-inner
         .container
-          - if current_member
-            = link_to 'Sign Out', destroy_member_session_path
-          - else
-            = link_to 'Volunteer Log In', "javascript:void(0)", :id => 'login_link'
-          = render 'shared/login_form'
-          = render 'shared/registration_form'
           = link_to image_tag('logo.png'), root_path, {:class => 'brand'}
           %ul.nav
-            / %li
-            /   %a{:href => "#resources"} Owner Surrenders
             %li
               %a{:href => '/'} Dogs
             %li
@@ -38,7 +30,16 @@
             %li
               %a{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adoption Application
             %li
-              %a{:href => "/help"} How to Help  
+              %a{:href => "/help"} How to Help
+            - if current_member
+              %li
+                = link_to 'Sign Out', destroy_member_session_path
+            - else
+              %li
+                = link_to 'Volunteer Login', "javascript:void(0)"
+                .dropdown-menu
+                  = render 'shared/login_form'
+                  / = render 'shared/registration_form'
     .container.main
       = yield
       %footer

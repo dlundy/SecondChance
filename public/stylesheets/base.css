@@ -33,12 +33,21 @@ html, body {
   position: relative;
   top: 6px; }
 .topbar .nav {
-  margin-left: 45px; }
+  float: right; }
   .topbar .nav li {
     font-size: 16px;
     font-weight: bold; }
     .topbar .nav li a {
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75); }
+  .topbar .nav .dropdown-menu {
+    right: 0;
+    top: 48px;
+    max-width: 400px; }
+
+#login-form {
+  padding: 10px; }
+  #login-form input {
+    margin-bottom: 10px; }
 
 .container.main {
   background-color: #fafafa;

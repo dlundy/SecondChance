@@ -38,5 +38,8 @@ module SecondChance
         
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.dogs_per_page = 18
+
   end
 end

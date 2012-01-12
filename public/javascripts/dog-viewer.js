@@ -157,7 +157,7 @@
         dogs.redraw();
         pagination.pages = data.pages;
         pagination.redraw();
-        $(".popover").remove();
+        //$(".popover").remove(); // not needed if popovers not active
 
         var label;
         if (opts.default_search == search) {

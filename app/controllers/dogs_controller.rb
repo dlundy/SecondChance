@@ -1,10 +1,11 @@
 class DogsController < ApplicationController
 
   def index
+    dogs_per_page = Rails.application.config.dogs_per_page
     if params[:search_text].present?
-      @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
+      @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => dogs_per_page})
     else
-      @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+      @dogs = Dog.paginate({:page => dpage, :per_page => dogs_per_page})
     end
     if @dogs.out_of_bounds?
       raise ActionController::RoutingError.new('Not Found')
