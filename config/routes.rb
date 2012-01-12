@@ -7,6 +7,7 @@ SecondChance::Application.routes.draw do
   resources :dogs
   
   match '/adoption_application' => 'dog_application_instances#new'
+  match '/events/:id/rsvp' => 'events#rsvp'
   
   resources :dog_application_instances
 

@@ -79,3 +79,6 @@ span.fieldWithErrors {
     background: #f4c8c5;
     border-color: #c87872;
     color: #b9554d; }
+
+div.clearfix {
+  clear: both; }

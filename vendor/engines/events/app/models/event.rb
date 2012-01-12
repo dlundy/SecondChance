@@ -5,6 +5,9 @@ class Event < ActiveRecord::Base
   validates :lat, :lng, :title, :presence => true
   
   before_validation :find_gmap_coords
+  
+  has_many :event_members
+  has_many :members, :through => :event_members
    
   GOOGLE_GEOCODE_URI = 'http://maps.googleapis.com/maps/api/geocode/json?address='
    

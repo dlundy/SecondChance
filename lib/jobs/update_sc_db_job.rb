@@ -28,8 +28,14 @@ class UpdateScDbJob < Struct.new(:limit)
   def massage_data(dog)
     dog['name'] = dog['name'].downcase # let's store our dog names in lowercase
     dog['breed'] = CGI.unescapeHTML(dog['breed'])
-    # maybe...
-    # dog['description'] = dog['description'].sub(FOOTER_REGEX, '')
+    puts dog['description']
+    parsed = Nokogiri::HTML(dog['description'])
+    parsed.xpath('//@style').each(&:remove)
+    parsed.xpath('//br').each(&:remove)
+    parsed.xpath('//img').each(&:remove)
+    parsed.xpath('//object').each(&:remove)
+    inner_html = parsed.inner_html
+    dog['description'] = inner_html.sub('<html>', '').sub('<body>', '').sub('</body>', '').sub('</html>', '')    
     dog['description'] = CGI.unescapeHTML(dog['description'])
     dog
   end

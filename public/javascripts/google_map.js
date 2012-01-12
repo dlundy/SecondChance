@@ -9,7 +9,7 @@ var GoogleMap = function(){
    
     init:function(){
       var mapDiv = jQuery("#event_map");
-      if(mapDiv.length > 1){
+      if(mapDiv.length > 0){
         var latLng = new google.maps.LatLng(mapDiv.attr("data-lat"), mapDiv.attr("data-lng"));
         var gmapOptions = {
          zoom: 15,
