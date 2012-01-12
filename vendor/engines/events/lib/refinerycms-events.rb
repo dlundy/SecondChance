@@ -21,7 +21,7 @@ module Refinery
           plugin.pathname = root
           plugin.activity = {
             :class => Event,
-            :title => 'geocords'
+            :title => 'title'
           }
         end
       end
