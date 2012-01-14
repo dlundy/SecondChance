@@ -16,6 +16,18 @@ class EventsController < ApplicationController
     # by swapping @page for @event in the line below:
     present(@page)
   end
+  
+  def rsvp
+    event = Event.find(params[:id])
+    res = event.event_members << Member.find(params[:member_id])
+    if res.present?
+      flash[:notice] = "You have RSVP'd for #{event.title}.  See you there!"
+    else
+      flash[:error] = "There was an error RSVP-ing for the event.  Sorry!"
+    end
+    # TODO: email confirmation ?  
+    redirect_to events_path(event)
+  end
 
 protected
 

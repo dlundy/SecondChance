@@ -6,5 +6,7 @@ class Member < ActiveRecord::Base
 
   validates :email, :presence => true, :uniqueness => true
   
+  has_many :event_members
+  has_many :events, :through => :event_members
   
 end

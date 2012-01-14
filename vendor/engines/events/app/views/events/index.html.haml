@@ -1,8 +1,8 @@
 - content_for :body_content_left do
-  %ul{ :id => "events" }
+  %ul{ :id => "event_list" }
     - @events.each do |event|
       %li
-        = link_to event.title, event_path(event)
+        = link_to raw(event_listing(event)), event_path(event)
 
 %div 
   = render :partial => "/shared/content_page"

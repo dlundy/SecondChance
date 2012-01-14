@@ -1,4 +1,17 @@
+#event_info {
+  float: left;
+}
+
 #event_map {
   width: 350px;
   height: 300px;
+}
+
+#event_list {
+  list-style-type: none;
+}
+
+#event_rsvp {
+  float: left;
+  margin-left: 15px;
 }

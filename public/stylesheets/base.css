@@ -92,3 +92,6 @@ span.fieldWithErrors {
 #login_form.modal form {
   margin-bottom: 0px;
   margin-top: 10px; }
+
+div.clearfix {
+  clear: both; }

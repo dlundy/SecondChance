@@ -1,11 +1,25 @@
-- content_for :body_content_title do
-  = @event.title 
+#event_info
+  #event_title 
+    = @event.title 
 
-- content_for :body_content_left do
-  %section
-    #event_map{'data-title'.to_sym => @event.title, 'data-lat'.to_sym => @event.lat, 'data-lng'.to_sym => @event.lng}
+  #event_address_date
+    .address
+      = raw event_address(@event)
+    .date
+      = raw event_inline_date(@event)
+
+  #event_map{'data-title'.to_sym => @event.title, 'data-lat'.to_sym => @event.lat, 'data-lng'.to_sym => @event.lng}
+
+.clearfix
+
+#event_rsvp
+  - if current_member
+    -form_for EventMember.new, :url => "/event/#{@event.id}/rsvp" do |f|
+      =hidden_field_tag :member_id, current_member.id
+      =f.submit 'RSVP'
       
-
-
-%div 
-  = render :partial => "/shared/content_page"
+    .event_members
+      %h2 Attending Members
+      -@event.members.each do |member|
+        .member_event_listing
+          =member.first_name.to_s + ' ' + member.last_name.to_s + ' ' + member.email.to_s
