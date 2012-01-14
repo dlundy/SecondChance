@@ -88,3 +88,7 @@ span.fieldWithErrors {
     background: #f4c8c5;
     border-color: #c87872;
     color: #b9554d; }
+
+#login_form.modal form {
+  margin-bottom: 0px;
+  margin-top: 10px; }

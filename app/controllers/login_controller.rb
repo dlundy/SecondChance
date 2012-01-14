@@ -1,5 +1,5 @@
 class LoginController < Devise::SessionsController
-  
+  layout "application"
   # def create
   #   if member_signed_in?
   #     redirect_to root_path

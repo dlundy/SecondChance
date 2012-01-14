@@ -670,8 +670,9 @@ button.btn, input[type=submit].btn {
   @include background-clip(padding-box);
   .close { margin-top: 7px; }
   &.fade {
-    $trans: opacity .3s linear, top .3s ease-out;
-    @include transition($trans);
+    $trans: opacity .3s linear;
+    //, top .3s ease-out;
+    //@include transition($trans);
     top: -25%;
   }
   &.fade.in { top: 50%; }

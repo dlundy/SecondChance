@@ -8,6 +8,5 @@
       = f.label :password
       .input
         = f.password_field :password
-    = f.submit 'Sign In', :class => "btn"
-    %br
-    = link_to 'Sign Up', "javascript:void(0)", :id => 'registration_link', :class => "btn"
+    .actions
+      = f.submit 'Sign In', :class => "btn primary"

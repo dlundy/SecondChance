@@ -1,0 +1,7 @@
+%h1 Volunteer Login
+= render 'shared/login_form'
+
+.row
+  .span4
+    %span Don't have an account?
+    = link_to 'Sign Up', :controller => "signup", :action => "new"

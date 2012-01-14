@@ -82,7 +82,6 @@ h1 {
   font-weight: normal;
 }
 
-
 // Error styles -- COPIED FROM BOOTSTRAP CSS -- what's a better way to do that ?
 // Rails default form builder wraps each error-laden field in a span with class="fieldWithErrors"
 span.fieldWithErrors {
@@ -107,5 +106,12 @@ span.fieldWithErrors {
       border-color: $error-text;
       color: darken($error-text, 10%);
     }
+  }
+}
+
+#login_form.modal {
+  form {
+    margin-bottom: 0px;
+    margin-top: 10px;
   }
 }

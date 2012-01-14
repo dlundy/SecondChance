@@ -1,6 +1,5 @@
 class SignupController < Devise::RegistrationsController
-  
-  
+  layout "application"
   # FROM Devise RegistrationsController#create
   # POST /resource
   # def create
