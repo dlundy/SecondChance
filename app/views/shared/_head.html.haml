@@ -4,17 +4,11 @@
   %title= browser_title(yield(:title))
   -if @meta.meta_description.present?
     %meta{:content => @meta.meta_description}
-
   -if @meta.meta_description.present?
     %meta{:description => @meta.meta_description}
-
   = csrf_meta_tag
   = yield :meta
-
   = stylesheet_link_tag "home" if home_page?
-
   = yield :stylesheets
+  = render :partial => "/shared/javascripts"
   = render :partial => '/shared/google_analytics' unless local_request?
-
-  / No real need for modernizr thus far
-  /= javascript_include_tag 'modernizr-min'

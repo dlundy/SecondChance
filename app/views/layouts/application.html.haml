@@ -3,6 +3,7 @@
 
 -content_for :javascript_libraries do
   =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min", "jquery.address"
+  =javascript_include_tag 'modernizr-min'
   / =javascript_include_tag "bootstrap/bootstrap-twipsy"
   / =javascript_include_tag "bootstrap/bootstrap-popover"
   =javascript_include_tag "bootstrap/bootstrap-modal"
@@ -38,9 +39,8 @@
               %li
                 = link_to 'Volunteer Login', "javascript:void(0)", :id => 'login-link', "data-controls-modal" => "login_form"
     .container.main
-      = render 'shared/login_form_modal'
-      / = render 'shared/registration_form'
       = yield
       %footer
         =render :partial => 'shared/footer'
-    = render :partial => "/shared/javascripts"
+    = render 'shared/login_form_modal'
+
