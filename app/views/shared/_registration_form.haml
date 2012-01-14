@@ -1,6 +1,16 @@
 #registration_form
   = form_for Member.new, :url => member_registration_path do |f|
-    = f.text_field :email, :placeholder => 'Email'
-    = f.password_field :password, :placeholder => 'Password'
-    = f.password_field :password_confirmation, :placeholder => 'Password Confirmation'
-    = f.submit 'Sign Up'
+    .clearfix
+      = f.label :email
+      .input
+        = f.text_field :email
+    .clearfix
+      = f.label :password
+      .input
+        = f.password_field :password
+    .clearfix
+      = f.label :password_confirmation
+      .input
+        = f.password_field :password
+
+    = f.submit 'Sign Up', :class => 'btn'

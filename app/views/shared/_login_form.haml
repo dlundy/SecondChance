@@ -1,6 +1,13 @@
-#login-form
+#login_form
   = form_for Member.new, :url => member_session_path do |f|
-    = f.text_field :email, :placeholder => 'Email'
-    = f.password_field :password, :placeholder => 'Password'
-    = f.submit 'Sign In'
-    = link_to 'Sign Up', "javascript:void(0)", :id => 'registration_link'
+    .clearfix
+      = f.label :email
+      .input
+        = f.text_field :email
+    .clearfix
+      = f.label :password
+      .input
+        = f.password_field :password
+    = f.submit 'Sign In', :class => "btn"
+    %br
+    = link_to 'Sign Up', "javascript:void(0)", :id => 'registration_link', :class => "btn"

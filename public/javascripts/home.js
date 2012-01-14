@@ -18,7 +18,7 @@ var Home = function(){
     },
     
     showLoginForm:function(){
-      loginForm.toggle();
+      loginForm.fadeToggle("fast");
     },
     
     showRegistrationForm:function(){
