@@ -38,13 +38,17 @@
 
       var template = _.template(
         "<% _.each(_.range(size), function(index) { %>" +
-          "<div class='pagination-dot <% if (index == currentPage-1) { print ('active') } %>'></div>" +
+          "<a class='pagination-dot <% if (index == currentPage-1) { print ('active') } %>' href='#/<%=searchTerm%>/<%=index + 1%>'></a>" +
         "<% }) %>"
       );
 
       _self.redraw = function() {
         if (_self.pages > 1) {
-          var result = template({'size': _self.pages, 'currentPage': currentPage});
+          var result = template({
+            'size': _self.pages,
+            'currentPage': currentPage,
+            'searchTerm': searchTerm
+          });
           _self.container.html(result);
         }
         else {

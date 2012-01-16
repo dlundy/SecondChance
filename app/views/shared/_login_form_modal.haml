@@ -1,0 +1,18 @@
+#login_form.modal.fade
+  .modal-header
+    %a.close{:href => "javascript:void(0)"} x
+    <h3>Volunteer Log In</h3>
+  = form_for Member.new, :url => member_session_path do |f|
+    .clearfix
+      = f.label :email
+      .input
+        = f.text_field :email
+    .clearfix
+      = f.label :password
+      .input
+        = f.password_field :password
+    .actions
+      = f.submit 'Sign In', :class => "btn primary"
+  %p.span4
+    %span Don't have an account?
+    = link_to 'Sign Up', :controller => "signup", :action => "new"

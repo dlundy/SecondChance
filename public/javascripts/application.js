@@ -20,6 +20,10 @@ $(document).ready(function($){
   });
   */
 
+  $('#login_form').modal({
+    'backdrop' : true
+  })
+
   // Dogs viewer
   window.dogViewer = $('#dog-viewer');
   dogViewer.DogsViewer();

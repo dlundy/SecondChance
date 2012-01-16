@@ -84,6 +84,10 @@ span.fieldWithErrors {
     border-color: #c87872;
     color: #b9554d; }
 
+#login_form.modal form {
+  margin-bottom: 0px;
+  margin-top: 10px; }
+
 div.clearfix {
   clear: both; }
 
