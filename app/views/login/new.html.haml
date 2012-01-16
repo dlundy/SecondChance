@@ -6,8 +6,8 @@
     = f.label :password, 'Password: '
     = f.password_field :password
     = f.submit 'Log In', :class => 'btn primary'
-    = link_to 'Sign Up for an Account', new_member_registration_path, :id => 'registration_link', :class => 'btn default'
   .row
     .span4
       %span Don't have an account?
-      = link_to 'Sign Up', :controller => "signup", :action => "new"
+      %br
+      %span= link_to 'Sign Up for an Account', new_member_registration_path, :id => 'registration_link'
