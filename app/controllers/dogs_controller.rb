@@ -30,4 +30,11 @@ class DogsController < ApplicationController
     @dog = Dog.find params[:id]
   end
 
+  def import_dog_data
+    Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT))
+    flash[:notice] = 'Importing Dog Data from RescueGroups.org.  Please be patient, this make take a few moments.'
+    redirect_to :back
+  end
+
 end
+

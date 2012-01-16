@@ -3,6 +3,9 @@
     <%= event.title %>
     <span class="preview">&nbsp;</span>
   </span>
+  <span>
+    <%= event_inline_date(event) %>
+  </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_go.png"), event_path(event),
         :title => t('.view_live_html'),

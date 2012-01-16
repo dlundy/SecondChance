@@ -7,11 +7,12 @@ module ApplicationHelper
         <span class="city">#{event.city}</span>
         <span class="state">#{event.state}</span>
         <span class="zipcode">#{event.zipcode} 
-        <span class="website">#{event.website}</span> 
+        <span class="website">#{event.website}</span>
+      </div> 
       }
   end
   
-  def event_listing(event)
+  def event_inline_listing(event)
     "#{event.title}&nbsp;#{event.start_at.strftime("%A %b %d %I:%M%p")}&nbsp;#{event.address_1}"
   end
   

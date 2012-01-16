@@ -5,15 +5,13 @@ class RescueGroupsDotOrgClient
   format :xml
   default_params :key => 'oeBe46yG', :orgID => 2802 # TODO: move to config file
     
-  def self.get_sc_dogs(limit=200, opts={})
-    # we need the unix timestamp
-    last_pull = RescueGroupsPull.last ? RescueGroupsPull.last.get_unix_timestamp : '' 
-    last_pull = '' if opts[:no_datetime_limit]
-    res = get('/', :query => {:type => 'animals', :limit => limit, :updatedAfter => last_pull})    
+  def self.get_sc_dogs(limit=DOG_IMPORT_LIMIT, opts={})
+    updated_after = opts[:updated_after].present? ? opts[:updated_after] : nil
+    res = get('/', :query => {:type => 'animals', :limit => limit, :updatedAfter => updated_after})    
+    # puts res.inspect
     if res.code == 200 
       dogs = res.parsed_response['pets']['pet']
-      RescueGroupsPull.create({:dog_count => dogs.size}) if dogs.present?
-      dogs
+      return dogs
     end
   end
   

@@ -1,6 +1,6 @@
 #event_info
   #event_title 
-    = @event.title 
+    %h3= @event.title 
 
   #event_address_date
     .address
@@ -9,17 +9,20 @@
       = raw event_inline_date(@event)
 
   #event_map{'data-title'.to_sym => @event.title, 'data-lat'.to_sym => @event.lat, 'data-lng'.to_sym => @event.lng}
-
-.clearfix
+  .clearfix
 
 #event_rsvp
   - if current_member
-    -form_for EventMember.new, :url => "/event/#{@event.id}/rsvp" do |f|
-      =hidden_field_tag :member_id, current_member.id
-      =f.submit 'RSVP'
+    - if current_member.attending_event?(@event)
+      -form_for EventMember.new, :url => cancel_rsvp_event_path(@event) do |f|
+        =f.submit 'Attending (click to cancel RSVP)', :class => 'btn success'
+    - else
+      -form_for EventMember.new, :url => rsvp_event_path(@event) do |f|
+        =f.submit 'RSVP', :class => 'btn danger'
       
     .event_members
-      %h2 Attending Members
+      %h3 Attending Members
       -@event.members.each do |member|
         .member_event_listing
-          =member.first_name.to_s + ' ' + member.last_name.to_s + ' ' + member.email.to_s
+          =member.first_name.to_s + ' ' + member.last_name.to_s + ' - ' + member.email.to_s
+.clearfix

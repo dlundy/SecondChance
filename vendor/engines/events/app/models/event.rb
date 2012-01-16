@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   
   has_many :event_members
   has_many :members, :through => :event_members
+  
+  scope :upcoming, where("end_at > '#{Time.zone.now}'")
    
   GOOGLE_GEOCODE_URI = 'http://maps.googleapis.com/maps/api/geocode/json?address='
    

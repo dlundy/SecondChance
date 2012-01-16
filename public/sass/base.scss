@@ -57,13 +57,6 @@ html, body {
   }
 }
 
-#login-form {
-  padding: 10px;
-  input {
-    margin-bottom: 10px;
-  }
-}
-
 .container.main {
   background-color: #fafafa;
   padding: 20px 20px 0px;
@@ -112,4 +105,15 @@ span.fieldWithErrors {
 
 div.clearfix{
 	clear: both;
+}
+
+#login-form, #registration_form {
+  padding: 10px;
+  input {
+    display: block;
+    margin-bottom: 10px;
+  }
+  label {
+    text-align: left;
+  }
 }

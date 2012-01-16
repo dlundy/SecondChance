@@ -9,4 +9,8 @@ class Member < ActiveRecord::Base
   has_many :event_members
   has_many :events, :through => :event_members
   
+  def attending_event?(event)
+    event.members.include?(self)
+  end
+  
 end

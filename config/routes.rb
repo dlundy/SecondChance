@@ -1,13 +1,18 @@
 SecondChance::Application.routes.draw do
   
+  # NOTE: We are using different controller names for our members resource.  "sessions" and "registrations" are being used by 
+  # the refinerycms admin resource (which maps to the users table).  We are using the members resource to track our non-cms
+  # users - the foster and volunteer people who will use the website.  The routes for the admin resource happen 
+  # auto-magically via the refinerycms gem.
   devise_for :members, :controllers => { :sessions => "login", :registrations => "signup" }
 
   resources :members, :except => :create
   resources :dog_photos
-  resources :dogs
+  resources :dogs do
+    collection { post :import_dog_data }
+  end
   
   match '/adoption_application' => 'dog_application_instances#new'
-  match '/events/:id/rsvp' => 'events#rsvp'
   
   resources :dog_application_instances
 

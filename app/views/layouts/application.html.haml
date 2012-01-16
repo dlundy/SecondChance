@@ -28,7 +28,7 @@
             %li
               %a{:href => "/events"} Events
             %li
-              %a{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adoption Application
+              %a{:href => "/about"}About Us
             %li
               %a{:href => "/help"} How to Help
             - if current_member
@@ -36,10 +36,7 @@
                 = link_to 'Sign Out', destroy_member_session_path
             - else
               %li
-                = link_to 'Volunteer Login', "javascript:void(0)"
-                .dropdown-menu
-                  = render 'shared/login_form'
-                  / = render 'shared/registration_form'
+                = link_to 'Volunteer Login', new_member_session_path
     .container.main
       = yield
       %footer

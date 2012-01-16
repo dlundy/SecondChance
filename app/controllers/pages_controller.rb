@@ -4,7 +4,10 @@ class PagesController < ApplicationController
   # This action is usually accessed with the root path, normally '/'
   def home
     error_404 unless (@page = Page.where(:link_url => '/').first).present?
-    Delayed::Job.enqueue(UpdateScDbJob.new(200)) if time_to_refresh?
+    if time_to_refresh?
+      updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
+      Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
+    end
     if params[:search_text].present? 
       @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
     else  
