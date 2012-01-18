@@ -90,11 +90,3 @@ span.fieldWithErrors {
 
 div.clearfix {
   clear: both; }
-
-#login-form, #registration_form {
-  padding: 10px; }
-  #login-form input, #registration_form input {
-    display: block;
-    margin-bottom: 10px; }
-  #login-form label, #registration_form label {
-    text-align: left; }

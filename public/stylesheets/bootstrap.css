@@ -770,6 +770,7 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
   margin-bottom: 20px;
   padding: 19px 20px 20px 150px;
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   -webkit-border-radius: 0 0 3px 3px;
   -moz-border-radius: 0 0 3px 3px;
   border-radius: 0 0 3px 3px; }

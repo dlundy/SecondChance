@@ -4,8 +4,6 @@
 -content_for :javascript_libraries do
   =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min", "jquery.address"
   =javascript_include_tag 'modernizr-min'
-  / =javascript_include_tag "bootstrap/bootstrap-twipsy"
-  / =javascript_include_tag "bootstrap/bootstrap-popover"
   =javascript_include_tag "bootstrap/bootstrap-modal"
   =javascript_include_tag "application"
   =javascript_include_tag "dog-viewer"
@@ -29,7 +27,7 @@
             %li
               %a{:href => "/events"} Events
             %li
-              %a{:href => "/about"}About Us
+              %a{:href => "/about-us"}About Us
             %li
               %a{:href => "/help"} How to Help
             - if current_member
@@ -37,7 +35,8 @@
                 = link_to 'Sign Out', destroy_member_session_path
             - else
               %li
-                = link_to 'Volunteer Login', new_member_session_path
+                = link_to 'Volunteer Login', "javascript:void(0)", :id => 'login-link', "data-controls-modal" => "login_form"
+
     .container.main
       = yield
       %footer
