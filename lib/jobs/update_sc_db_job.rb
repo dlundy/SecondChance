@@ -1,5 +1,5 @@
 require 'rescue_groups_dot_org_client'
-class UpdateScDbJob < Struct.new(:limit)
+class UpdateScDbJob < Struct.new(:limit, :opts)
   
   @@limit ||= DOG_IMPORT_LIMIT
   
