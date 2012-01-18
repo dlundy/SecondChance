@@ -15,4 +15,5 @@
       = f.submit 'Sign In', :class => "btn primary"
   %p.span4
     %span Don't have an account?
-    = link_to 'Sign Up', :controller => "signup", :action => "new"
+    %br
+    %span= link_to 'Sign Up for an Account', new_member_registration_path, :id => 'registration_link'

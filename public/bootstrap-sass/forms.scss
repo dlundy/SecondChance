@@ -234,6 +234,7 @@ input[disabled], select[disabled], textarea[disabled], input[readonly], select[r
   margin-bottom: $baseline;
   padding: ($baseline - 1) 20px $baseline 150px;
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   @include border-radius(0 0 3px 3px);
   .secondary-action {
     float: right;
