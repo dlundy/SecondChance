@@ -111,7 +111,7 @@ how_to_help_body = <<END
 END
 
 how_to_help_page.parts.create({
-  :title => "How to Help",
+  :title => "Body",
   :body => how_to_help_body,
   :position => 0
 })
