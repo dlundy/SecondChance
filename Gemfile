@@ -3,12 +3,15 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.9'
 
 gem 'pg'
-gem 'carrierwave'
 gem 'haml'
 gem 'sass'
 gem 'httparty'
 gem 'delayed_job'
+gem 'delayed_job_active_record'
 gem 'nokogiri'
+# according to the docs, we should use this version of dragonfly.  refinery is using an older version.
+gem 'dragonfly', '~>0.9.10'
+gem 'rack-cache', :require => 'rack/cache'
 
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'

@@ -47,11 +47,4 @@ class EventsController < ApplicationController
     @page = Page.where(:link_url => "/events").first
   end
   
-  def members_only
-    unless current_member
-      redirect_to events_path
-      return
-    end
-  end
-
 end

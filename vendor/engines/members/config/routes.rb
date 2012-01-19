@@ -1,5 +1,5 @@
 ::Refinery::Application.routes.draw do
-  resources :members, :only => [:index, :show]
+  resources :members  
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :members, :except => :show do

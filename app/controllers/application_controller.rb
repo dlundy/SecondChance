@@ -6,5 +6,14 @@ class ApplicationController < ActionController::Base
   def dpage
     params[:page] || 1
   end
+  
+  def members_only
+    unless current_member
+      flash[:error] = 'You must sign in'
+      redirect_to root_path
+      return
+    end
+  end
+  
    
 end

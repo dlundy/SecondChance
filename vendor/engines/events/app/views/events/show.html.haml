@@ -2,6 +2,9 @@
   #event_title 
     %h3= @event.title 
 
+  #event_main_image
+    = image_tag(@event.main_image.url)
+  
   #event_address_date
     .address
       = raw event_address(@event)

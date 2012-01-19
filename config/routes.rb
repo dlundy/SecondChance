@@ -6,7 +6,6 @@ SecondChance::Application.routes.draw do
   # auto-magically via the refinerycms gem.
   devise_for :members, :controllers => { :sessions => "login", :registrations => "signup" }
 
-  resources :members, :except => :create
   resources :dog_photos
   resources :dogs do
     collection { post :import_dog_data }

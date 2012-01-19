@@ -1,4 +1,4 @@
-<%= form_for [:admin, @event] do |f| -%>
+<%= form_for [:admin, @event], :html => {:multipart => true} do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
           :object => @event,
           :include_object_name => true
@@ -18,6 +18,12 @@
   <div class='field'>
     <%= f.label :end_at -%>
     <%= f.datetime_select :end_at  -%>
+  </div>
+  
+  <div>
+    <%= f.label :main_image, 'Upload Image' %>
+    <%= f.file_field :main_image %>
+    <%= f.hidden_field :retained_main_image %>
   </div>
   
   <div class='field'>
