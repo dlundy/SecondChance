@@ -27,14 +27,6 @@
     font-size: 18px;
     font-weight: bold; }
 
-.events h3 {
-  font-size: 24px;
-  font-weight: normal;
-  color: #545454;
-  margin-bottom: 3px; }
-.events li {
-  margin-bottom: 20px; }
-
 #twitter .tweet_list {
   margin: 0;
   list-style: none; }

@@ -1,9 +1,13 @@
 #event_info
   #event_title 
-    %h3= @event.title 
+    %h1
+      = @event.title 
 
   #event_main_image
-    = image_tag(@event.main_image.url)
+    -if @event.main_image.present?
+      = image_tag @event.main_image.thumb('300x300#').url
+    -else
+      = image_tag("http://placehold.it/300x300")
   
   #event_address_date
     .address

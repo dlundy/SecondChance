@@ -112,3 +112,20 @@ span.fieldWithErrors {
 div.clearfix{
 	clear: both;
 }
+
+.events {
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #545454;
+    line-height: 35px;
+  }
+  li {
+    margin-bottom: 30px;
+  }
+  .info {
+    font-size: 12px;
+    line-height: 24px;
+    color: #555;
+  }
+}
