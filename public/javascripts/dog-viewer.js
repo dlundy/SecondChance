@@ -70,12 +70,7 @@
       var _self = {};
       _self.dogs = [];
       _self.container = $(opts.content);
-      // How do we remove the bullet points here from the basic_stats string <ul> ?
-      // Also, it's seems impossible to escape double quotes in the basic_stats string (even using \")
-      // var basicStats = '<ul><li><%= dog.breed %></li><li><%= dog.sex %></li><li><%= dog.age %></li><li><%= dog.weight %></li><li><%= dog.color %></li></ul>';
-      // alternative... just not using <ul>...
-      var basicStats = '<%= dog.breed %><br /><%= dog.sex %><br /><%= dog.age %><br /><%= dog.weight %><br /><%= dog.color %><br />';
-      var template = _.template('<a href="/dogs/<%= dog.id %>"><li><img src="<%= dog.primary_thumb_url %>" data-original-title="<%= dog.name %>" data-content="' + basicStats + '" ><h3><%= dog.name %></h3></li></a>\n');
+      var template = _.template('<li><a href="/dogs/<%= dog.id %>"><img src="<%= dog.primary_thumb_url %>"<h3><%= dog.name %></h3></a></li>\n');
 
       _self.redraw = function() {
         var result = _.reduce(
@@ -188,3 +183,10 @@
   }
 })(jQuery);
 
+$(document).ready(function(){
+  window.dogViewer = $('#dog-viewer');
+  dogViewer.DogsViewer();
+
+  $('#dog-viewer-controls .next').click(function() { window.dogViewer.DogsViewer.nextPage() });
+  $('#dog-viewer-controls .previous').click(function() { window.dogViewer.DogsViewer.previousPage() });
+})

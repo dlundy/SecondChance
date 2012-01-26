@@ -1,11 +1,30 @@
-#event_info {
-  float: left; }
-  #event_info #event_map {
-    width: 350px;
-    height: 300px; }
+.event h1 {
+  margin-bottom: 10px; }
+.event h2 {
+  margin-bottom: 5px;
+  font-weight: normal;
+  line-height: 32px;
+  font-size: 20px; }
+.event #event_map {
+  height: 300px;
+  margin-top: 20px; }
 
 #event_rsvp {
   float: left;
   margin-left: 25px; }
   #event_rsvp #event_list {
     list-style-type: none; }
+
+.events h3 {
+  font-size: 24px;
+  font-weight: normal;
+  color: #545454;
+  line-height: 35px; }
+  .events h3 a {
+    color: inherit; }
+.events li {
+  margin-bottom: 30px; }
+.events .info {
+  font-size: 12px;
+  line-height: 24px;
+  color: #555; }

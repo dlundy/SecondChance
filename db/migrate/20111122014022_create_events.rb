@@ -21,7 +21,6 @@ class CreateEvents < ActiveRecord::Migration
 
     add_index :events, :id
 
-    load(Rails.root.join('db', 'seeds', 'events.rb'))
   end
 
   def self.down

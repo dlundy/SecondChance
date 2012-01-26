@@ -29,7 +29,8 @@ sample_event = Event.create({
   :city => "Vista",
   :state => "CA",
   :zipcode => 92081,
-  :email => "test@example.com"
+  :email => "test@example.com",
+  :description => "Great little Greek place. Prefer to go for lunch over breakfast, but that's just me. The avgolemono soup is killer and less than $4. Bunch of tables and some outside space to sit. They make some good stuff."
 })
 
 sample_event2 = Event.create({
@@ -40,7 +41,8 @@ sample_event2 = Event.create({
   :city => "Carlsbad",
   :state => "CA",
   :zipcode => 92008,
-  :email => "test@example.com"
+  :email => "test@example.com",
+  :description => "This place never seems to disappoint. For the most part, I stick with the #11 (chicken enchiladas with green sauce); consistently good! The staff has always been friendly and efficient. We'll continue to come back again and again."
 })
 
 sample_event3 = Event.create({
@@ -51,5 +53,6 @@ sample_event3 = Event.create({
   :city => "Oceanside",
   :state => "CA",
   :zipcode => 92056,
-  :email => "test@example.com"
+  :email => "test@example.com",
+  :description => "The breakfast burrito here is large, cheap, and good.  That's the triumvirate we should all look for with anything but moreso with breakfast burritos.  Crispy almost charred bacon, ham, eggs and french fries make up this top shelf burrito.  The salsa verde is several degrees hotter than their red salsa so go with the verde."
 })

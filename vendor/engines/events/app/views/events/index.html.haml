@@ -3,20 +3,19 @@
     %ul.unstyled
       - @events.each do |event|
         %li.row
-          .span2
+          .span3
             -if event.main_image.present?
-              = image_tag(event.main_image.thumb("140x140#").url)
+              = link_to image_tag(event.main_image.process(:thumb, "220x200").url), event_path(event)
             -else
-              = image_tag("http://placehold.it/140x140")
+              = link_to image_tag("http://placehold.it/300x200")
           .span8
-            %h3=event.title
+            %h3=link_to event.title, event_path(event)
             .info
               %span.datetime=event.start_at
               in 
               %span.location="#{event.city}, #{event.state}"
             %p
-              Vader luke antilles wampa hutt r2-d2 mothma. Thrawn chewbacca darth cade. Kenobi aayla hutt jawa antilles. Utapau calamari leia solo. K-3po kenobi antilles maul moff kashyyyk moff mothma. Qui-gonn antilles sidious jar sith jango organa moff amidala. Grievous tusken raider mothma bothan solo gamorrean mandalore grievous. Hutt antilles dantooine bothan hutt yoda luuke moff. Windu luuke leia cade amidala solo chewbacca maul. Darth palpatine antilles ben organa bothan hutt jade. Organa droid kenobi yavin.
-            = link_to "Details >>", event_path(event), :class => 'btn'
-
+              =event.description
+            = link_to "Event Details", event_path(event), :class => 'btn'
 %div 
   = render :partial => "/shared/content_page"

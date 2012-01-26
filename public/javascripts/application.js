@@ -10,25 +10,7 @@ $(document).ready(function($){
     template: "{text} <br/> {time}"
   });
 
-  // popovers for dogs
-  // Since we can't show a short blurb about the dogs, this should probably just be hidden
-  /*
-  $('.dogs-list img').popover({
-    placement: 'below',
-    live: true,
-    html: true
-  });
-  */
-
   $('#login_form').modal({
     'backdrop' : true
   })
-
-  // Dogs viewer
-  window.dogViewer = $('#dog-viewer');
-  dogViewer.DogsViewer();
-
-  $('#dog-viewer-controls .next').click(function() { window.dogViewer.DogsViewer.nextPage() });
-  $('#dog-viewer-controls .previous').click(function() { window.dogViewer.DogsViewer.previousPage() });
-
 });

@@ -1,3 +1,6 @@
+-content_for :javascripts do
+  =javascript_include_tag 'dog-viewer'
+
 .full-width-row.hero
   .span4.logo
     %a=image_tag("dog-logo.png")
@@ -26,40 +29,24 @@
 .full-width-row.addnl-content
   .span8.events
     %h1 Adoption Events
-    %ul.unstyled
-      %li.row
-        .span2
-          %a=image_tag('http://placehold.it/140x140')
-        .span6
-          %h3 PetCo Monthly Adoptions
-          %p
-            <strong>1st Saturday</strong> - Petco Sports Arena - 10:00 AM - 3:00 PM 
-            %br
-            <strong>2nd Saturday</strong> - Petco La Mesa - 10:00 AM - 3:00 PM
-            %br
-            <strong>3rd Saturday</strong> - Petco Sports Arena - 10:00 AM - 3:00 PM
-            %br
-            <strong>4th Saturday</strong> - Petco Poway - 10:00 AM - 4:00
-            %br
-          %p
-            Yr helvetica scenester chambray, echo park wolf tumblr you probably haven't heard of them locavore tofu. Tattooed VHS leggings american apparel cosby sweater. Thundercats quinoa tofu
-          %a.btn Read More
-      %li.row
-        .span2
-          %a=image_tag('http://placehold.it/140x140')
-        .span6
-          %h3 South Bark Dog Wash
-          %p Please join us on the fourth Saturday of the month from 11:00 am to 2:00 pm for a great community adoption event! Synth 8-bit cosby sweater, tumblr keytar vice organic echo park single-origin coffee carles viral brunch gluten-free ethical terry richardson. Cosby sweater wes anderson you probably haven't heard of them seitan trust fund
-          %p{:style => "color: red;"} There will be no event the weekends of Thanksgiving and Christmas
-          %a.btn Read More
-      %li.row
-        .span2
-          %a=image_tag('http://placehold.it/140x140')
-        .span6
-          %h3 East Lake Village Vet Clinic
-          %p Dog Adoption Event
-          %p December 10th from 11:00am to 4:00 pm
-          %a.btn Read More
+    .events
+      %ul.unstyled
+        - @events.each do |event|
+          %li.row
+            .span2
+              -if event.main_image.present?
+                = link_to image_tag(event.main_image.process(:thumb, "140x140#").url), event_path(event)
+              -else
+                = link_to image_tag("http://placehold.it/140x140")
+            .span6
+              %h3= link_to event.title, event_path(event)
+              .info
+                %span.datetime=event.start_at
+                in 
+                %span.location="#{event.city}, #{event.state}"
+              %p
+                =truncate(event.description, :length => 220, :separator => ' ')
+        = link_to "See More Events", "/events", :class => "btn large primary"
   .span4
     %h1 Follow Us
     .social-icons

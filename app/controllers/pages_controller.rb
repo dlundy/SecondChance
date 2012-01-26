@@ -13,6 +13,7 @@ class PagesController < ApplicationController
     else  
       @dogs = Dog.paginate({:page => dpage, :per_page => 12})
     end
+    @events = Event.upcoming.order('start_at ASC')
   end
 
   # This action can be accessed normally, or as nested pages.

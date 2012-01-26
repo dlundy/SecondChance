@@ -1,10 +1,17 @@
-#event_info {
-  float: left;
-  #event_map {
-    width: 350px;
-    height: 300px;
+.event {
+  h1 {
+    margin-bottom: 10px;
   }
-  
+  h2 {
+    margin-bottom: 5px;
+    font-weight: normal;
+    line-height: 32px;
+    font-size: 20px;
+  }
+  #event_map {
+    height: 300px;
+    margin-top: 20px;
+  } 
 }
 
 #event_rsvp {
@@ -13,5 +20,24 @@
   #event_list {
     list-style-type: none;
   }
-  
+}
+
+.events {
+  h3 {
+    font-size: 24px;
+    font-weight: normal;
+    color: #545454;
+    line-height: 35px;
+    a {
+      color: inherit;
+    }
+  }
+  li {
+    margin-bottom: 30px;
+  }
+  .info {
+    font-size: 12px;
+    line-height: 24px;
+    color: #555;
+  }
 }
