@@ -51,14 +51,15 @@ class UpdateScDbJob < Struct.new(:limit, :opts)
   def set_photos!(dog, photo_data)
     return unless dog.dog_photos.empty?
     photo_data.each do |key, value|
-      size = (key.to_s =~ /tmn/ ? 'thumb' : 'regular')
-      dog.dog_photos << DogPhoto.new({:rescue_groups_key => key.to_s, :url => value, :size => size})
+      if key.to_s !~ /tmn/
+        dog.dog_photos << DogPhoto.new({:rescue_groups_key => key.to_s, :image_url => value})
+      end
     end
   end
 
   def update_photos!(dog, photo_data)
     photo_data.each do |key, value|
-      dog.dog_photos.where(:rescue_groups_key => key.to_s).first.update_attribute(:url, value)
+      dog.dog_photos.where(:rescue_groups_key => key.to_s).first.update_attribute(:image_url, value)
     end
   end
 

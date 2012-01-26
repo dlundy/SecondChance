@@ -22,14 +22,14 @@
   #main_photo {
     text-align: center;
     background-color: #eee;
-    height: 400px;
-    line-height: 400px;
+//    height: 400px;
+//    line-height: 400px;
     overflow: hidden;
     @include border-radius(5px);
-    img {
-      vertical-align: middle;
-      max-width: ($gridColumnWidth * 5) + ($gridGutterWidth * 4);
-    }
+//    img {
+//      vertical-align: middle;
+//      max-width: ($gridColumnWidth * 5) + ($gridGutterWidth * 4);
+//    }
   }
 
   ul#thumbs_list{
