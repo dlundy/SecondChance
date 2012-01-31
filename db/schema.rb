@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120126034030) do
+ActiveRecord::Schema.define(:version => 20120131113504) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(:version => 20120126034030) do
   add_index "dogs", ["member_id"], :name => "index_dogs_on_member_id"
   add_index "dogs", ["name"], :name => "index_dogs_on_name"
   add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
+
+  create_table "event_member_dogs", :force => true do |t|
+    t.integer  "event_member_id"
+    t.integer  "dog_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_member_dogs", ["event_member_id"], :name => "index_event_member_dogs_on_event_member_id"
 
   create_table "event_members", :force => true do |t|
     t.integer  "event_id"
