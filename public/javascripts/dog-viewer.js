@@ -70,7 +70,7 @@
       var _self = {};
       _self.dogs = [];
       _self.container = $(opts.content);
-      var template = _.template('<li><a href="/dogs/<%= dog.id %>"><img src="<%= dog.primary_thumb_url %>"<h3><%= dog.name %></h3></a></li>\n');
+      var template = _.template('<li><a href="/dogs/<%= dog.id %>"><img src="<%= dog.primary_thumb_url %>"><h3><%= dog.name %></h3></a></li>\n');
 
       _self.redraw = function() {
         var result = _.reduce(
