@@ -1,18 +1,17 @@
 %h1 Log In
-#login_form
-  = form_for Member.new, :url => member_session_path do |f|
-    .clearfix
-      = f.label :email
-      .input
-        = f.text_field :email
-    .clearfix
-      = f.label :password
-      .input
-        = f.password_field :password
-    .actions
-      = f.submit 'Sign In', :class => "btn primary"
-  .row
-    .span4
-      %span New member?
-      %br
-      %span= link_to 'Sign Up for an Account', new_member_registration_path, :id => 'registration_link'
+= form_for Member.new, :url => member_session_path do |f|
+  .clearfix
+    = f.label :email
+    .input
+      = f.text_field :email
+  .clearfix
+    = f.label :password
+    .input
+      = f.password_field :password
+  .actions
+    = f.submit 'Sign In', :class => "btn primary"
+.row
+  .span4
+    %span New member?
+    %br
+    %span= link_to 'Sign Up for an Account', new_member_registration_path, :id => 'registration_link'
