@@ -25,6 +25,7 @@
 .events li {
   margin-bottom: 30px; }
 .events .info {
-  font-size: 12px;
-  line-height: 24px;
-  color: #555; }
+  font-size: 14px;
+  line-height: 28px; }
+.events .btn.details {
+  margin-top: 8px; }

@@ -90,3 +90,21 @@ span.fieldWithErrors {
 
 div.clearfix {
   clear: both; }
+
+.btn.primary {
+  color: white;
+  background-color: #aa3b3b;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e85959), to(#aa3b3b));
+  background-image: -moz-linear-gradient(top, #e85959, #aa3b3b);
+  background-image: -ms-linear-gradient(top, #e85959, #aa3b3b);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e85959), color-stop(100%, #aa3b3b));
+  background-image: -webkit-linear-gradient(top, #e85959, #aa3b3b);
+  background-image: -o-linear-gradient(top, #e85959, #aa3b3b);
+  background-image: linear-gradient(top, #e85959, #aa3b3b);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e85959, endColorstr=#aa3b3b, GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #aa3b3b #aa3b3b #712727;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%); }
+.btn.right {
+  float: right; }

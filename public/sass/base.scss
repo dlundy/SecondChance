@@ -4,17 +4,17 @@
 $background: #ececec;
 
 @font-face {
-    font-family: 'TitilliumText22LRegular';
-    src: url('../fonts/TitilliumText22L003-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'TitilliumText22LRegular';
+  src: url('../fonts/TitilliumText22L003-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'TitilliumText22LMedium';
-    src: url('../fonts/TitilliumText22L004-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'TitilliumText22LMedium';
+  src: url('../fonts/TitilliumText22L004-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html, body {
@@ -111,4 +111,15 @@ span.fieldWithErrors {
 
 div.clearfix{
 	clear: both;
+}
+
+// red bootstrap button to match our color scheme
+.btn {
+  &.primary {
+    color: $white;
+    @include gradientBar(#e85959, #aa3b3b);
+  }
+  &.right {
+    float :right;
+  }
 }

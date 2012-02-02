@@ -190,12 +190,12 @@ body {
   display: block; }
 
 a {
-  color: #e44646;
+  color: #b5190e;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit; }
   a:hover {
-    color: #c11c1c;
+    color: #6e0f09;
     text-decoration: underline; }
 
 .pull-right {
@@ -1302,12 +1302,12 @@ a.menu:after, .dropdown-toggle:after {
   -moz-border-radius: 15px;
   border-radius: 15px; }
   .pills a:hover {
-    background: #c11c1c;
+    background: #6e0f09;
     color: white;
     text-decoration: none;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
 .pills .active a {
-  background: #e44646;
+  background: #b5190e;
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
 
@@ -1922,7 +1922,7 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
     .media-grid a img {
       display: block; }
     .media-grid a:hover {
-      border-color: #e44646;
+      border-color: #b5190e;
       -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
       -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
       box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25); }

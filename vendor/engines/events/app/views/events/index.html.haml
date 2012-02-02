@@ -7,15 +7,15 @@
             -if event.main_image.present?
               = link_to image_tag(event.main_image.process(:thumb, "220x200").url), event_path(event)
             -else
-              = link_to image_tag("http://placehold.it/300x200")
+              = link_to image_tag("http://placehold.it/220x200")
           .span8
             %h3=link_to event.title, event_path(event)
             .info
-              %span.datetime=event.start_at
+              %span.datetime=event_inline_date(event)
               in 
               %span.location="#{event.city}, #{event.state}"
             %p
               =event.description
-            = link_to "Event Details", event_path(event), :class => 'btn'
+            = link_to "Event Details", event_path(event), :class => 'btn details'
 %div 
   = render :partial => "/shared/content_page"

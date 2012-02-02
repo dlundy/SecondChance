@@ -9,7 +9,7 @@ end
 
 if defined?(Page)
   page = Page.create(
-    :title => 'Events',
+    :title => 'Upcoming Events',
     :link_url => '/events',
     :deletable => false,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
