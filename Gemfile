@@ -9,9 +9,10 @@ gem 'httparty'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'nokogiri'
-# according to the docs, we should use this version of dragonfly.  refinery is using an older version.
-gem 'dragonfly', '~>0.9.10'
-gem 'rack-cache', :require => 'rack/cache'
+# note1: according to the docs, we should use this version of dragonfly.  refinery is using an older version.
+# note2: i *think* that refinerycms is handling this config stuff for us...
+# gem 'dragonfly', '~>0.9.10'
+# gem 'rack-cache', :require => 'rack/cache'
 
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'
@@ -52,7 +53,9 @@ group :development, :test do
    gem 'mongrel', '>= 1.2.0.pre2'
 end
 
+# ADDITIONAL REFINERY ENGINES:
+gem 'refinerycms-inquiries', '~> 1.0.0'
+
 # CUSTOM ENGINES:
 gem 'refinerycms-members', '1.0', :path => 'vendor/engines'
-gem 'refinerycms-labels', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-events', '1.0', :path => 'vendor/engines'
