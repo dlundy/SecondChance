@@ -2,7 +2,7 @@
   .events
     %ul.unstyled
       - @events.each do |event|
-        %li.row
+        %li.row.event
           .span3
             -if event.main_image.present?
               = link_to image_tag(event.main_image.process(:thumb, "220x200").url), event_path(event)
@@ -14,7 +14,7 @@
               %span.datetime=event_inline_date(event)
               in 
               %span.location="#{event.city}, #{event.state}"
-            %p
+            .description
               =raw event.description
             = link_to "Event Details", event_path(event), :class => 'btn details'
 %div 
