@@ -1,29 +1,42 @@
--content_for :javascripts do
+-content_for :javascript_libraries do
   =javascript_include_tag 'dog-viewer'
+  =javascript_include_tag "bootstrap/bootstrap-twipsy"
 
-.full-width-row.hero
-  .span4.logo
-    %a=image_tag("dog-logo.png")
-  .span7.copy
-    %p
-      %span.emphasis Second Chance Dog Rescue
-      is one of San Diego's largest and most successful non-profits, dedicated to saving homeless dogs.
-    %p We rescue, rehabilitate and rehome dogs from local shelters and surrendered by owners.
-    %a.btn.primary Donate
-    %a.btn{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adopt
-/ Don't use refinery home page content
-/= render :partial => "/shared/content_page"
+-content_for :javascripts do
+  :javascript
+    $(document).ready(function(){
+      $('#dog-viewer-controls a').twipsy({
+        'placement': 'below'
+      });
+    });
+
+-content_for :hero do
+  .full-width-row.hero
+    .span4.logo
+      %a=image_tag("dog-logo.png")
+    .span7.copy
+      / Maybe at some point hook up home page content to the hero so message can be customized
+      /= render :partial => "/shared/content_page"
+      %p
+        %span.emphasis Second Chance Dog Rescue
+        is one of San Diego's largest and most successful non-profits, dedicated to saving homeless dogs.
+      %p We rescue, rehabilitate and rehome dogs from local shelters and surrendered by owners.
+
+      %a.btn.primary Donate
+      %a.btn{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adopt
+
 .adopt-dogs
   .row
     %h1.span2 Adopt
   #dog-viewer
     #dog-results
+      Loading dogs...
     #dog-viewer-controls
       = form_tag root_path, :method => :get do
         = text_field_tag 'search_text', params[:search_text], :placeholder => 'Search by breed or by name', :class => 'dog-search'
         = submit_tag 'Go'
-      %a.previous
-      %a.next
+      %a.previous{"data-original-title" => "Previous Page"}
+      %a.next{"data-original-title" => "Next Page"}
       #dog-pagination
     #dog-content
 .full-width-row.addnl-content
@@ -44,8 +57,9 @@
                 %span.datetime=event_inline_date(event)
                 in 
                 %span.location="#{event.city}, #{event.state}"
+              / maybe better served by having a separate "short description" field
               %p
-                =truncate(event.description, :length => 220, :separator => ' ')
+                =truncate(strip_tags(event.description), :length => 220, :separator => ' ')
       = link_to "See More Events", "/events", :class => "btn right primary"
   .span4
     %h1 Follow Us

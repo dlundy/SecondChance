@@ -6,11 +6,13 @@
  * TODO: fix layout on IE7 due to inline-block
 */
 #dog-viewer-controls {
+  overflow: auto;
   margin-bottom: 20px; }
-  #dog-viewer-controls > * {
-    display: inline-block;
+  #dog-viewer-controls > a {
+    float: left;
     vertical-align: middle; }
   #dog-viewer-controls form {
+    float: left;
     margin: 0; }
   #dog-viewer-controls .previous {
     background-image: url(../images/sprite-sheet.png);
@@ -42,12 +44,13 @@
     #dog-viewer-controls .next.nohover:active {
       background-position: -160px 0px; }
   #dog-viewer-controls .pagination-dot {
-    display: inline-block;
+    float: left;
     background-image: url(../images/sprite-sheet.png);
     height: 12px;
     width: 12px;
     background-position: -200px 0px;
-    margin-left: 5px; }
+    margin-left: 5px;
+    margin-top: 10px; }
     #dog-viewer-controls .pagination-dot:hover {
       background-position: -200px -12px; }
     #dog-viewer-controls .pagination-dot:active {

@@ -17,6 +17,7 @@
   .span5
     .dog-title
       %h1= raw @dog.name
+      %h2= raw @dog.breed
     #main_photo
       %img{:src => @dog.primary_photo.url}
 
@@ -28,10 +29,6 @@
               %img{:src => photo.url, :class => (photo.primary? ? 'selected' : nil)}
     #more-info
       %h3 More Info
-      -unless @dog.breed.nil?
-        .row
-          .span1 Breed:
-          .span2= raw @dog.breed
       -unless @dog.sex.nil?
         .row 
           .span1 Sex:

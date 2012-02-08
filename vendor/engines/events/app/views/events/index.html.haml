@@ -15,7 +15,7 @@
               in 
               %span.location="#{event.city}, #{event.state}"
             %p
-              =event.description
+              =raw event.description
             = link_to "Event Details", event_path(event), :class => 'btn details'
 %div 
   = render :partial => "/shared/content_page"

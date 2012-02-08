@@ -8,12 +8,14 @@
 .event #event_map {
   height: 300px;
   margin-top: 20px; }
-
-#event_rsvp {
-  float: left;
-  margin-left: 25px; }
-  #event_rsvp #event_list {
-    list-style-type: none; }
+.event .rsvp {
+  margin-top: 20px; }
+.event .address {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #444; }
+.event .description img {
+  max-width: 620px; }
 
 .events h3 {
   font-size: 24px;

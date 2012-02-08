@@ -1,7 +1,7 @@
 -content_for :stylesheets do
   -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer', 'event'
 
--content_for :javascript_libraries do
+-content_for :before_javascript_libraries do
   =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min", "jquery.address"
   =javascript_include_tag 'modernizr-min'
   =javascript_include_tag "bootstrap/bootstrap-modal"
@@ -29,14 +29,17 @@
               %a{:href => "/how-to-help"} How to Help
             - if current_member
               %li
-                = link_to 'Sign Out', destroy_member_session_path
-                &nbsp;
                 = link_to 'Volunteer Profile', member_path(current_member)
+              %li
+                = link_to 'Sign Out', destroy_member_session_path
             - else
               %li
                 = link_to 'Volunteer Login', "javascript:void(0)", :id => 'login-link', "data-controls-modal" => "login_form"
 
     .container.main
+      / Hero should go above flash messages
+      =yield :hero
+      =render :partial => 'shared/flash_messages'
       = yield
       %footer
         =render :partial => 'shared/footer'
