@@ -4,8 +4,6 @@
 
 /* TODO:
     -fade or animate between pages
-    -spacing when only one row is present?
-    -clear/reset button?
 */
 
 (function($) {

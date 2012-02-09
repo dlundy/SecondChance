@@ -33,14 +33,15 @@
       Loading dogs...
     #dog-viewer-controls
       = form_tag root_path, :method => :get do
-        = text_field_tag 'search_text', params[:search_text], :placeholder => 'Search by breed or by name', :class => 'dog-search'
+        = text_field_tag 'search_text', params[:search_text], :class => 'dog-search'
       %a.search{"data-original-title" => "Search"}
-      %a.clear{"data-original-title" => "Clear Search"}
+      %a.clear{"data-original-title" => "Reset"}
       %a.previous{"data-original-title" => "Previous Page"}
       #dog-pagination
       %a.next{"data-original-title" => "Next Page"}
       /this keeps webkit from trying to highlight what's after the next button when it's clicked
       %span &nbsp;
+    .search-description.help-block Search dogs by breed or by name
     #dog-content
 .full-width-row.addnl-content
   .span8.events
