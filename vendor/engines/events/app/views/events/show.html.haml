@@ -34,13 +34,14 @@
       -@event.members.each do |member|
         .member_event_listing_div
           = member.first_name.to_s + ' ' + member.last_name.to_s + ' - ' + member.email.to_s
-          %ul.member_event_dog_list
-            - if @event_member.dogs.size > 0
-              - @event_member.dogs.each do |dog|
-                %li{:id => 'event_dog_' + dog.id.to_s} 
-                  =dog.name
           - if (member == current_member) && (current_member.dogs.size > @event_member.dogs.size)
-            #event_add_dogs_div
-              = link_to 'Add Dog', "javascript:void(0)", :class => 'event_add_dog_link', 'data-event-member-id'.to_sym => @event_member.id 
+            = link_to 'Add Dog', "javascript:void(0)", :class => 'event_add_dog_link', 'data-event-member-id'.to_sym => @event_member.id 
+          %ul.member_event_dog_list
+            - if @event_member && @event_member.dogs.size > 0
+              - @event_member.event_member_dogs.each do |em_dog|
+                %li 
+                  = em_dog.dog.name
+                  = link_to('Remove', "javascript:void(0)", :class => 'event_dog_remove_link', 'data-event-member-id'.to_sym => @event_member.id, 'data-event-member-dog-id'.to_sym => em_dog.id)
+                 
               
 .clearfix

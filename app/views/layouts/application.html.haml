@@ -30,7 +30,7 @@
             - if current_member
               %li
                 = link_to 'Sign Out', destroy_member_session_path
-                &nbsp;
+              %li
                 = link_to 'Volunteer Profile', member_path(current_member)
             - else
               %li

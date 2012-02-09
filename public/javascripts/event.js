@@ -6,13 +6,15 @@ var Event = function(){
   
   var eventAddDogsDiv;
   var eventAddDogLink; 
-  
+  var eventRemoveDogLink;
   return {
     
     init:function(){
       eventAddDogsDiv = jQuery('#event_add_dogs_div');
       eventAddDogLink = jQuery('.event_add_dog_link');
       eventAddDogLink.live('click', Event.addDogForm);
+      eventRemoveDogLink = jQuery('.event_dog_remove_link');
+      eventRemoveDogLink.live('click', Event.removeDog);
       jQuery('.event_remove_dog_link').live('click', Event.removeDog);
     },
     
@@ -32,7 +34,7 @@ var Event = function(){
           form += '</select>';
           form += '<input type="submit" value="Add Dog" />';
           form += '</form>';
-          eventAddDogsDiv.append(form);
+          myLink.append(form);
           jQuery('.add_event_dog_form').submit(Event.addDog);
         }
       });
@@ -51,7 +53,6 @@ var Event = function(){
           myForm.children('.in_progress').remove();
           var newDogListItems = '';
           jQuery(response['dogs']).each(function(idx, dog){
-            // TODO: JS REGEX ? for match()
             var eventMemberId = myForm.attr('action').match(/\d/)[0];
             var removeLink = '<a href="javascript:void(0)" class="event_dog_remove_link" data-event-member-id="' + eventMemberId + '" data-dog-id="' + dog['dog']['id'] + '">Remove</a>'
             newDogListItems += '<li id="event_dog_' + dog['dog']['id'] + '">' + dog['dog']['name'] + '&nbsp;' + removeLink + '</li>'; 
@@ -69,6 +70,15 @@ var Event = function(){
     
     removeDog:function(){
       myLink = jQuery(this);
+      jQuery.ajax({
+        url: '/event_members/' + myLink.attr('data-event-member-id') + '/remove_dog.json',
+        type: 'post',
+        data: {event_member_dog_id: myLink.attr('data-event-member-dog-id')},
+        success:function(){
+          myLink.closest('li').remove();
+          // TODO: add 'add dog' link back, if it has been removed
+        }
+      })
     }
     
   }

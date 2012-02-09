@@ -1,0 +1,54 @@
+- content_for :body_content_title do
+  = @member.email
+
+- content_for :body_content_left do
+  #member_data
+    %section
+      = link_to 'Update Volunteer Profile', edit_member_path(@member)
+    %section
+      = image_tag(@member.profile_image.url) if @member.profile_image
+    %section
+      %h3 Email
+      %p 
+        = raw @member.email 
+    %section
+      %h3 First Name
+      %p 
+        = raw @member.first_name
+    %section
+      %h3 Last Name
+      %p 
+        = raw @member.last_name
+    %section
+      %h3 Address 1
+      %p 
+        = raw @member.address_1
+    %section
+      %h3 Address 2
+      %p 
+        = raw @member.address_2
+    %section
+      %h3 City
+      %p 
+        = raw @member.city
+    %section
+      %h3 State
+      %p 
+        = raw @member.state
+    %section
+      %h3 Zipcode
+      %p 
+        = raw @member.zipcode
+    %section
+      %h3 Phone
+      %p 
+        = raw @member.phone
+  #member_dogs
+    %h3 Current Dogs
+    %ul
+      - @member.dogs.each do |dog|
+        %li
+          = dog.name
+
+
+= render :partial => "/shared/content_page"

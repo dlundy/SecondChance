@@ -20,7 +20,7 @@ class EventMembersController < ApplicationController
   end
   
   def remove_dog
-    @event_member.dogs.delete(Dog.find(params[:dog_id]))
+    @event_member.reload if EventMemberDog.delete(params[:event_member_dog_id])
     respond_to do |format|
       format.json {render :json => @event_member.dogs}
     end
