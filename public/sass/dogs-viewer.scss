@@ -8,12 +8,14 @@
 $dogThumbSize: 120px;
 
 #dog-viewer-controls {
+  overflow: auto;
   margin-bottom: 20px;
-  > * {
-    display: inline-block;
+  > a {
+    float: left;
     vertical-align: middle;
   }
   form {
+    float: left;
     margin: 0;
   }
   .previous {
@@ -26,9 +28,10 @@ $dogThumbSize: 120px;
     margin-right: 10px;
   }
   .pagination-dot{
-    display: inline-block;
+    float: left;
     @include sprite(-200px, 0px, 12px, 12px);
     margin-left: 5px;
+    margin-top: 10px;
     &.active {
       background-position: -200px -12px;
     }

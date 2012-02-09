@@ -1,0 +1,14 @@
+-if flash[:notice]
+  .alert-message.success
+    %p
+      =flash[:notice]
+
+-if flash[:alert]
+  .alert-message.error
+    %p
+      =flash[:alert]
+
+-if flash[:error]
+  .alert-message.error
+    %p
+      =flash[:error]

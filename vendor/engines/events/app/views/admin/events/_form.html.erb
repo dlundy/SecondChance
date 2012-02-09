@@ -20,12 +20,17 @@
     <%= f.datetime_select :end_at  -%>
   </div>
   
-  <div>
+  <div class='field'>
     <%= f.label :main_image, 'Upload Image' %>
     <%= f.file_field :main_image %>
     <%= f.hidden_field :retained_main_image %>
   </div>
-  
+
+  <div class='field'>
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 20, :class => 'wymeditor widest' %>
+  </div>
+
   <div class='field'>
     <%= f.label :address_1 -%>
     <%= f.text_field :address_1  -%>
