@@ -34,10 +34,11 @@
     #dog-viewer-controls
       = form_tag root_path, :method => :get do
         = text_field_tag 'search_text', params[:search_text], :placeholder => 'Search by breed or by name', :class => 'dog-search'
-        = submit_tag 'Go'
+      %a.search{"data-original-title" => "Search"}
+      %a.clear{"data-original-title" => "Clear Search"}
       %a.previous{"data-original-title" => "Previous Page"}
-      %a.next{"data-original-title" => "Next Page"}
       #dog-pagination
+      %a.next{"data-original-title" => "Next Page"}
     #dog-content
 .full-width-row.addnl-content
   .span8.events

@@ -24,10 +24,19 @@
     var currentPage = 1;
     var searchTerm = opts.default_search;
 
-    $(opts.form).submit(function() {
+    _self.DogsViewer.submit = function() {
       var val = $('.dog-search:first').val();
       if (val == "") val = "all";
       _self.DogsViewer.search(val);
+    };
+
+    _self.DogsViewer.clear = function () {
+      _self.DogsViewer.search(opts.default_search);
+      $('.dog-search:first').val("");
+    }
+
+    $(opts.form).submit(function() {
+      _self.DogsViewer.submit();
       return false;
     });
 
@@ -146,9 +155,7 @@
         }
       })
       .error(function(data, textStatus, jqXHR) {
-        if (latestXHRCall === jqXHR) {
-          noResults(data);
-        }
+        noResults(data);
       });
 
       var success = function(data) { 
@@ -189,4 +196,7 @@ $(document).ready(function(){
 
   $('#dog-viewer-controls .next').click(function() { window.dogViewer.DogsViewer.nextPage() });
   $('#dog-viewer-controls .previous').click(function() { window.dogViewer.DogsViewer.previousPage() });
+  $('#dog-viewer-controls .search').click(function() { window.dogViewer.DogsViewer.submit()});
+  $('#dog-viewer-controls .clear').click(function() { window.dogViewer.DogsViewer.clear()})
+
 })

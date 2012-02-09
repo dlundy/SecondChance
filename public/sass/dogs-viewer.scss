@@ -18,22 +18,30 @@ $dogThumbSize: 120px;
     float: left;
     margin: 0;
   }
+  .search {
+    @include sprite(-200px, 0px, 32px, 32px);
+    margin-left: 10px;
+  }
+  .clear {
+    @include sprite(-240px, 0px, 32px, 32px); 
+    margin-left: 10px;
+  }
   .previous {
     @include sprite(-120px, 0px, 32px, 32px); 
-    margin-left: 25px;
+    margin-left: 30px;
+    margin-right: 5px;
   }
   .next {
     @include sprite(-160px, 0px, 32px, 32px); 
-    margin-left: 15px;
-    margin-right: 10px;
+    margin-left: 10px;
   }
   .pagination-dot{
     float: left;
-    @include sprite(-200px, 0px, 12px, 12px);
+    @include sprite(-280px, 0px, 12px, 12px);
     margin-left: 5px;
     margin-top: 10px;
     &.active {
-      background-position: -200px -12px;
+      background-position: -280px -12px;
     }
   }
 }
