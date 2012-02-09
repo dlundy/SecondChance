@@ -8,6 +8,9 @@
       $('#dog-viewer-controls a').twipsy({
         'placement': 'below'
       });
+      $('.social-icons > a').twipsy({
+        'placement': 'below'
+      })
     });
 
 -content_for :hero do
@@ -26,8 +29,6 @@
       %a.btn{:href => DOG_APPLICATION_FORM_URL, :target => '_blank'} Adopt
 
 .adopt-dogs
-  .row
-    %h1.span2 Adopt
   #dog-viewer
     #dog-results
       Loading dogs...
@@ -68,8 +69,8 @@
   .span4
     %h1 Follow Us
     .social-icons
-      %a.twitter-icon{:href => 'http://twitter.com/#!/2ndChanceDog/'}
-      %a.fb-icon{:href => 'http://www.facebook.com/SecondChanceDogRescue'}
-      %a.linkedin-icon{:href => 'http://linkedin.com'}
+      %a.twitter-icon{:href => 'http://twitter.com/#!/2ndChanceDog/', "data-original-title" => "Twitter @2ndChanceDog"}
+      %a.fb-icon{:href => 'http://www.facebook.com/SecondChanceDogRescue', "data-original-title" => "Facebook"}
+      %a.linkedin-icon{:href => 'http://www.linkedin.com/groups/Second-Chance-Dog-Rescue-1299187?home=&gid=1299187&trk=anet_ug_hm', "data-original-title" => "LinkedIn"}
     #twitter
 

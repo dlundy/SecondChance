@@ -165,10 +165,10 @@
 
         var label;
         if (opts.default_search == search) {
-          label = "We currently have " + data.results + " dogs available for adoption.";
+          label = data.results + " wagging tails are waiting to go home with you.";
         }
         else {
-          label = "We have " + data.results + " dogs that match '" + search + "'.";
+          label = data.results + " dogs match '" + search + "'.";
         }
 
         $(opts.results_label).html(label);
