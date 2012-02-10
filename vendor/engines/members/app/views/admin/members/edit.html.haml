@@ -1,14 +1,17 @@
+-content_for :stylesheets do
+  -stylesheet_link_tag 'admin/members'
+
 #member_form
   = render :partial => "form"
 
-.clearfix
-
 #member_dogs
-  %h3 Current Dogs
-  %ul
+  %h2 Current Dogs
+  %ul.admin-dogs-list
     - @member.dogs.each do |dog|
-      %li
-        = raw(dog.name + button_to('Remove', remove_dog_admin_member_path(@member, :dog_id => dog.id)))
+      %li.dog{:class => cycle('odd', 'even')}
+        %span.name
+          = raw(dog.name)
+        =button_to('Remove', remove_dog_admin_member_path(@member, :dog_id => dog.id))
   = form_tag add_dog_admin_member_path(@member) do 
     .field
       = select_tag :dog_id, options_for_select(@member.available_dogs.map{|d| [d.name, d.id]})

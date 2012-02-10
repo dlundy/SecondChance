@@ -1,0 +1,34 @@
+#member_form {
+  width: 560px;
+  padding-right: 20px;
+  float: left;
+  border-right: 2px dotted #f2f2f2; }
+
+#member_dogs {
+  width: 355px;
+  float: left;
+  margin-left: 20px; }
+  #member_dogs #dog_id {
+    width: 200px;
+    height: 20px;
+    font-size: 16px;
+    margin-top: 2px; }
+  #member_dogs input[name="commit"] {
+    float: right; }
+
+.admin-dogs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px; }
+  .admin-dogs-list .dog {
+    overflow: auto;
+    padding: 5px 2px 5px 10px; }
+    .admin-dogs-list .dog .name {
+      font-size: 14px;
+      line-height: 25px; }
+    .admin-dogs-list .dog.odd {
+      background-color: #EAEAEA; }
+    .admin-dogs-list .dog.even {
+      background-color: #fff; }
+    .admin-dogs-list .dog form {
+      float: right; }
