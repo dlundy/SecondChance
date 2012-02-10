@@ -18,7 +18,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :state
       t.integer :zipcode
       t.string :phone
-      t.string :description
+      t.text :notes
       t.integer :position
       t.timestamps
     end

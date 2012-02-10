@@ -16,4 +16,13 @@ class Member < ActiveRecord::Base
     event.members.include?(self)
   end
   
+  def available_dogs
+    if dogs.present?
+      dog_ids = dogs.map{|d| d.id}.join(',')
+      Dog.active.where("id NOT IN (#{dog_ids})").order(:name)
+    else
+      Dog.active.order(:name)
+    end
+  end
+  
 end

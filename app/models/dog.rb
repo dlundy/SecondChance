@@ -6,6 +6,7 @@ class Dog < ActiveRecord::Base
   validates :rescue_groups_id, :presence => true, :uniqueness => true
   attr_accessible :active, :age, :breed, :colors, :description, :name, :notes, :position, :rescue_groups_id, :member_id, :sex, :title, :weight, :weight_unit
   
+  scope :active, where(:active => true)
   
   # TODO: we should use something like SOLR, but for now, this will work
   def self.search(text)

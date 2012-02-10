@@ -1,12 +1,14 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(member) -%>">
   <span class='title'>
-    <%= member.email %>
+    <%= member.last_name.to_s + ' ' + member.first_name.to_s + ' - ' + member.email %>
+    <ul>
+      <% member.dogs.order(:name).each do |dog| %>
+      <li><%= dog.name %></li>
+    <% end %>
+    </ul>
     <span class="preview">&nbsp;</span>
   </span>
   <span class='actions'>
-    <%= link_to refinery_icon_tag("application_go.png"), member_path(member),
-        :title => t('.view_live_html'),
-        :target => "_blank" %>
     <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_member_path(member),
          :title => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), admin_member_path(member),
