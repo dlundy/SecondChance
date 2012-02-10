@@ -4,8 +4,6 @@
 
 /* TODO:
     -fade or animate between pages
-    -spacing when only one row is present?
-    -clear/reset button?
 */
 
 (function($) {
@@ -24,10 +22,19 @@
     var currentPage = 1;
     var searchTerm = opts.default_search;
 
-    $(opts.form).submit(function() {
+    _self.DogsViewer.submit = function() {
       var val = $('.dog-search:first').val();
       if (val == "") val = "all";
       _self.DogsViewer.search(val);
+    };
+
+    _self.DogsViewer.clear = function () {
+      _self.DogsViewer.search(opts.default_search);
+      $('.dog-search:first').val("");
+    }
+
+    $(opts.form).submit(function() {
+      _self.DogsViewer.submit();
       return false;
     });
 
@@ -146,9 +153,7 @@
         }
       })
       .error(function(data, textStatus, jqXHR) {
-        if (latestXHRCall === jqXHR) {
-          noResults(data);
-        }
+        noResults(data);
       });
 
       var success = function(data) { 
@@ -160,10 +165,10 @@
 
         var label;
         if (opts.default_search == search) {
-          label = "We currently have " + data.results + " dogs available for adoption.";
+          label = data.results + " wagging tails are waiting to go home with you.";
         }
         else {
-          label = "We have " + data.results + " dogs that match '" + search + "'.";
+          label = data.results + " dogs match '" + search + "'.";
         }
 
         $(opts.results_label).html(label);
@@ -189,4 +194,7 @@ $(document).ready(function(){
 
   $('#dog-viewer-controls .next').click(function() { window.dogViewer.DogsViewer.nextPage() });
   $('#dog-viewer-controls .previous').click(function() { window.dogViewer.DogsViewer.previousPage() });
+  $('#dog-viewer-controls .search').click(function() { window.dogViewer.DogsViewer.submit()});
+  $('#dog-viewer-controls .clear').click(function() { window.dogViewer.DogsViewer.clear()})
+
 })
