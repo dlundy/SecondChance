@@ -18,7 +18,7 @@ var Admin = function(){
   return {
     
     init:function(){
-      jQuery('#import_dog_data_link').click(Admin.importDogData);
+      jQuery('#import_dog_data_link').live('click', Admin.importDogData);
     },
     
     importDogData:function(){
