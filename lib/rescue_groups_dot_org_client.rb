@@ -12,6 +12,7 @@ class RescueGroupsDotOrgClient
       dogs = res.parsed_response['pets']['pet']
       if dogs.present?
         dogs.each do |dog|
+          next if dog.nil?
           dog_data = massage_data(dog)
           if sc_dog = Dog.find_by_rescue_groups_id(dog_data['animalID'])
             sc_dog.update_attributes(dog_data)
