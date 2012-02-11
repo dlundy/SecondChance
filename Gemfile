@@ -6,14 +6,13 @@ gem 'pg'
 gem 'haml'
 gem 'sass'
 gem 'httparty'
-# gem 'delayed_job'
-# gem 'delayed_job_active_record'
 gem 'nokogiri'
 # note1: according to the docs, we should use this version of dragonfly.  refinery is using an older version.
 # note2: i *think* that refinerycms is handling this config stuff for us...
 # gem 'dragonfly', '~>0.9.10'
 # gem 'rack-cache', :require => 'rack/cache'
 
+gem 'fog' # we need it for refinerycms-images
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'
 
