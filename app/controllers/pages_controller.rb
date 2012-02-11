@@ -1,17 +1,16 @@
-require 'jobs/update_sc_db_job'
 class PagesController < ApplicationController
 
   # This action is usually accessed with the root path, normally '/'
   def home
     error_404 unless (@page = Page.where(:link_url => '/').first).present?
-    if time_to_refresh?
-      updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
-      Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
-    end
+    # if time_to_refresh?
+    #   updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
+    #   Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
+    # end
     if params[:search_text].present? 
       @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
     else  
-      @dogs = Dog.paginate({:page => dpage, :per_page => 12})
+      @dogs = Dog.active.paginate({:page => dpage, :per_page => 12})
     end
     @events = Event.upcoming.order('start_at ASC')
   end
@@ -42,8 +41,8 @@ class PagesController < ApplicationController
   
   private
   
-  def time_to_refresh?
-    !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at < 1.day.ago
-  end
+  # def time_to_refresh?
+  #   !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at < 1.day.ago
+  # end
 
 end

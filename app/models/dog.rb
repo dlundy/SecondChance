@@ -11,7 +11,7 @@ class Dog < ActiveRecord::Base
   # TODO: we should use something like SOLR, but for now, this will work
   def self.search(text)
     text = text.downcase
-    where(["name ILIKE ? OR breed ILIKE ?", "%#{text}%", "%#{text}%"])
+    active.where(["name ILIKE ? OR breed ILIKE ?", "%#{text}%", "%#{text}%"])
   end
 
   # dlundy - little hack to temporarily titleize the names

@@ -1,3 +1,4 @@
+require 'rescue_groups_dot_org_client'
 class DogsController < ApplicationController
 
   def index
@@ -31,10 +32,26 @@ class DogsController < ApplicationController
   end
 
   def import_dog_data
-    Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT))
-    flash[:notice] = 'Importing Dog Data from RescueGroups.org.  Please be patient, this make take a few moments.'
-    redirect_to :back
+    # NOTE:  It's more expensive to run background jobs on Heroku.  On average this import only takes a few seconds.
+    #        So, let's try it without a background job first.
+    # Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT))
+    # flash[:notice] = 'Importing Dog Data from RescueGroups.org.  Please be patient, this make take a few moments.'
+    if RescueGroupsDotOrgClient.get_sc_dogs
+      message = 'Dog data has been imported!'
+    else
+      message = 'There was a problem importing the dog data'
+    end
+    respond_to do |format|
+      format.json {render :json => {:message => message}}
+    end
   end
-
+  
+  def dog_placed
+    dog = Dog.find(params[:id])
+    if dog.update_attribute(:active, false)
+      message = 'Dog has been placed!  De-activating #{dog.name} in our database'
+    end
+  end
+  
 end
 
