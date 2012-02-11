@@ -41,14 +41,14 @@ module SecondChance
 
     config.dogs_per_page = 18
     
-    # http://markevans.github.com/dragonfly/file.Rails3.html
-    config.middleware.insert 0, 'Rack::Cache', {
-      :verbose     => true,
-      :metastore   => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/meta"),
-      :entitystore => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/body")
-    } # unless Rails.env.production?  ## uncomment this 'unless' in Rails 3.1,
-                                      ## because it already inserts Rack::Cache in production
-    config.middleware.insert_after 'Rack::Cache', 'Dragonfly::Middleware', :images
+    # # http://markevans.github.com/dragonfly/file.Rails3.html
+    # config.middleware.insert 0, 'Rack::Cache', {
+    #   :verbose     => true,
+    #   :metastore   => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/meta"),
+    #   :entitystore => URI.encode("file:#{Rails.root}/tmp/dragonfly/cache/body")
+    # } # unless Rails.env.production?  ## uncomment this 'unless' in Rails 3.1,
+    #                                   ## because it already inserts Rack::Cache in production
+    # config.middleware.insert_after 'Rack::Cache', 'Dragonfly::Middleware', :images
 
   end
 end
