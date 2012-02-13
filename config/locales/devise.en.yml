@@ -12,6 +12,9 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
 
   devise:
+    signup: 
+      member:
+        inactive_signed_up: 'Thanks for signing up.  An email has been sent to you with a confirmation link.  You must confirm your email address before signing in.'
     login:
       member:
         signed_in: 'Sign in successful.'

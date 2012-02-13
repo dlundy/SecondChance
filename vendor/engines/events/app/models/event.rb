@@ -7,7 +7,8 @@ class Event < ActiveRecord::Base
   before_validation :find_gmap_coords
   
   has_many :event_members
-  has_many :members, :through => :event_members
+  has_many :members, :through => :event_members 
+  has_many :event_member_dogs, :through => :event_members
   
   scope :upcoming, where("end_at > '#{Time.zone.now}'")
   
@@ -29,6 +30,10 @@ class Event < ActiveRecord::Base
     gmap_lat, gmap_lng = parse_gmap_lat_and_lng(json_result)
     self.lat = gmap_lat
     self.lng = gmap_lng
+  end
+  
+  def dogs
+    event_member_dogs.select('dogs.id as dog_id, dogs.name as dog_name').joins('INNER JOIN dogs ON dogs.id = event_member_dogs.dog_id')
   end
   
   private

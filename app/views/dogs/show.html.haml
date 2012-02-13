@@ -16,7 +16,9 @@
 .row.dog-info
   .span5
     .dog-title
-      %h1= raw @dog.name
+      %h1
+        = @dog.name
+        = button_to 'Deactivate', deactivate_dog_path(@dog), :class => 'btn danger' if current_member || current_user
       %h2= raw @dog.breed
     #main_photo
       %img{:src => @dog.primary_photo.url}

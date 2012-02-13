@@ -4,7 +4,7 @@
   float: left;
   border-right: 2px dotted #f2f2f2;
 }
-#member_dogs {
+#member_dogs, #event_dogs {
   width: 355px;
   float: left;
   margin-left: 20px;
@@ -19,7 +19,7 @@
   }
 }
 
-.admin-dogs-list {
+.admin-dogs-list, .member-dog-list {
   list-style: none;
   padding: 0;
   margin-bottom: 20px;

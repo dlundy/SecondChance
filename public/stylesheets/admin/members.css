@@ -4,31 +4,31 @@
   float: left;
   border-right: 2px dotted #f2f2f2; }
 
-#member_dogs {
+#member_dogs, #event_dogs {
   width: 355px;
   float: left;
   margin-left: 20px; }
-  #member_dogs #dog_id {
+  #member_dogs #dog_id, #event_dogs #dog_id {
     width: 200px;
     height: 20px;
     font-size: 16px;
     margin-top: 2px; }
-  #member_dogs input[name="commit"] {
+  #member_dogs input[name="commit"], #event_dogs input[name="commit"] {
     float: right; }
 
-.admin-dogs-list {
+.admin-dogs-list, .member-dog-list {
   list-style: none;
   padding: 0;
   margin-bottom: 20px; }
-  .admin-dogs-list .dog {
+  .admin-dogs-list .dog, .member-dog-list .dog {
     overflow: auto;
     padding: 5px 2px 5px 10px; }
-    .admin-dogs-list .dog .name {
+    .admin-dogs-list .dog .name, .member-dog-list .dog .name {
       font-size: 14px;
       line-height: 25px; }
-    .admin-dogs-list .dog.odd {
+    .admin-dogs-list .dog.odd, .member-dog-list .dog.odd {
       background-color: #EAEAEA; }
-    .admin-dogs-list .dog.even {
+    .admin-dogs-list .dog.even, .member-dog-list .dog.even {
       background-color: #fff; }
-    .admin-dogs-list .dog form {
+    .admin-dogs-list .dog form, .member-dog-list .dog form {
       float: right; }

@@ -25,6 +25,25 @@
       max-width: 620px;
     }
   }
+  .event_members {
+    .event_member_listing {
+      form {
+        margin: 0;
+      }
+      ul {
+        margin: 0px 0px 0px 30px;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .event_member_dog_list li{
+        form, div {
+          display: inline;
+        }
+        
+      } 
+    }
+  }
 }
 
 .events {

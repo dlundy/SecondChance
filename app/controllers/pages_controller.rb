@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     #   Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
     # end
     if params[:search_text].present? 
-      @dogs = Dog.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
+      @dogs = Dog.active.search(params[:search_text].downcase).paginate({:page => dpage, :per_page => 12})
     else  
       @dogs = Dog.active.paginate({:page => dpage, :per_page => 12})
     end

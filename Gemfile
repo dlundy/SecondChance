@@ -39,6 +39,7 @@ end
 group :development, :test do
   # gem 'webrat'
    gem 'mongrel', '>= 1.2.0.pre2'
+   gem 'log_buddy'
 end
 
 # ADDITIONAL REFINERY ENGINES:

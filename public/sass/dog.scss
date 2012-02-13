@@ -4,6 +4,7 @@
 .dog-title {
   h1 {
     margin: 0;
+    display: inline;
   }
   h2, h3 {
     font-weight: normal;
@@ -11,6 +12,13 @@
     line-height: 32px;
   }
   margin-bottom: 10px;
+  div {
+    display: inline;
+  }
+  form {
+    display: inline;
+    margin: 0px;
+  }
 }
 
 .dog-info {

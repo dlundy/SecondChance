@@ -16,6 +16,14 @@
   color: #444; }
 .event .description img {
   max-width: 620px; }
+.event .event_members .event_member_listing form {
+  margin: 0; }
+.event .event_members .event_member_listing ul {
+  margin: 0px 0px 0px 30px; }
+.event .event_members .event_member_listing li {
+  margin-bottom: 5px; }
+.event .event_members .event_member_listing .event_member_dog_list li form, .event .event_members .event_member_listing .event_member_dog_list li div {
+  display: inline; }
 
 .events h3 {
   font-size: 24px;

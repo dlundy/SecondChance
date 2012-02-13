@@ -3,6 +3,7 @@
 
 - content_for :body_content_left do
   #member_data
+    = link_to 'Volunteer Index', members_path
     %section
       = link_to 'Update Volunteer Profile', edit_member_path(@member)
     %section

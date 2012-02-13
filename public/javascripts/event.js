@@ -4,13 +4,13 @@ jQuery(function(){
 
 var Event = function(){
   
-  var eventAddDogsDiv;
+  // var eventAddDogsDiv;
   var eventAddDogLink; 
   var eventRemoveDogLink;
   return {
     
     init:function(){
-      eventAddDogsDiv = jQuery('#event_add_dogs_div');
+      // eventAddDogsDiv = jQuery('#event_add_dogs_div');
       eventAddDogLink = jQuery('.event_add_dog_link');
       eventAddDogLink.live('click', Event.addDogForm);
       eventRemoveDogLink = jQuery('.event_dog_remove_link');
@@ -42,16 +42,15 @@ var Event = function(){
     
     addDog:function(){
       var myForm = jQuery(this);
-      jQuery('<div class="in_progress"></div>').insertAfter(myForm);
       var memberEventListingDiv = myForm.closest('.member_event_listing_div');
       var memberEventDogList = memberEventListingDiv.children('ul.member_event_dog_list');
-      jQuery.ajax({
+      myForm.remove();
+			jQuery.ajax({
         url: myForm.attr('action') + '.json',
         type: 'post',
         data: myForm.serialize(),
         success:function(response){
-          myForm.children('.in_progress').remove();
-          var newDogListItems = '';
+					var newDogListItems = '';
           jQuery(response['dogs']).each(function(idx, dog){
             var eventMemberId = myForm.attr('action').match(/\d/)[0];
             var removeLink = '<a href="javascript:void(0)" class="event_dog_remove_link" data-event-member-id="' + eventMemberId + '" data-dog-id="' + dog['dog']['id'] + '">Remove</a>'
@@ -62,7 +61,6 @@ var Event = function(){
           if(response['all_dogs'] == true){
             eventAddDogLink.remove();
           }
-          myForm.remove();
         }
       });
       return false;
@@ -76,7 +74,10 @@ var Event = function(){
         data: {event_member_dog_id: myLink.attr('data-event-member-dog-id')},
         success:function(){
           myLink.closest('li').remove();
-          // TODO: add 'add dog' link back, if it has been removed
+          if(jQuery('.event_add_dog_link').length < 1){
+						
+					}
+}
         }
       })
     }

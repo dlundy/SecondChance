@@ -1,0 +1,15 @@
+= render :partial => "form"
+
+#event_dogs
+  %h2 Current Dogs
+  %ul.admin-dogs-list
+    - @event.dogs.each do |dog|
+      %li.dog{:class => cycle('odd', 'even')}
+        %span.name
+          = dog['dog_name']
+        / =button_to('Remove', remove_dog_admin_member_path(@member, :dog_id => dog['dog_id']))
+/  = form_tag add_dog_admin_member_path(@member) do 
+/    .field
+/      = select_tag :dog_id, options_for_select(@member.available_dogs.map{|d| [d.name, d.id]})
+/      = submit_tag 'Add Dog'
+
