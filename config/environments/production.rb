@@ -36,6 +36,7 @@ SecondChance::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = ENV['SC_HOSTNAME']
 
   # Enable threaded mode
   # config.threadsafe!
@@ -51,3 +52,4 @@ Refinery.rescue_not_found = true
 # When true will use Amazon's Simple Storage Service on your production machine
 # instead of the default file system for resources and images
 Refinery.s3_backend = !(ENV['S3_KEY'].nil? || ENV['S3_SECRET'].nil?)
+
