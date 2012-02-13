@@ -1,10 +1,10 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(member) -%>">
   <span class='title'>
-    <%= member.last_name.to_s + ' ' + member.first_name.to_s + ' - ' + member.email %>
+    <%= member.last_name.to_s + ', ' + member.first_name.to_s + ' -- ' + member.email + ' -- ' + member.phone.to_s %>
     <ul>
       <% member.dogs.order(:name).each do |dog| %>
-      <li><%= dog.name %></li>
-    <% end %>
+        <li><%= dog.name %></li>
+      <% end %>
     </ul>
     <span class="preview">&nbsp;</span>
   </span>

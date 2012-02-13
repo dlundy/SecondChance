@@ -15,6 +15,9 @@ gem 'nokogiri'
 gem 'fog' # we need it for refinerycms-images
 gem 'refinerycms'
 gem 'jquery-rails', '>= 1.0.12'
+gem 'log_buddy'
+
+
 
 group :production do 
   gem 'thin'
@@ -39,7 +42,6 @@ end
 group :development, :test do
   # gem 'webrat'
    gem 'mongrel', '>= 1.2.0.pre2'
-   gem 'log_buddy'
 end
 
 # ADDITIONAL REFINERY ENGINES:

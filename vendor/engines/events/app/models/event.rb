@@ -6,7 +6,7 @@ class Event < ActiveRecord::Base
   
   before_validation :find_gmap_coords
   
-  has_many :event_members
+  has_many :event_members, :dependent => :destroy
   has_many :members, :through => :event_members 
   has_many :event_member_dogs, :through => :event_members
   

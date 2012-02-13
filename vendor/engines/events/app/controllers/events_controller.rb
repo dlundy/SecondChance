@@ -14,7 +14,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_member = @event.event_members.where(:member_id => current_member.id).first if current_member
     @dogs_to_display = (current_member ?  current_member.dogs - @event_member.dogs : 0) if @event_member 
-    d {@dogs_to_display}
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @event in the line below:
     present(@page)
