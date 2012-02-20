@@ -1,0 +1,4 @@
+%ul
+  - if Admin::MembersController.searchable?
+    %li
+      = render :partial => "/shared/admin/search", :locals => {:url => admin_members_path}

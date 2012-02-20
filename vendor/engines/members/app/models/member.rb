@@ -12,8 +12,14 @@ class Member < ActiveRecord::Base
   
   image_accessor :profile_image
   
+  before_destroy :update_dogs
+  
   def attending_event?(event)
     event.members.include?(self)
+  end
+  
+  def confirmed?
+    !confirmed_at.nil?
   end
   
   def available_dogs
@@ -24,5 +30,10 @@ class Member < ActiveRecord::Base
       Dog.active.order(:name)
     end
   end
+  
+  def update_dogs
+    dogs.each{|d| d.update_attribute(:member_id, nil)}
+  end
+    
   
 end

@@ -4,6 +4,8 @@
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :members, :except => :show do
       member do
+        post :confirm
+        post :block
         post :add_dog
         post :remove_dog
       end

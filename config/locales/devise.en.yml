@@ -14,7 +14,7 @@ en:
   devise:
     signup: 
       member:
-        inactive_signed_up: 'Thanks for signing up.  An email has been sent to you with a confirmation link.  You must confirm your email address before signing in.'
+        inactive_signed_up: 'Thanks for signing up.  An email has been sent to you, explaining the confirmation process.  You must confirm your email address before signing in.'
     login:
       member:
         signed_in: 'Sign in successful.'
@@ -22,7 +22,7 @@ en:
     failure:
       already_authenticated: 'You are already signed in.'
       unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
+      unconfirmed: 'You have to confirm your account with a Second Chance staff member before logging in.'
       locked: 'Your account is locked.'
       invalid: 'Invalid email or password.'
       invalid_token: 'Invalid authentication token.'

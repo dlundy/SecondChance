@@ -3,6 +3,24 @@ module Admin
 
     crudify :member, :title_attribute => 'email', :xhr_paging => true
     
+    def confirm
+      member = Member.find(params[:id])
+      if member.update_attribute(:confirmed_at, Time.zone.now)
+        render :json => {:result => 'success'}
+      else
+        render :json => {:result => 'fail'}
+      end
+    end
+    
+    def block
+      member = Member.find(params[:id])
+      if member.update_attribute(:confirmed_at, nil)
+        render :json => {:result => 'success'}
+      else
+        render :json => {:result => 'fail'}
+      end
+    end
+    
     def add_dog
       member = Member.find(params[:id])
       dog = Dog.find(params[:dog_id])

@@ -1,0 +1,13 @@
+%table
+  %tr
+    %th Last Name
+    %th First Name
+    %th Email
+    %th Phone
+    %th Dogs
+    %th Actions
+  / %ul#sortable_list
+  = render :partial => 'member', :collection => @members
+
+  = render :partial => "/shared/admin/sortable_list",
+         :locals => {:continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true}

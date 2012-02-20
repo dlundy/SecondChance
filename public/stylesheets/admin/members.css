@@ -32,3 +32,8 @@
       background-color: #fff; }
     .admin-dogs-list .dog form, .member-dog-list .dog form {
       float: right; }
+
+.pagination_container table {
+  width: 100%; }
+.pagination_container td {
+  padding: 3px; }

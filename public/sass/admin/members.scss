@@ -41,3 +41,17 @@
     }
   }
 }
+
+
+.pagination_container {
+  table {
+    width: 100%;
+  }
+  td {
+    padding: 3px;
+  }
+  // the following rule is from bootstrap.  how would we import it or a variable containing the rule ?
+  // table tr + tr td {
+  //  border-top: 1px solid #DDD;
+  // }
+}
