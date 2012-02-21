@@ -5,7 +5,6 @@ class CreateDogPhotos < ActiveRecord::Migration
       t.string :url
       t.string :size
       t.boolean :active
-      t.boolean :primary
       t.timestamps
     end
     add_index :dog_photos, :dog_id

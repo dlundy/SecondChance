@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120205232950) do
+ActiveRecord::Schema.define(:version => 20120221041700) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120205232950) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "rescue_groups_key"
+    t.integer  "ordinal"
   end
 
   add_index "dog_photos", ["dog_id"], :name => "index_dog_photos_on_dog_id"

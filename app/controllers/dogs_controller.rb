@@ -46,15 +46,5 @@ class DogsController < ApplicationController
     end
   end
   
-  def deactivate
-    dog = Dog.find(params[:id])
-    if dog.update_attribute(:active, false)
-      flash[:notice] = "De-activated #{dog.name} in our database."
-    else
-      flash[:error] = "There was a problem de-activating #{dog.name} in our database"
-    end
-    redirect_to root_path
-  end
-  
 end
 

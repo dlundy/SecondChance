@@ -9,7 +9,6 @@ SecondChance::Application.routes.draw do
   resources :dog_photos
   resources :dogs do
     collection { post :import_dog_data }
-    member { post :deactivate }
   end
   
   resources :event_members, :only => :show do
