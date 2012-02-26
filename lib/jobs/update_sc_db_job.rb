@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # require 'rescue_groups_dot_org_client'
 # class UpdateScDbJob < Struct.new(:limit, :opts)
 #   
