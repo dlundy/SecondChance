@@ -27,9 +27,14 @@ class Dog < ActiveRecord::Base
     dog_photos.regulars.order(:ordinal).first
   end
 
+#   def primary_thumb_url
+#     thumb = dog_photos.thumbs.where("dog_photos.url is not null").order(:ordinal).first
+#     thumb ? thumb.url : nil
+#     dog_photos.where(:primary => true).first || dog_photos.order('created_at').first
+#   end
+
   def primary_thumb_url
-    thumb = dog_photos.thumbs.where("dog_photos.url is not null").order(:ordinal).first
-    thumb ? thumb.url : nil
+    primary_photo.image.process(:thumb, '120x120#n').url
   end
 
 end
