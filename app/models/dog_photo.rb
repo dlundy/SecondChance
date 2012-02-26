@@ -4,7 +4,7 @@ class DogPhoto < ActiveRecord::Base
   image_accessor :image
 
   def primary?
-    primary
+    rescue_groups_key =~ /1/
   end
 
 end

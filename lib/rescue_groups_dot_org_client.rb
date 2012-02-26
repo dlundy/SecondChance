@@ -55,7 +55,7 @@ class RescueGroupsDotOrgClient
   end
   
   def self.get_photo_data(dog_data)
-    dog_data.select{|k,v| k.to_s =~ /pic/}
+    dog_data.select{|k,v| k.to_s =~ /pic\d/ }
   end
   
   def self.set_photos!(dog, photo_data)
@@ -63,14 +63,14 @@ class RescueGroupsDotOrgClient
     photo_data.each do |key, value|
       size = (key.to_s =~ /tmn/ ? 'thumb' : 'regular')
       order = key.to_s.match(/\d/)[0].to_i
-      dog.dog_photos << DogPhoto.new({:rescue_groups_key => key.to_s, :url => value, :size => size, :ordinal => order})
+      dog.dog_photos << DogPhoto.new({:rescue_groups_key => key.to_s, :image_url => value, :ordinal => order})
     end
   end
   
   def self.update_photos!(dog, photo_data)
     photo_data.each do |key, value|
       order = key.to_s.match(/\d/)[0].to_i
-      dog.dog_photos.where(:rescue_groups_key => key.to_s).first.update_attributes({:url => value, :ordinal => order})
+      dog.dog_photos.where(:rescue_groups_key => key.to_s).first.update_attributes({:image_url => value, :ordinal => order})
     end
   end
   

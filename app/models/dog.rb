@@ -1,7 +1,7 @@
 class Dog < ActiveRecord::Base
   
   belongs_to :member
-  has_many :dog_photos
+  has_many :dog_photos, :dependent => :destroy
   
   validates :rescue_groups_id, :presence => true, :uniqueness => true
   attr_accessible :active, :age, :breed, :colors, :description, :name, :notes, :position, :rescue_groups_id, :member_id, :sex, :title, :weight, :weight_unit
@@ -24,7 +24,7 @@ class Dog < ActiveRecord::Base
   end
 
   def primary_photo
-    dog_photos.regulars.order(:ordinal).first
+    dog_photos.order(:ordinal).first
   end
 
 #   def primary_thumb_url

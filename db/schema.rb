@@ -10,36 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221041700) do
-  
-  ## No Delayed Jobs for now....
-  # create_table "delayed_jobs", :force => true do |t|
-  #   t.integer  "priority",   :default => 0
-  #   t.integer  "attempts",   :default => 0
-  #   t.text     "handler"
-  #   t.text     "last_error"
-  #   t.datetime "run_at"
-  #   t.datetime "locked_at"
-  #   t.datetime "failed_at"
-  #   t.string   "locked_by"
-  #   t.datetime "created_at"
-  #   t.datetime "updated_at"
-  # end
-  # add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+ActiveRecord::Schema.define(:version => 20120226205544) do
 
   create_table "dog_photos", :force => true do |t|
     t.integer  "dog_id"
-    t.boolean  "primary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "rescue_groups_key"
     t.integer  "ordinal"
     t.string   "image_uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "dog_photos", ["dog_id"], :name => "index_dog_photos_on_dog_id"
 
   create_table "dogs", :force => true do |t|
+    t.integer  "member_id"
     t.integer  "rescue_groups_id"
     t.string   "title"
     t.string   "name"
@@ -56,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.boolean  "active",           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "member_id"
   end
 
   add_index "dogs", ["breed"], :name => "index_dogs_on_breed"
@@ -86,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
   add_index "event_members", ["member_id"], :name => "index_event_members_on_member_id"
 
   create_table "events", :force => true do |t|
+    t.string   "main_image_uid"
     t.string   "title"
     t.datetime "start_at"
     t.datetime "end_at"
@@ -98,16 +83,18 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.integer  "zipcode"
     t.string   "email"
     t.string   "website"
+    t.text     "description"
+    t.text     "member_notes"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "main_image_uid"
-    t.text     "description"
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
 
   create_table "images", :force => true do |t|
+    t.string   "image_uid"
+    t.string   "image_ext"
     t.string   "image_mime_type"
     t.string   "image_name"
     t.integer  "image_size"
@@ -115,8 +102,6 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.integer  "image_height"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_uid"
-    t.string   "image_ext"
   end
 
   create_table "inquiries", :force => true do |t|
@@ -124,9 +109,9 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.string   "email"
     t.string   "phone"
     t.text     "message"
+    t.boolean  "spam",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "spam",       :default => false
   end
 
   add_index "inquiries", ["id"], :name => "index_inquiries_on_id"
@@ -169,10 +154,10 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.integer  "zipcode"
     t.string   "phone"
     t.string   "description"
+    t.string   "profile_image_uid"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "profile_image_uid"
   end
 
   add_index "members", ["email"], :name => "index_members_on_email"
@@ -257,14 +242,16 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.datetime "updated_at"
   end
 
+  add_index "rescue_groups_pulls", ["id"], :name => "index_rescue_groups_pulls_on_id"
+
   create_table "resources", :force => true do |t|
     t.string   "file_mime_type"
     t.string   "file_name"
     t.integer  "file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "file_uid"
     t.string   "file_ext"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
@@ -320,8 +307,6 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.string   "email",                :null => false
     t.string   "encrypted_password",   :null => false
     t.string   "persistence_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "perishable_token"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -331,6 +316,8 @@ ActiveRecord::Schema.define(:version => 20120221041700) do
     t.string   "remember_token"
     t.string   "reset_password_token"
     t.datetime "remember_created_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id"
