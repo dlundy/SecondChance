@@ -19,3 +19,27 @@
   }
 }
 
+@mixin dogs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  .dog {
+    overflow: auto;
+    padding: 5px 2px 5px 10px;
+    .name {
+      font-size: 14px;
+      line-height: 25px;
+    }
+    &.odd {
+      background-color: #EAEAEA;
+    }
+    &.even {
+      background-color: #fff;
+    }
+    form {
+      float: right;
+      margin: 0px;
+    }
+  }
+}
+

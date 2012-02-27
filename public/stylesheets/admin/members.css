@@ -16,22 +16,23 @@
   #member_dogs input[name="commit"], #event_dogs input[name="commit"] {
     float: right; }
 
-.admin-dogs-list, .member-dog-list {
+.admin-dogs-list {
   list-style: none;
   padding: 0;
   margin-bottom: 20px; }
-  .admin-dogs-list .dog, .member-dog-list .dog {
+  .admin-dogs-list .dog {
     overflow: auto;
     padding: 5px 2px 5px 10px; }
-    .admin-dogs-list .dog .name, .member-dog-list .dog .name {
+    .admin-dogs-list .dog .name {
       font-size: 14px;
       line-height: 25px; }
-    .admin-dogs-list .dog.odd, .member-dog-list .dog.odd {
+    .admin-dogs-list .dog.odd {
       background-color: #EAEAEA; }
-    .admin-dogs-list .dog.even, .member-dog-list .dog.even {
+    .admin-dogs-list .dog.even {
       background-color: #fff; }
-    .admin-dogs-list .dog form, .member-dog-list .dog form {
-      float: right; }
+    .admin-dogs-list .dog form {
+      float: right;
+      margin: 0px; }
 
 .pagination_container table {
   width: 100%; }

@@ -1,0 +1,7 @@
+@import 'mixins.scss';
+
+.event-dogs-list { @include dogs-list; }
+
+.at_dog_capacity {
+  color: red;
+}

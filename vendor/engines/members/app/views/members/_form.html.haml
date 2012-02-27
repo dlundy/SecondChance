@@ -1,7 +1,7 @@
 #member_profile_form
   - if @member.profile_image
     .clearfix
-      = image_tag(@member.profile_image.url)
+      = image_tag(@member.profile_image.thumb('300x300').url)
   - form_for @member, :html => {:multipart => true} do |f|  
     .clearfix
       = f.label :profile_image, 'Upload New Image'
@@ -10,11 +10,17 @@
     .clearfix
       = f.label :email, 'Email'
       .input
-        = f.text_field :email
+        = f.text_field :email 
+        %span.privatize
+          = f.check_box :private_email
+          Do not share Email with other Volunteers
     .clearfix
       = f.label :phone, 'Phone'
       .input
         = f.text_field :phone
+        %span.privatize
+          = f.check_box :private_phone
+          Do not share Phone with other Volunteers
     .clearfix
       = f.label :first_name, 'First Name'
       .input
@@ -27,6 +33,9 @@
       = f.label :address_1, 'Address 1'
       .input
         = f.text_field :address_1
+        %span.privatize
+          = f.check_box :private_address_1
+          Do not share Address with other Volunteers
     .clearfix
       = f.label :address_2, 'Address 2'
       .input

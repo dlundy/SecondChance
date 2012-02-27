@@ -7,11 +7,7 @@
     %section
       = link_to 'Update Volunteer Profile', edit_member_path(@member)
     %section
-      = image_tag(@member.profile_image.url) if @member.profile_image
-    %section
-      %h3 Email
-      %p 
-        = raw @member.email 
+      = image_tag(@member.profile_image.thumb('300x300').url) if @member.profile_image
     %section
       %h3 First Name
       %p 
@@ -21,9 +17,23 @@
       %p 
         = raw @member.last_name
     %section
+      %h3 Email
+      %p 
+        = raw @member.email
+        - if @member.private_email
+          %span.privatized Not Shared with other Volunteers
+    %section
+      %h3 Phone
+      %p 
+        = raw @member.phone
+        - if @member.private_phone
+          %span.privatized Not Shared with other Volunteers
+    %section
       %h3 Address 1
       %p 
         = raw @member.address_1
+        - if @member.private_address_1
+          %span.privatized Not Shared with other Volunteers
     %section
       %h3 Address 2
       %p 
@@ -40,10 +50,6 @@
       %h3 Zipcode
       %p 
         = raw @member.zipcode
-    %section
-      %h3 Phone
-      %p 
-        = raw @member.phone
   #member_dogs
     %h3 Current Dogs
     %ul

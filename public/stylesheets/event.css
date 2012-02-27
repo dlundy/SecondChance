@@ -39,3 +39,36 @@
   line-height: 28px; }
 .events .btn.details {
   margin-top: 8px; }
+
+.event-dog-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px; }
+  .event-dog-list .dog {
+    overflow: auto;
+    padding: 5px 2px 5px 10px; }
+    .event-dog-list .dog .name {
+      font-size: 14px;
+      line-height: 25px; }
+    .event-dog-list .dog.odd {
+      background-color: #EAEAEA; }
+    .event-dog-list .dog.even {
+      background-color: #fff; }
+    .event-dog-list .dog form {
+      float: right;
+      margin: 0px; }
+
+.event-member-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px; }
+  .event-member-list.odd {
+    background-color: #EAEAEA; }
+  .event-member-list.even {
+    background-color: #fff; }
+  .event-member-list form {
+    float: right;
+    margin: 0px; }
+
+.at_dog_capacity {
+  color: red; }

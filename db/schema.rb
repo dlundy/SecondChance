@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226205544) do
+ActiveRecord::Schema.define(:version => 20120227200915) do
 
   create_table "dog_photos", :force => true do |t|
     t.integer  "dog_id",            :null => false
@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
   add_index "dogs", ["name"], :name => "index_dogs_on_name"
   add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
 
-  create_table "event_dogs", :id => false, :force => true do |t|
+  create_table "dogs_events", :id => false, :force => true do |t|
     t.integer "event_id", :null => false
     t.integer "dog_id",   :null => false
   end
 
-  add_index "event_dogs", ["dog_id"], :name => "index_event_dogs_on_dog_id"
-  add_index "event_dogs", ["event_id"], :name => "index_event_dogs_on_event_id"
+  add_index "dogs_events", ["dog_id"], :name => "index_event_dogs_on_dog_id"
+  add_index "dogs_events", ["event_id"], :name => "index_event_dogs_on_event_id"
 
   create_table "event_members", :force => true do |t|
     t.integer  "event_id",    :null => false
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "private",        :default => false
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
@@ -138,8 +139,8 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
   add_index "labels", ["id"], :name => "index_labels_on_id"
 
   create_table "members", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "password_salt"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -159,6 +160,9 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "private_email",          :default => false
+    t.boolean  "private_phone",          :default => false
+    t.boolean  "private_address_1",      :default => false
   end
 
   add_index "members", ["email"], :name => "index_members_on_email"

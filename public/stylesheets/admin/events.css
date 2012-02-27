@@ -1,0 +1,20 @@
+.event-dogs-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px; }
+  .event-dogs-list .dog {
+    overflow: auto;
+    padding: 5px 2px 5px 10px; }
+    .event-dogs-list .dog .name {
+      font-size: 14px;
+      line-height: 25px; }
+    .event-dogs-list .dog.odd {
+      background-color: #EAEAEA; }
+    .event-dogs-list .dog.even {
+      background-color: #fff; }
+    .event-dogs-list .dog form {
+      float: right;
+      margin: 0px; }
+
+.at_dog_capacity {
+  color: red; }

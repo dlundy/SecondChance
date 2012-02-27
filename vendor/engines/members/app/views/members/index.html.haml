@@ -11,8 +11,10 @@
         %tr{:class => cycle('odd', 'even')}
           %td= member.first_name.to_s
           %td= member.last_name.to_s
-          %td= member.email 
-          %td= member.phone.to_s
+          %td
+            = member.email unless member.private_email 
+          %td
+            = member.phone.to_s unless member.private_phone
     %section
       = link_to 'Back', member_path(current_member)
     %section

@@ -1,9 +1,12 @@
+-content_for :stylesheets do
+  -stylesheet_link_tag 'admin/events'
+
 = render :partial => "form"
 
 #event_dogs
   %a{:name => 'current_dogs'}
   %h2 Current Dogs
-  %ul.admin-dogs-list
+  %ul.event-dogs-list
     - @event.dogs.each do |dog|
       %li.dog{:class => cycle('odd', 'even')}
         %span.name

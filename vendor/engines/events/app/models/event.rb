@@ -31,11 +31,6 @@ class Event < ActiveRecord::Base
     self.lng = gmap_lng
   end
   
-  # def dogs
-  #   event_member_dogs.select('dogs.id as dog_id, dogs.name as dog_name').joins('INNER JOIN dogs ON dogs.id = event_member_dogs.dog_id').all +
-  #   non_member_dogs.select('dogs.id as_dog_id, dogs.name as dog_name').all
-  # end
-  
   def available_dogs
     return Dog.active if dogs.empty?
     Dog.active.where("id NOT IN (#{dogs.map{|d| d['id']}.join(',')})")

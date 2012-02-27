@@ -1,11 +1,12 @@
 -content_for :javascripts do
   =javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false"
   =javascript_include_tag "google_map"
+  =javascript_include_tag "event"
 
 .event
   %h1=@event.title
-  %h2=raw event_inline_date(@event)
-
+  %h2=raw event_inline_date(@event)  
+  
   .row
     .span4
       -if @event.main_image.present?
@@ -13,46 +14,61 @@
       -else
         = image_tag("http://placehold.it/300x200")
       #event_map{'data-title'.to_sym => @event.title, 'data-lat'.to_sym => @event.lat, 'data-lng'.to_sym => @event.lng}
+    
+    .span8
+      .share
+        -event_url = event_url(@event)
+        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a><br />
+        <div class="fb-like" data-href="#{u event_url}" data-send="true" data-width="450" data-show-faces="true"></div>
+  
     .span8
       = raw event_address(@event)
-      .description
-        = raw @event.description
+      - unless current_member
+        .description
+          = raw @event.description
 
       - if current_member
         .rsvp
           - if current_member.attending_event?(@event)
             -form_for EventMember.new, :url => cancel_rsvp_event_path(@event) do |f|
-              =f.submit 'Attending (click to cancel RSVP)', :class => 'btn success'  
-          - elsif Time.zone.now > (@event.start_time - Event::HOUR_RSVP_LIMIT)
+              =f.submit 'You Are Attending (click to cancel RSVP)', :class => 'btn success'  
+          - elsif Time.zone.now > (@event.start_at - Event::HOUR_RSVP_LIMIT)
             .rsvp_not_allowed It is past the cut-off time to RSVP.  Please contact the event administrator if you need to RSVP.
           -elsif @event.at_member_capacity?
             .at_member_capacity Sorry, this event has reached it's limit for Volunteers.  
           - else
             -form_for EventMember.new, :url => rsvp_event_path(@event) do |f|
               =f.submit 'RSVP', :class => 'btn danger'
-    
-          .event_members
-            %h3 Attending Volunteers
-            -@event.members.each do |member|
-              .event_member_listing
-                = member.first_name.to_s + ' ' + member.last_name.to_s + ' - ' + member.email.to_s
-                - if @event.at_dog_capacity?
-                  .at_dog_capacity Sorry we have reached our limit for dogs.  You cannot bring any more dogs.
-                - else
-                  - if (member == current_member) && (@dogs_to_display.size > 0)
-                    = form_tag add_dog_event_path(@event) do
-                      = select_tag :dog_id, options_for_select(@dogs_to_display.map{|d| [d.name, d.id]})
-                      = submit_tag 'Add Dog', :class => 'btn' 
-                / todo update these class names to make more sense
-                %ul.event_member_dog_list
-                  - @event_dogs.each do |dog|
-                    %li 
-                      = link_to dog.name, dog_path(dog)
-                      - if current_member.dogs.include?(dog)
-                        = button_to('Remove', remove_dog_event_path(@event, :dog_id => dog.id), :class => 'btn danger')
-        .event_member_notes= @event.member_notes                    
+      
+        %h3 Attending Volunteers
+        %ul.event-member-list
+          -@event.members.each do |member|
+            %li{:class => cycle('odd', 'even')}
+              = member.first_name.to_s + ' ' + member.last_name.to_s + ' - ' + member.email.to_s
+              - if @event.at_dog_capacity?
+                .at_dog_capacity Sorry we have reached our limit for dogs.  You cannot bring any more dogs.
+              - else
+                - if (member == current_member) && (@dogs_to_display.size > 0)
+                  = form_tag add_dog_event_path(@event) do
+                    = select_tag :dog_id, options_for_select(@dogs_to_display.map{|d| [d.name, d.id]})
+                    = submit_tag 'Add Dog', :class => 'btn' 
+        / todo update these class names to make more sense
+        %h3 Attending Dogs
+        %ul.event-dog-list
+          - @event.dogs.each do |dog|
+            %li.dog{:class => cycle('odd', 'even')} 
+              %span.name
+                = link_to dog.name, dog_path(dog)
+                - if current_member.dogs.include?(dog)
+                  = button_to('Remove', remove_dog_event_path(@event, :dog_id => dog.id), :class => 'btn danger')
+        .event_member_notes
+          %h3 Volunteer Notes
+          = raw @event.member_notes                    
       - else 
         .attending_dogs
-          /  this is where we will list the dogs that are attending along with thumbnails for the public view of the page
-
+          %h3 Featuring Our Wonderful Buddies
+          %ul.dogs-list
+            - @event.dogs.each do |dog|
+              %li
+                = link_to(image_tag(dog.primary_thumb_url), dog_path(dog), {:title => dog.name, 'data-content'.to_sym => popover_text(dog)})
 .clearfix

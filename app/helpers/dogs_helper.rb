@@ -10,4 +10,8 @@ module DogsHelper
     </ul>"
   end
   
+  def popover_text(dog)
+    raw "#{dog.breed} #{dog.sex} #{dog.age}"
+  end
+  
 end

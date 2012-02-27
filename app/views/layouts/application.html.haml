@@ -1,10 +1,13 @@
 -content_for :stylesheets do
-  -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer', 'event'
+  -stylesheet_link_tag 'bootstrap', 'base', 'home', 'dogs-viewer', 'event', 'member'
 
 -content_for :before_javascript_libraries do
   =javascript_include_tag "jquery.min", "jquery_ujs", "jquery.tweet", "underscore-min", "jquery.address"
   =javascript_include_tag 'modernizr-min'
   =javascript_include_tag "bootstrap/bootstrap-modal"
+  =javascript_include_tag "bootstrap/bootstrap-tooltip"
+  =javascript_include_tag "bootstrap/bootstrap-twipsy"
+  =javascript_include_tag "bootstrap/bootstrap-popover"
   =javascript_include_tag "application"
 
 !!! 5

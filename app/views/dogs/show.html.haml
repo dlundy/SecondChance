@@ -47,7 +47,7 @@
           .span2= raw @dog.color
   .span7
     .share
-      -dog_url = url_for(:action => 'show', :controller => 'dogs', :id => @dog.id, :only_path => false)
+      -dog_url = dog_url(@dog)
       <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
       <div class="fb-like" data-href="#{u dog_url}" data-send="true" data-width="450" data-show-faces="true"></div>
     %hr

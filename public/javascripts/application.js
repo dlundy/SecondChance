@@ -12,5 +12,6 @@ $(document).ready(function($){
 
   $('#login_form').modal({
     'backdrop' : true
-  })
+  })	
+
 });

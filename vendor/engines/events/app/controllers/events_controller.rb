@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     @dogs_to_display = current_member.dogs - @event.dogs if current_member
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @event in the line below:
-    present(@page)
+    present(@event)
   end
   
   def rsvp
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
   
   def remove_dog
     event = Event.find(params[:id])
-    dog = Dog.find(params[:id])
+    dog = Dog.find(params[:dog_id])
     if event.dogs.delete(dog)
       flash[:notice] = "#{dog.name} was removed from the event"
     else

@@ -1,3 +1,5 @@
+@import 'mixins.scss';
+
 #member_form {
   width: 560px;
   padding-right: 20px;
@@ -19,28 +21,7 @@
   }
 }
 
-.admin-dogs-list, .member-dog-list {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-  .dog {
-    overflow: auto;
-    padding: 5px 2px 5px 10px;
-    .name {
-      font-size: 14px;
-      line-height: 25px;
-    }
-    &.odd {
-      background-color: #EAEAEA;
-    }
-    &.even {
-      background-color: #fff;
-    }
-    form {
-      float: right;
-    }
-  }
-}
+.admin-dogs-list { @include dogs-list; }
 
 
 .pagination_container {
