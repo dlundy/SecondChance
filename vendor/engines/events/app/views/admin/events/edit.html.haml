@@ -1,15 +1,18 @@
 = render :partial => "form"
 
 #event_dogs
+  %a{:name => 'current_dogs'}
   %h2 Current Dogs
   %ul.admin-dogs-list
     - @event.dogs.each do |dog|
       %li.dog{:class => cycle('odd', 'even')}
         %span.name
-          = dog['dog_name']
-        / =button_to('Remove', remove_dog_admin_member_path(@member, :dog_id => dog['dog_id']))
-/  = form_tag add_dog_admin_member_path(@member) do 
-/    .field
-/      = select_tag :dog_id, options_for_select(@member.available_dogs.map{|d| [d.name, d.id]})
-/      = submit_tag 'Add Dog'
+          = link_to(dog.name, dog_path(dog)) + ' ' + button_to('Remove', remove_dog_admin_event_path(@event, :dog_id => dog.id), :class => 'button confirm-delete')
+  - if @event.at_dog_capacity?
+    .at_dog_capacity You cannot add any more dogs.  The event has reached it's dog capacity.
+  - else
+    = form_tag add_dog_admin_event_path(@event) do 
+      .field
+        = select_tag :dog_id, options_for_select(@event.available_dogs.map{|d| [d.name, d.id]})
+        = submit_tag 'Add Dog'
 

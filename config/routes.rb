@@ -10,14 +10,7 @@ SecondChance::Application.routes.draw do
   resources :dogs do
     collection { post :import_dog_data }
   end
-  
-  resources :event_members, :only => :show do
-    member do 
-      post :add_dog
-      post :remove_dog
-    end
-  end
-  
+    
   # match '/adoption_application' => 'dog_application_instances#new'
   # resources :dog_application_instances
 

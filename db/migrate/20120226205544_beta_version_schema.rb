@@ -17,7 +17,7 @@ class BetaVersionSchema < ActiveRecord::Migration
     # add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
     create_table "dog_photos", :force => true do |t|
-      t.integer  "dog_id"
+      t.integer  "dog_id", :null => false
       t.string   "rescue_groups_key"
       t.integer  "ordinal"
       t.string   "image_uid"
@@ -52,17 +52,24 @@ class BetaVersionSchema < ActiveRecord::Migration
     add_index "dogs", ["name"], :name => "index_dogs_on_name"
     add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
 
-    create_table "event_member_dogs", :force => true do |t|
-      t.integer  "event_member_id"
-      t.integer  "dog_id"
-      t.datetime "created_at"
-      t.datetime "updated_at"
+    # create_table "event_member_dogs", :force => true do |t|
+    #   t.integer  "event_member_id"
+    #   t.integer  "dog_id"
+    #   t.datetime "created_at"
+    #   t.datetime "updated_at"
+    # end
+    # add_index "event_member_dogs", ["event_member_id"], :name => "index_event_member_dogs_on_event_member_id"
+
+    create_table "dogs_events", :id => false, :force => true do |t|
+      t.integer "dog_id", :null => false
+      t.integer "event_id", :null => false
     end
-    add_index "event_member_dogs", ["event_member_id"], :name => "index_event_member_dogs_on_event_member_id"
+    add_index "dogs_events", ["event_id"], :name => "index_dogs_events_on_event_id"
+    add_index "dogs_events", ["dog_id"], :name => "index_dogs_events_on_dog_id"
 
     create_table "event_members", :force => true do |t|
-      t.integer  "event_id"
-      t.integer  "member_id"
+      t.integer  "event_id", :null => false
+      t.integer  "member_id", :null => false
       t.string   "invite_hash"
       t.datetime "created_at"
       t.datetime "updated_at"
@@ -82,10 +89,13 @@ class BetaVersionSchema < ActiveRecord::Migration
       t.string   "city"
       t.string   "state"
       t.integer  "zipcode"
+      t.integer  "member_limit"
+      t.integer  "dog_limit"
       t.string   "email"
       t.string   "website"
       t.text     "description"
       t.text     "member_notes"
+      t.boolean  "private", :default => false
       t.integer  "position"
       t.datetime "created_at"
       t.datetime "updated_at"

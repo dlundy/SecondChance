@@ -18,29 +18,41 @@
       .description
         = raw @event.description
 
-      .rsvp
-        - if current_member
+      - if current_member
+        .rsvp
           - if current_member.attending_event?(@event)
             -form_for EventMember.new, :url => cancel_rsvp_event_path(@event) do |f|
-              =f.submit 'Attending (click to cancel RSVP)', :class => 'btn success'
+              =f.submit 'Attending (click to cancel RSVP)', :class => 'btn success'  
+          - elsif Time.zone.now > (@event.start_time - Event::HOUR_RSVP_LIMIT)
+            .rsvp_not_allowed It is past the cut-off time to RSVP.  Please contact the event administrator if you need to RSVP.
+          -elsif @event.at_member_capacity?
+            .at_member_capacity Sorry, this event has reached it's limit for Volunteers.  
           - else
             -form_for EventMember.new, :url => rsvp_event_path(@event) do |f|
               =f.submit 'RSVP', :class => 'btn danger'
-      
+    
           .event_members
             %h3 Attending Volunteers
             -@event.members.each do |member|
               .event_member_listing
                 = member.first_name.to_s + ' ' + member.last_name.to_s + ' - ' + member.email.to_s
-                - if (member == current_member) && (@dogs_to_display.size > 0)
-                  = form_tag add_dog_event_member_path(@event_member) do
-                    = select_tag :dog_id, options_for_select(@dogs_to_display.map{|d| [d.name, d.id]})
-                    = submit_tag 'Add Dog', :class => 'btn' 
-                - if (member == current_member) && @event_member && @event_member.dogs.present?
-                  %ul.event_member_dog_list
-                    - @event_member.event_member_dogs.each do |em_dog|
-                      %li 
-                        = em_dog.dog.name
-                        = button_to('Remove', remove_dog_event_member_path(@event_member, :em_dog_id => em_dog.id), :class => 'btn danger')
-                              
+                - if @event.at_dog_capacity?
+                  .at_dog_capacity Sorry we have reached our limit for dogs.  You cannot bring any more dogs.
+                - else
+                  - if (member == current_member) && (@dogs_to_display.size > 0)
+                    = form_tag add_dog_event_path(@event) do
+                      = select_tag :dog_id, options_for_select(@dogs_to_display.map{|d| [d.name, d.id]})
+                      = submit_tag 'Add Dog', :class => 'btn' 
+                / todo update these class names to make more sense
+                %ul.event_member_dog_list
+                  - @event_dogs.each do |dog|
+                    %li 
+                      = link_to dog.name, dog_path(dog)
+                      - if current_member.dogs.include?(dog)
+                        = button_to('Remove', remove_dog_event_path(@event, :dog_id => dog.id), :class => 'btn danger')
+        .event_member_notes= @event.member_notes                    
+      - else 
+        .attending_dogs
+          /  this is where we will list the dogs that are attending along with thumbnails for the public view of the page
+
 .clearfix

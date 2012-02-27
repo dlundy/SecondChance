@@ -23,7 +23,7 @@
 
     #thumb_photos
       %ul#thumbs_list.unstyled
-        - @dog.dog_photos.each do |photo|
+        - @dog.dog_photos.order(:ordinal).each do |photo|
           -unless photo.image.nil?
             %li{'data-full-photo-url'.to_sym => photo.image.process(:thumb, "400x450").url}
               %img{:src => photo.image.process(:thumb, "120x120#n").url, :class => (photo.primary? ? 'selected' : nil)}

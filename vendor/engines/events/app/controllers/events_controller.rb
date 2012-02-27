@@ -12,8 +12,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_member = @event.event_members.where(:member_id => current_member.id).first if current_member
-    @dogs_to_display = (current_member ?  current_member.dogs - @event_member.dogs : 0) if @event_member 
+    @dogs_to_display = current_member.dogs - @event.dogs if current_member
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @event in the line below:
     present(@page)
@@ -41,6 +40,31 @@ class EventsController < ApplicationController
     end
     redirect_to event_path(event)
   end
+  
+  def add_dog
+    event = Event.find(params[:id])
+    dog = Dog.find(params[:dog_id])
+    if event.dogs << dog 
+      flash[:notice] = "#{dog.name} has been added to the event"
+    else
+      flash[:error] = "There was a problem adding #{dog.name} to the event"
+    end
+    redirect_to event_path(event)
+  end
+  
+  def remove_dog
+    event = Event.find(params[:id])
+    dog = Dog.find(params[:id])
+    if event.dogs.delete(dog)
+      flash[:notice] = "#{dog.name} was removed from the event"
+    else
+      flash[:error] = "There was a problem removing #{dog.name} from the event"
+    end
+    redirect_to event_path(event)
+  end
+  
+  
+  
     
   protected
 

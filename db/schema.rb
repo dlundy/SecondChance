@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20120226205544) do
 
   create_table "dog_photos", :force => true do |t|
-    t.integer  "dog_id"
+    t.integer  "dog_id",            :null => false
     t.string   "rescue_groups_key"
     t.integer  "ordinal"
     t.string   "image_uid"
@@ -49,18 +49,17 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
   add_index "dogs", ["name"], :name => "index_dogs_on_name"
   add_index "dogs", ["rescue_groups_id"], :name => "index_dogs_on_rescue_groups_id"
 
-  create_table "event_member_dogs", :force => true do |t|
-    t.integer  "event_member_id"
-    t.integer  "dog_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "event_dogs", :id => false, :force => true do |t|
+    t.integer "event_id", :null => false
+    t.integer "dog_id",   :null => false
   end
 
-  add_index "event_member_dogs", ["event_member_id"], :name => "index_event_member_dogs_on_event_member_id"
+  add_index "event_dogs", ["dog_id"], :name => "index_event_dogs_on_dog_id"
+  add_index "event_dogs", ["event_id"], :name => "index_event_dogs_on_event_id"
 
   create_table "event_members", :force => true do |t|
-    t.integer  "event_id"
-    t.integer  "member_id"
+    t.integer  "event_id",    :null => false
+    t.integer  "member_id",   :null => false
     t.string   "invite_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -81,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20120226205544) do
     t.string   "city"
     t.string   "state"
     t.integer  "zipcode"
+    t.integer  "member_limit"
+    t.integer  "dog_limit"
     t.string   "email"
     t.string   "website"
     t.text     "description"

@@ -21,6 +21,16 @@
   </div>
   
   <div class='field'>
+    <%= f.label :member_limit -%>
+    <%= f.text_field :member_limit, :size => 3 -%>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :dog_limit -%>
+    <%= f.text_field :dog_limit, :size => 3 -%>
+  </div>
+  
+  <div class='field'>
     <%= f.label :main_image, 'Upload Image' %>
     <%= f.file_field :main_image %>
     <%= f.hidden_field :retained_main_image %>
@@ -30,6 +40,17 @@
     <%= f.label :description %>
     <%= f.text_area :description, :rows => 20, :class => 'wymeditor widest' %>
   </div>
+
+  <div class='field'>
+    <%= f.label :member_notes, 'Notes For Volunteers' %>
+    <%= f.text_area :member_notes, :rows => 20, :class => 'wymeditor widest' %>
+  </div>
+  
+  <div class='field'>
+    <%= f.label :private, 'Private Event ?' %>
+    <%= f.check_box :private %>
+  </div>
+  
 
   <div class='field'>
     <%= f.label :address_1 -%>
