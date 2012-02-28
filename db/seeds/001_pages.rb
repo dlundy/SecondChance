@@ -10,7 +10,7 @@ end
 page_position = -1
 
 home_page = Page.create(
-  :title => "Home",
+  :title => "Home Page",
   :deletable => false,
   :link_url => "/",
   :position => (page_position += 1)

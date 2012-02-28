@@ -18,8 +18,6 @@
     .span4.logo
       %a=image_tag("dog-logo.png")
     .span7.copy
-      / Maybe at some point hook up home page content to the hero so message can be customized
-      /= render :partial => "/shared/content_page"
       %p
         %span.emphasis Second Chance Dog Rescue
         is one of San Diego's largest and most successful non-profits, dedicated to saving homeless dogs.
@@ -66,7 +64,7 @@
               / maybe better served by having a separate "short description" field
               %p
                 =truncate(strip_tags(event.description), :length => 220, :separator => ' ')
-      = link_to "See More Events", "/events", :class => "btn right primary"
+      = link_to "See More Events", "/events", :class => "btn primary"
   .span4
     %h1 Follow Us
     .social-icons
@@ -74,4 +72,8 @@
       %a.fb-icon{:href => 'http://www.facebook.com/SecondChanceDogRescue', "data-original-title" => "Facebook"}
       %a.linkedin-icon{:href => 'http://www.linkedin.com/groups/Second-Chance-Dog-Rescue-1299187?home=&gid=1299187&trk=anet_ug_hm', "data-original-title" => "LinkedIn"}
     #twitter
+.full-width-row.home-page-cms
+  .span12
+    = render :partial => "/shared/content_page", :locals => {:title => false}
+
 
