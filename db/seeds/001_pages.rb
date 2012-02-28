@@ -105,7 +105,7 @@ how_to_help_body = <<END
 </ul>
 <p>Once you are accepted to become a foster, we provide you a foster packet with valuable information, contact numbers/emails, etc. for your reference and to have available for any questions and emergencies that may arise. This insures that all goes smoothly for your household and for the rescue dog.</p>
 
-<p>If you would like to volunteer as a foster and help save a dog's life, please complete and submit the application found below.</p>
+<p>If you would like to volunteer as a foster and help save a dog's life, please complete and submit <a href="http://www.formstack.com/forms/?1062974-rJm7TK6vXu" target="_blank">this application</a>.</p>
 
 <p>Thank you in advance for considering to become a foster!</p>
 END
