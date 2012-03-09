@@ -108,14 +108,18 @@ div.clearfix{
 
 // red bootstrap button to match our color scheme
 .btn {
-  &.primary {
+  &.primary, &.donate {
     color: $white;
     @include gradientBar(#e85959, #aa3b3b);
   }
   &.right {
     float :right;
   }
-  &.blue {
+  &.adopt {
+    color: white;
+    @include gradientBar(#62c462, #57a957);
+  }
+  &.foster {
     color: $white;
     @include gradientBar(#608ae9, #405c9c);
   }
