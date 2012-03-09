@@ -115,4 +115,8 @@ div.clearfix{
   &.right {
     float :right;
   }
+  &.blue {
+    color: $white;
+    @include gradientBar(#608ae9, #405c9c);
+  }
 }

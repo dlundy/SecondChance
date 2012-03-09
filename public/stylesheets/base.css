@@ -102,3 +102,18 @@ div.clearfix {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%); }
 .btn.right {
   float: right; }
+.btn.blue {
+  color: white;
+  background-color: #405c9c;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#608ae9), to(#405c9c));
+  background-image: -moz-linear-gradient(top, #608ae9, #405c9c);
+  background-image: -ms-linear-gradient(top, #608ae9, #405c9c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #608ae9), color-stop(100%, #405c9c));
+  background-image: -webkit-linear-gradient(top, #608ae9, #405c9c);
+  background-image: -o-linear-gradient(top, #608ae9, #405c9c);
+  background-image: linear-gradient(top, #608ae9, #405c9c);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#608ae9, endColorstr=#405c9c, GradientType=0);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #405c9c #405c9c #2a3c66;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) fadein(rgba(0, 0, 0, 0.1), 15%); }
