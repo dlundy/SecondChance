@@ -39,18 +39,19 @@ class RescueGroupsDotOrgClient
   private
   
   def self.massage_data(dog)
-    dog['name'] = dog['name'].downcase # let's store our dog names in lowercase
-    dog['breed'] = CGI.unescapeHTML(dog['breed'])
-    puts dog['description']
-    parsed = Nokogiri::HTML(dog['description'])
-    parsed.xpath('//@style').each(&:remove)
-    parsed.xpath('//br').each(&:remove)
-    parsed.xpath('//img').each(&:remove)
-    parsed.xpath('//object').each(&:remove)
-    inner_html = parsed.inner_html
-    # we want to remove the html and body tags.  a bit hacky, but it will do for now...
-    dog['description'] = inner_html.sub('<html>', '').sub('<body>', '').sub('</body>', '').sub('</html>', '')    
-    dog['description'] = CGI.unescapeHTML(dog['description'])
+    dog['name'] = dog['name'].to_s.downcase if dog['name']
+    dog['breed'] = CGI.unescapeHTML(dog['breed'].to_s) if dog['breed']
+    if dog['description']
+      parsed = Nokogiri::HTML(dog['description'])
+      parsed.xpath('//@style').each(&:remove)
+      parsed.xpath('//br').each(&:remove)
+      parsed.xpath('//img').each(&:remove)
+      parsed.xpath('//object').each(&:remove)
+      inner_html = parsed.inner_html
+      # we want to remove the html and body tags.  a bit hacky, but it will do for now...
+      dog['description'] = inner_html.sub('<html>', '').sub('<body>', '').sub('</body>', '').sub('</html>', '')    
+      dog['description'] = CGI.unescapeHTML(dog['description'])
+    end
     dog
   end
   
