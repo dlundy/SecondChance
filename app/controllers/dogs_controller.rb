@@ -30,13 +30,15 @@ class DogsController < ApplicationController
   def show
     @dog = Dog.find params[:id]
   end
-
+  
+  # NOTE: for the manual button
   def import_dog_data
     # NOTE:  It's more expensive to run background jobs on Heroku.  On average this import only takes a few seconds.
     #        So, let's try it without a background job first.
     # Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT))
     # flash[:notice] = 'Importing Dog Data from RescueGroups.org.  Please be patient, this make take a few moments.'
-    if RescueGroupsDotOrgClient.get_sc_dogs
+    updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
+    if RescueGroupsDotOrgClient.get_sc_dogs({:updated_after => updated_after})
       message = 'Dog data has been imported!'
     else
       message = 'There was a problem importing the dog data'

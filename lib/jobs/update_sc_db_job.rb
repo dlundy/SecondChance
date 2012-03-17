@@ -1,14 +1,14 @@
 # require 'rescue_groups_dot_org_client'
-# class UpdateScDbJob < Struct.new(:limit, :opts)
+# class UpdateScDbJob < Struct.new(:opts)
 #   
-#   @@limit ||= DOG_IMPORT_LIMIT
+# 
 #   
 #   # NOTE: We may or may not want to strip the footer.  We can replace it with our own CMS-controlled footer.
 #   # FOOTER_REGEX = /All of our dogs are in private volunteer foster homes.*$/
 #   
 #   
 #   def perform
-#     dogs = RescueGroupsDotOrgClient.get_sc_dogs(@@limit)
+#     dogs = RescueGroupsDotOrgClient.get_sc_dogs
 #     if dogs.present?
 #       dogs.each do |dog|
 #         dog_data = massage_data(dog)

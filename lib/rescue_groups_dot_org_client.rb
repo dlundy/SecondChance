@@ -5,9 +5,9 @@ class RescueGroupsDotOrgClient
   format :xml
   default_params :key => ENV['RG_ORG_KEY'], :orgID => ENV['RG_ORG_ID']
     
-  def self.get_sc_dogs(limit=DOG_IMPORT_LIMIT, opts={})
-    updated_after = opts[:updated_after].present? ? opts[:updated_after] : nil
-    res = get('/', :query => {:type => 'animals', :limit => limit, :updatedAfter => updated_after})    
+  def self.get_sc_dogs(opts={})
+    query = {:type => 'animals', :limit => opts[:limit], :updatedAfter => opts[:updated_after]}
+    res = get('/', :query => query.delete_if{|k,v| v.nil?})    
     if res.code == 200 
       dogs = res.parsed_response['pets']['pet']
       rg_ids = []

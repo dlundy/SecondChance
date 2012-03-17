@@ -4,8 +4,8 @@ class PagesController < ApplicationController
   def home
     error_404 unless (@page = Page.where(:link_url => '/').first).present?
     # if time_to_refresh?
-    #   updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
-    #   Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
+      # updated_after = RescueGroupsPull.last.present? ? RescueGroupsPull.last.created_at.to_i : nil
+      # Delayed::Job.enqueue(UpdateScDbJob.new(DOG_IMPORT_LIMIT, {:updated_after => updated_after}))
     # end
     @events = Event.upcoming.order('start_at ASC')
   end
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
   private
   
   # def time_to_refresh?
-  #   !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at < 1.day.ago
+  #  !RescueGroupsPull.last.present? || RescueGroupsPull.last.created_at < 1.hour.ago
   # end
 
 end
